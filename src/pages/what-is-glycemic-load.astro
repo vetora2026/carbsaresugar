@@ -1,0 +1,186 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import data from "../data/foods.json";
+
+const f = (id: string) => data.foods.find((x) => x.id === id)!;
+const giRows = [
+  { food: f("watermelon"), gi: 80 },
+  { food: f("rye-bread-slice"), gi: 78 },
+  { food: f("sweet-corn"), gi: 60 },
+  { food: f("peas-frozen"), gi: 51 },
+  { food: f("apple"), gi: 39 },
+  { food: f("spaghetti-white"), gi: 39 },
+];
+---
+
+<Layout
+  title="What is glycaemic load? GI, GL and the teaspoon conversion"
+  description="The difference between glycaemic index and glycaemic load, why portion size changes the result, and the arithmetic that turns a food's GL into teaspoons of sugar."
+>
+  <PageIntro
+    slot="intro"
+    eyebrow="Article"
+    title="What is glycaemic load?"
+    lede="Glycaemic index ranks carbohydrates. Glycaemic load describes a real portion. This page shows the arithmetic behind every number in the calculator."
+  />
+
+  <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <div class="prose-body">
+      <h2 style="margin-top:0">Two questions about any food</h2>
+      <p>
+        In their 2016 paper in the Journal of Insulin Resistance, Dr David Unwin, Dr David Haslam and Dr Geoffrey Livesey
+        reduce the effect of a food on blood glucose to two plain questions. How carby is it? And how sugary is that
+        particular carb? The first question is about the amount of digestible carbohydrate in a portion. The second is
+        about how strongly that carbohydrate raises blood glucose. Glycaemic index answers the second question. Glycaemic
+        load combines both.
+      </p>
+
+      <h2>Glycaemic index</h2>
+      <p>
+        Glycaemic index, or GI, is measured in a laboratory. Volunteers who have fasted overnight eat a portion of a food
+        containing a fixed amount of available carbohydrate, usually 50g. Their blood glucose is measured at intervals over
+        the next two hours, and the area under that curve is compared with the curve after the same amount of pure glucose.
+        Glucose is set at 100. A food whose carbohydrate produces half the response of glucose has a GI of 50.
+      </p>
+      <p>
+        Published GI values are averages, typically from around ten people. The figures on Dr Unwin's charts come from the
+        International Tables of Glycemic Index and Glycemic Load Values, compiled at the University of Sydney and published
+        in Diabetes Care in 2008. By convention, a GI of 55 or less is called low, 56 to 69 medium, and 70 or more high.
+      </p>
+      <p>
+        GI has one limit that matters a great deal in practice: it says nothing about how much carbohydrate a normal
+        portion contains. It is a property of the carbohydrate, not of the plate. Watermelon has a high GI, but a slice is
+        mostly water. Broccoli has a GI of 15 and so little carbohydrate that the GI barely matters.
+      </p>
+
+      <h2>Glycaemic load</h2>
+      <p>Glycaemic load, or GL, puts the portion back in. The formula is short:</p>
+      <p class="sum">GL = GI × grams of available carbohydrate in the portion ÷ 100</p>
+      <p>
+        The result is expressed in grams: the amount of pure glucose that would have about the same effect on blood glucose
+        as the portion. By convention, a GL of 10 or less per serving is called low, 11 to 19 medium, and 20 or more high.
+      </p>
+      <p>The paper's own worked example uses a 150g baked potato:</p>
+      <p class="sum">
+        Carbohydrate: 17g per 100g × 150g ÷ 100 = 25.5g<br />
+        Glycaemic load: 25.5g × GI 86 ÷ 100 = 22g
+      </p>
+
+      <h2>GI and GL do not rank foods the same way</h2>
+      <p>
+        The table below lists foods from Dr Unwin's charts in order of GI, highest first, with the teaspoon figure for the
+        portion shown. The two columns do not run in the same order.
+      </p>
+    </div>
+
+    <div class="mt-6 max-w-prose overflow-x-auto">
+      <table class="w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Glycaemic index compared with teaspoon equivalents per portion</caption>
+        <thead>
+          <tr class="border-b border-line text-muted">
+            <th scope="col" class="py-2 pr-4 font-semibold">Food</th>
+            <th scope="col" class="py-2 pr-4 font-semibold">Portion</th>
+            <th scope="col" class="py-2 pr-4 font-semibold">GI</th>
+            <th scope="col" class="py-2 font-semibold">Teaspoons</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            giRows.map(({ food, gi }) => (
+              <tr class="border-b border-line">
+                <td class="py-2 pr-4 text-ink">{food.name}</td>
+                <td class="py-2 pr-4 text-body">{food.portion}</td>
+                <td class="py-2 pr-4 text-body">{gi}</td>
+                <td class="py-2 font-serif text-base text-coral">{food.cubes.toFixed(1)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose-body mt-8">
+      <h2>From glycaemic load to teaspoons of sugar</h2>
+      <p>
+        A glycaemic load in grams is accurate but abstract. The paper's step was to express it in a unit people already
+        picture: a teaspoon of table sugar. To do that, a teaspoon of sugar is put through the same two questions.
+      </p>
+      <ol>
+        <li>
+          <strong>How carby is it?</strong> A 4g teaspoon of sucrose yields 4.2g of carbohydrate once digested. Sucrose
+          splits into glucose and fructose and picks up a molecule of water as it does, which is why 4g becomes 4.2g
+          rather than staying at 4g.
+        </li>
+        <li>
+          <strong>How sugary is that carb?</strong> Table sugar has a GI of 65. It is half glucose and half fructose, and
+          fructose raises blood glucose very little, so its GI is lower than pure glucose.
+        </li>
+      </ol>
+      <p class="sum">Glycaemic load of one teaspoon of table sugar: 4.2g × 65 ÷ 100 = 2.73</p>
+      <p>
+        Every food's teaspoon figure is its glycaemic load divided by 2.73. That single division is the whole conversion.
+      </p>
+
+      <h2>Worked examples</h2>
+      <h3>Basmati rice, 150g boiled</h3>
+      <p class="sum">
+        Carbohydrate: 40g (Unwin 2016, Table 1)<br />
+        GL: 40 × 69 ÷ 100 = 27.6<br />
+        Teaspoons: 27.6 ÷ 2.73 = 10.1
+      </p>
+      <h3>Brown bread, one small 30g slice</h3>
+      <p class="sum">
+        Carbohydrate: 40g per 100g × 30g ÷ 100 = 12g<br />
+        GL: 12 × 74 ÷ 100 = 8.9, rounded in the paper to 9<br />
+        Teaspoons: 9 ÷ 2.73 = 3.3
+      </p>
+      <h3>Apple, 120g</h3>
+      <p class="sum">
+        Carbohydrate: 16g (Unwin 2016, Table 1)<br />
+        GL: 16 × 39 ÷ 100 = 6.2<br />
+        Teaspoons: 6.2 ÷ 2.73 = 2.3
+      </p>
+
+      <h2>Why the divisor is 2.73 and not 4</h2>
+      <p>
+        A shorthand sometimes repeated online divides glycaemic load by 4, on the reasoning that a teaspoon weighs 4g. That
+        treats the teaspoon as 4g of pure glucose with a GI of 100. Dr Unwin's published figures do not use that shortcut.
+        With a divisor of 4, the bowl of basmati rice above would come out at 6.9 teaspoons rather than 10.1, and the slice
+        of brown bread at 2.3 rather than 3.3. The figures on this site match the published infographics, which means they
+        use 2.73.
+      </p>
+
+      <h2>Portion size is the lever</h2>
+      <p>
+        Because GI is fixed for a given food, the only thing that changes glycaemic load from one meal to the next is how
+        much of the food is eaten. Twice the rice is twice the load, and twice the teaspoons. This is why each card in the
+        calculator states a portion with a gram weight, and why the figures cannot be read without it. A figure for 100g of
+        honey and a figure for one 9g poppadom describe very different amounts of food.
+      </p>
+
+      <h2>Limits worth knowing</h2>
+      <ul>
+        <li>
+          GI values for the same food vary between studies, between varieties and between cooking methods. The tables
+          average them.
+        </li>
+        <li>
+          Available carbohydrate on UK food tables is expressed as monosaccharide equivalents. US nutrition labels list
+          total carbohydrate including fibre, so a US label figure cannot be dropped straight into the formula.
+        </li>
+        <li>
+          Fat, protein and fibre in a mixed meal slow digestion. GL describes each food as if eaten alone.
+        </li>
+        <li>
+          The conversion depends on table sugar's GI of 65. A different value for sucrose would shift every figure
+          proportionally, though the ranking of foods would not change.
+        </li>
+      </ul>
+      <p>
+        Each value in the calculator, with its source, is listed on the <a href="/sources/">sources page</a>. For the other
+        side of the comparison, see <a href="/how-much-sugar-is-in-your-blood/">how much sugar is in your blood</a>.
+      </p>
+    </div>
+  </article>
+</Layout>

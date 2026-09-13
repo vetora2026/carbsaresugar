@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+---
+
+<Layout
+  title="Privacy policy: what carbsaresugar.com does and does not collect"
+  description="The privacy policy for carbsaresugar.com, written from a check of the site's own code: no cookies set by the site, no storage, no analytics, and Google AdSense as the only third party."
+>
+  <PageIntro slot="intro" title="Privacy policy" lede="Last updated 13 September 2026." />
+
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <div class="prose-body">
+      <h2 style="margin-top:0">Summary</h2>
+      <p>
+        This site has no accounts, no forms, no analytics and no database. Its own code does not set cookies, does not write
+        to your browser's storage and does not send anything you do on the page to a server. The one third party is Google
+        AdSense, which serves the advertising, does use cookies and browser storage, and has its own data practices,
+        described below.
+      </p>
+      <p>
+        This policy was written from a check of the site's built code, not from a template. The results of that check are
+        listed in the next section.
+      </p>
+
+      <h2>What was checked</h2>
+      <p>Before this policy was published, the built site was inspected for the following:</p>
+      <ul>
+        <li>
+          <strong>Network requests made by the site's code:</strong> none. The calculator's food list is bundled into the page,
+          and the site's scripts contain no fetch, XMLHttpRequest, WebSocket or beacon calls. Adding, removing and totalling
+          foods happens entirely in your browser.
+        </li>
+        <li>
+          <strong>Browser storage:</strong> the site's code does not use localStorage, sessionStorage, IndexedDB or cookies.
+        </li>
+        <li>
+          <strong>Server-side code:</strong> none. The site is a set of static files. There are no API routes or server
+          functions that could receive data.
+        </li>
+        <li>
+          <strong>Fonts:</strong> served from this site's own domain, not from a font service.
+        </li>
+        <li>
+          <strong>Third-party scripts:</strong> exactly one, the Google AdSense script loaded from
+          pagead2.googlesyndication.com. No other third-party script, stylesheet, font or image is referenced in the site's
+          pages.
+        </li>
+      </ul>
+      <p>
+        The page was also loaded and used in a real browser with every storage write and network request recorded. The
+        site's own code made no requests and wrote nothing. The AdSense script, once loaded, did the following on its own:
+      </p>
+      <ul>
+        <li>
+          it requested resources from pagead2.googlesyndication.com, googleads.g.doubleclick.net, www.google.com,
+          ep1.adtrafficquality.google and ep2.adtrafficquality.google;
+        </li>
+        <li>it wrote and removed a test entry in localStorage (named <code>__storage_test__</code>);</li>
+        <li>it set a test cookie (named <code>TESTCOOKIESENABLED</code>) to check whether cookies are enabled;</li>
+        <li>
+          a cookie named <code>IDE</code> was set on Google's doubleclick.net domain, which Google uses for advertising.
+        </li>
+      </ul>
+      <p>After the session, no entries remained in this site's localStorage or sessionStorage, and no cookie was set on this site's own domain.</p>
+      <p>
+        In live use, AdSense may set further cookies and contact further Google domains depending on your location, your
+        consent choices and the ads being served. Those are controlled by Google, not by this site.
+      </p>
+
+      <h2>Your food list and the page address</h2>
+      <p>
+        When you add foods, the calculator writes your list into the page address, for example
+        <code>?f=banana:1</code>. This is how bookmarking and sharing work without an account. The list is not saved anywhere
+        else by this site.
+      </p>
+      <p>
+        Two consequences are worth knowing. Anyone you share the link with can see the list. And when a page address with a
+        list in it is loaded, the full address, including the list, is requested from the web host, just as any web address
+        is. Changes you make after the page has loaded are not sent anywhere.
+      </p>
+
+      <h2>Hosting</h2>
+      <p>
+        The site is hosted on Cloudflare Pages. Like any web host, Cloudflare processes technical request information, such
+        as IP addresses and the pages requested, to deliver the site and protect it from abuse. This site does not add any
+        analytics on top of that. Cloudflare's handling of that information is covered by the
+        <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>.
+      </p>
+
+      <h2>Advertising: Google AdSense</h2>
+      <p>
+        The site shows ads served by Google AdSense. Google and its partners may use cookies or similar technologies to serve
+        ads based on your visits to this site and other sites, to limit how often an ad is shown, and to measure ad
+        performance. Where the law requires it, Google may show a consent message before using cookies for these purposes.
+      </p>
+      <p>
+        You can learn how Google uses information from sites that use its services at
+        <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>,
+        and you can turn off personalised advertising at
+        <a href="https://adssettings.google.com/">adssettings.google.com</a>. Blocking third-party scripts in your browser
+        stops the AdSense script from loading; the calculator works without it.
+      </p>
+
+      <h2>Email</h2>
+      <p>
+        If you write to the contact address, your email and address are received in an ordinary email inbox. They are used
+        only to reply and to act on corrections, and they are not added to any mailing list or shared.
+      </p>
+
+      <h2>Children</h2>
+      <p>The site is not directed at children and does not knowingly collect information from anyone.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If the site's code changes in a way that affects anything above, for example by adding a new third-party service,
+        this page will be updated before or at the same time as that change, and the date at the top will change.
+      </p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy: <a href="mailto:vetorainfo@gmail.com">vetorainfo@gmail.com</a>.</p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import data from "../data/foods.json";
+---
+
+<Layout
+  title="About carbs are sugar: who runs it and how the numbers are made"
+  description="Who runs carbsaresugar.com, why it exists, how its sugar teaspoon figures are produced, and what the site does not do: no products, no affiliate links, no data collected."
+>
+  <PageIntro
+    slot="intro"
+    title="About this site"
+    lede="A free calculator that turns portions of food into teaspoons of table sugar, built on published research and nothing else."
+  />
+
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <div class="prose-body">
+      <h2 style="margin-top:0">Who runs it</h2>
+      <p>
+        carbsaresugar.com is an independent site run by Vetora, a small publisher of free, single-purpose reference tools.
+        Each tool answers one question and shows exactly where its numbers come from. The site is not connected to Dr David
+        Unwin, the Public Health Collaboration, the Journal of Insulin Resistance, or any food, pharmaceutical or diet
+        company.
+      </p>
+
+      <h2>Why it exists</h2>
+      <p>
+        Dr Unwin's sugar infographics are among the most widely shared nutrition charts in the world. They are clear and
+        they are free, and they are also static images: a chart for bread, a chart for cereals, a chart for fruit. Anyone who
+        wants to know the figure for their own breakfast, or their own day, has to find the right charts and add the numbers
+        up by hand.
+      </p>
+      <p>
+        This site does the adding. Pick the foods and portions, and it totals them in the same unit Dr Unwin uses: 4g
+        teaspoons of table sugar with an equivalent effect on blood glucose. The figures sit beside one other number, the
+        amount of glucose in an adult's bloodstream at any moment, and the reader takes it from there.
+      </p>
+
+      <h2>How the numbers are produced</h2>
+      <p>
+        The calculator currently lists {data.foods.length} foods. Almost all of the figures are copied directly from Dr
+        Unwin's charts, distributed by the Public Health Collaboration, or from Table 1 of the 2016 paper that sets out the
+        method. A food's teaspoon figure is its glycaemic load divided by 2.73, which is the glycaemic load of one 4g
+        teaspoon of table sugar. The page <a href="/what-is-glycemic-load/">what is glycaemic load</a> shows that arithmetic
+        step by step.
+      </p>
+      <p>
+        The rules for the data are strict. No figure is estimated to fill a gap. Every food records its source and whether
+        its figure was read from a chart, taken from a published table or calculated, and calculated figures record their
+        inputs. Where two charts disagree, both numbers are recorded. Foods without a defensible published figure are left
+        out. The full record is on the <a href="/sources/">sources page</a>.
+      </p>
+      <p>
+        Twice a year, an automated check confirms that every source is still online and flags any change to the Public
+        Health Collaboration's sugar page for a person to review. It does not change any values by itself.
+      </p>
+
+      <h2>What this site does not do</h2>
+      <ul>
+        <li><strong>No products are sold.</strong> There is nothing to buy here, and no paid tier.</li>
+        <li><strong>No affiliate links.</strong> No link on this site earns a commission.</li>
+        <li>
+          <strong>No data is collected by the site.</strong> There are no accounts, no forms, no analytics and no database.
+          Your food list lives in the page address and nowhere else. The site does carry Google AdSense advertising, and
+          Google's own handling of data is described on the <a href="/privacy/">privacy page</a>.
+        </li>
+        <li>
+          <strong>Not medical advice.</strong> The figures are educational estimates based on averages. They do not
+          describe any individual's blood glucose, and they are not a basis for changing medication or diet. Anyone
+          managing diabetes or another health condition should talk to a doctor, nurse or dietitian.
+        </li>
+        <li>
+          <strong>No food recommendations.</strong> The site shows figures. It does not say what anyone should or should not
+          eat.
+        </li>
+      </ul>
+
+      <h2>How it is paid for</h2>
+      <p>
+        Hosting costs are covered by display advertising served through Google AdSense. Advertisers have no say over the
+        content or the data, and no food is included, excluded or described differently for commercial reasons.
+      </p>
+
+      <h2>Corrections</h2>
+      <p>
+        The site's credibility depends on its numbers being right. If a figure does not match its source, or a food is
+        described wrongly, please use the <a href="/contact/">contact page</a>. Corrections that include a source are the
+        most useful mail this site receives, and they are acted on.
+      </p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,153 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Divider from "../components/Divider.astro";
+import CubeRow from "../components/CubeRow.astro";
+import Calculator from "../components/Calculator.astro";
+import data from "../data/foods.json";
+
+const rice = data.foods.find((f) => f.id === "basmati-rice")!;
+const count = (d: string) => data.foods.filter((f) => f.derivation === d).length;
+const readCount = count("read from infographic");
+const tableCount = count("published GL table");
+const calcCount = count("calculated from GI and carb content");
+---
+
+<Layout
+  title="How much sugar did you eat today? Sugar teaspoon calculator"
+  description="Tap the foods you ate and see how many 4g teaspoons of table sugar would raise blood glucose by the same amount, using Dr David Unwin's glycaemic load method."
+  divider={false}
+>
+  <section class="bg-paper">
+    <div class="mx-auto max-w-5xl px-4 pb-12 pt-10 sm:px-6 sm:pt-16">
+      <h1 class="max-w-3xl font-serif text-4xl font-medium leading-tight text-ink sm:text-5xl">
+        How much sugar did you eat today?
+      </h1>
+      <p class="mt-5 max-w-prose text-lg leading-relaxed text-body">
+        Tap the foods you ate. The total shows how many 4g teaspoons of table sugar would raise your blood glucose by
+        the same amount. The figures use Dr David Unwin's glycaemic load method, published in the Journal of Insulin
+        Resistance and shared free by the Public Health Collaboration.
+      </p>
+
+      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-md border border-line bg-paper p-5">
+          <p class="text-sm text-muted">A bowl of boiled basmati rice, 150g</p>
+          <p class="mt-2 flex flex-wrap items-baseline gap-x-2">
+            <span class="font-serif text-5xl leading-tight text-coral">{rice.cubes.toFixed(1)}</span>
+            <span class="text-body">teaspoons of sugar</span>
+          </p>
+          <CubeRow count={rice.cubes} class="mt-4" />
+        </div>
+        <div class="rounded-md border border-line bg-paper p-5">
+          <p class="text-sm text-muted">Glucose circulating in an adult's bloodstream at any moment</p>
+          <p class="mt-2 flex flex-wrap items-baseline gap-x-2">
+            <span class="font-serif text-5xl leading-tight text-coral">1</span>
+            <span class="text-body">teaspoon, about 4g</span>
+          </p>
+          <CubeRow count={1} class="mt-4" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Divider />
+
+  <Calculator />
+
+  <section class="border-t border-line bg-paper">
+    <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+      <div class="prose-body">
+        <h2 style="margin-top:0">What the number on each food means</h2>
+        <p>
+          Every food in the calculator carries one figure: the number of 4g teaspoons of table sugar that would raise
+          blood glucose by about the same amount as that portion of the food. A slice of bread, a bowl of cereal and a
+          glass of juice are turned into the same unit, so they can be added together and set side by side.
+        </p>
+        <p>
+          The figure is not the sugar line on a nutrition label. A label counts "sugars" as a chemical group: glucose,
+          fructose, sucrose, lactose and a few others. Starch, the main carbohydrate in rice, bread, potatoes and pasta,
+          is not counted as sugar on a label, yet digestion breaks it down into glucose. The teaspoon figure describes the
+          blood glucose effect of all the digestible carbohydrate in a portion, whatever form it arrives in.
+        </p>
+
+        <h2>How the figure is calculated</h2>
+        <p>
+          Two measurements describe how a food affects blood glucose. The glycaemic index, or GI, ranks how strongly the
+          carbohydrate in a food raises blood glucose compared with the same amount of pure glucose. The glycaemic load,
+          or GL, multiplies that index by the grams of available carbohydrate in a real portion and divides by 100. GL is
+          the figure that takes portion size into account.
+        </p>
+        <p>
+          Dr Unwin and his co-authors, Dr David Haslam and Dr Geoffrey Livesey, asked the same question of a teaspoon of
+          table sugar. A 4g teaspoon of sucrose yields 4.2g of carbohydrate once digested, and table sugar has a GI of 65.
+          Its glycaemic load is 4.2 × 65 ÷ 100 = 2.73. Dividing any food's glycaemic load by 2.73 gives the number of
+          teaspoons shown here.
+        </p>
+        <p class="sum">
+          Basmati rice, 150g boiled: 40g carbohydrate × GI 69 ÷ 100 = GL 27.6<br />
+          27.6 ÷ 2.73 = 10.1 teaspoons
+        </p>
+        <p>
+          The full arithmetic, with more examples, is on the page
+          <a href="/what-is-glycemic-load/">what is glycaemic load</a>.
+        </p>
+
+        <h2>How to read your total</h2>
+        <p>
+          The total is a sum of estimates. Each portion is counted as if it were eaten on its own, and the results are
+          added. That makes the total useful for comparing one day's food with another, one breakfast with another, or one
+          portion size with a larger one. It is not a prediction of the number on a glucose meter.
+        </p>
+        <p>
+          The line under the total places two figures next to each other: the approximate amount of glucose circulating
+          in an adult's blood at any one moment, and the teaspoon figure for the foods you added. Where the first figure
+          comes from is explained in <a href="/how-much-sugar-is-in-your-blood/">how much sugar is in your blood</a>.
+        </p>
+        <p>
+          Portions matter more than names. The cards state the portion each value belongs to, with a gram weight. Two
+          portions of rice are twice the figure for one. If your bowl was about half the stated portion, the figure is
+          about half.
+        </p>
+
+        <h2>What the method leaves out</h2>
+        <ul>
+          <li>
+            GI values are averages from testing small groups of people, often around ten. Individual responses vary, and
+            sometimes vary widely.
+          </li>
+          <li>
+            Cooking time, ripeness, processing and cooling all change GI. Firm pasta and soft pasta, or a green banana and a
+            spotted one, give different results.
+          </li>
+          <li>
+            Fat, protein and fibre eaten in the same meal tend to slow and lower the glucose response. The calculator adds
+            each food as if it were eaten alone.
+          </li>
+          <li>
+            The values come from UK posters and international tables. Branded products such as breakfast cereals can have
+            different recipes in different countries.
+          </li>
+          <li>
+            Glycaemic load describes blood glucose and nothing else. It says nothing about protein, fibre, vitamins,
+            minerals or anything else a food contains.
+          </li>
+          <li>
+            A few values are for 100g or 100ml because that is how the source published them. The portion is printed on
+            every card.
+          </li>
+        </ul>
+
+        <h2>Where the foods come from</h2>
+        <p>
+          Of the {data.foods.length} foods in the calculator, {readCount} are read directly from Dr Unwin's infographics,
+          {tableCount} come from Table 1 of the 2016 paper, and {calcCount} (meat and fish) are calculated from a
+          carbohydrate content of zero. No value has been estimated to fill a gap. Foods without a published figure were
+          left out, and where two posters give different figures for the same food, both figures are recorded.
+        </p>
+        <p>
+          Every value, its source and its derivation are listed on the <a href="/sources/">sources page</a>. If you find
+          an error, the <a href="/contact/">contact page</a> explains what to send.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

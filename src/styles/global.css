@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-warm font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid #1d9e75;
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* Long-form body copy. Width stays under 75 characters. */
+  .prose-body {
+    @apply max-w-prose text-body;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .prose-body > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-body h2 {
+    @apply font-serif text-ink;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-top: 2.2em;
+  }
+  .prose-body h3 {
+    @apply font-sans font-semibold text-ink;
+    font-size: 1.125rem;
+    margin-top: 1.8em;
+  }
+  .prose-body a {
+    @apply text-green underline underline-offset-2;
+  }
+  .prose-body ul,
+  .prose-body ol {
+    padding-left: 1.25em;
+  }
+  .prose-body ul {
+    list-style: disc;
+  }
+  .prose-body ol {
+    list-style: decimal;
+  }
+  .prose-body li + li {
+    margin-top: 0.4em;
+  }
+  .prose-body strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-body blockquote {
+    @apply font-serif italic text-ink border-l-2 border-line pl-4;
+    font-size: 1.2rem;
+  }
+
+  /* Worked arithmetic */
+  .sum {
+    @apply rounded-md border border-line bg-paper px-4 py-3 font-sans text-ink;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Sugar cube: the site's signature element */
+  .cube {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    flex: none;
+    border-radius: 2px;
+    border: 1px solid #d4cfc4;
+    background: #ffffff;
+    box-shadow: inset -1px -1px 0 #eae5db;
+  }
+  .cube-part {
+    display: inline-block;
+    height: 13px;
+    overflow: hidden;
+    flex: none;
+  }
+
+  .tab {
+    @apply inline-flex items-center rounded-full border border-line bg-paper px-4 font-sans text-[0.95rem] font-medium text-body;
+    min-height: 44px;
+  }
+  .tab:hover {
+    @apply border-green text-ink;
+  }
+  .tab[aria-selected="true"] {
+    @apply border-green bg-green text-paper;
+  }
+
+  .food-card {
+    @apply relative flex w-full flex-col items-start rounded-md border border-line bg-paper p-3 text-left;
+    min-height: 44px;
+  }
+  .food-card:hover {
+    @apply border-green;
+  }
+  .food-card[data-selected="true"] {
+    @apply border-green;
+    box-shadow: inset 0 0 0 1px #1d9e75;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md border border-line bg-paper px-4 font-sans text-sm font-semibold text-ink;
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .btn:hover {
+    @apply border-green;
+  }
+  .btn-primary {
+    @apply border-green bg-green text-paper;
+  }
+
+  .link {
+    @apply text-green underline underline-offset-2;
+  }
+}
+
+@keyframes cube-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.cube-in {
+  animation: cube-in 180ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

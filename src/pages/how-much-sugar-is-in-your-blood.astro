@@ -1,0 +1,167 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import CubeRow from "../components/CubeRow.astro";
+import data from "../data/foods.json";
+
+const rice = data.foods.find((x) => x.id === "basmati-rice")!;
+const levels = [
+  { mgdl: 70, mmol: "3.9" },
+  { mgdl: 90, mmol: "5.0" },
+  { mgdl: 100, mmol: "5.6" },
+  { mgdl: 126, mmol: "7.0" },
+  { mgdl: 140, mmol: "7.8" },
+  { mgdl: 200, mmol: "11.1" },
+];
+---
+
+<Layout
+  title="How much sugar is in your blood? About one teaspoon"
+  description="An adult's bloodstream holds about 4g of glucose, roughly one teaspoon. Where that figure comes from, and what the body does when more glucose arrives from food."
+>
+  <PageIntro
+    slot="intro"
+    eyebrow="Article"
+    title="How much sugar is in your blood?"
+    lede="About 4 grams of glucose circulates in the blood of a 70kg adult. That is roughly one teaspoon."
+  />
+
+  <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <div class="grid max-w-3xl gap-4 sm:grid-cols-2">
+      <div class="rounded-md border border-line bg-paper p-5">
+        <p class="text-sm text-muted">Glucose in an adult's bloodstream at any moment</p>
+        <p class="mt-2 flex items-baseline gap-2">
+          <span class="font-serif text-5xl leading-tight text-coral">1</span>
+          <span class="text-body">teaspoon, about 4g</span>
+        </p>
+        <CubeRow count={1} class="mt-4" />
+      </div>
+      <div class="rounded-md border border-line bg-paper p-5">
+        <p class="text-sm text-muted">Basmati rice, 150g boiled</p>
+        <p class="mt-2 flex items-baseline gap-2">
+          <span class="font-serif text-5xl leading-tight text-coral">{rice.cubes.toFixed(1)}</span>
+          <span class="text-body">teaspoons</span>
+        </p>
+        <CubeRow count={rice.cubes} class="mt-4" />
+      </div>
+    </div>
+
+    <div class="prose-body mt-10">
+      <h2 style="margin-top:0">Where the figure comes from</h2>
+      <p>
+        The four-gram figure is the title and the opening sentence of a 2009 review by David Wasserman, a physiologist at
+        Vanderbilt University, published in the American Journal of Physiology: Endocrinology and Metabolism. The review
+        begins: "Four grams of glucose circulates in the blood of a person weighing 70 kg." The rest of the paper describes
+        the control system that keeps that amount steady.
+      </p>
+      <p>The figure can be checked with two numbers that appear in any physiology textbook:</p>
+      <p class="sum">
+        Typical fasting blood glucose: 5 mmol/L, or 90 mg/dL<br />
+        Glucose molar mass: 180g per mole, so 5 mmol/L = 0.9g per litre<br />
+        Blood volume of a 70kg adult: about 5 litres<br />
+        0.9g × 5 litres = 4.5g
+      </p>
+      <p>
+        Blood volume, body weight and the glucose reading all vary between people and through the day, so the result is an
+        approximation. Estimates land between roughly 4g and 5g for an adult with a normal fasting level. A 4g teaspoon of
+        sugar is the unit the calculator uses, which is why this site describes the bloodstream figure as about one
+        teaspoon.
+      </p>
+
+      <h2>The same arithmetic at other levels</h2>
+      <p>
+        Blood glucose readings are given in millimoles per litre in the UK and most of the world, and in milligrams per
+        decilitre in the United States. The table converts common reference points into grams of glucose in 5 litres of
+        blood, using the same method as above.
+      </p>
+      <p>
+        To move between the two units, multiply a reading in mmol/L by 18 to get mg/dL, or divide a reading in mg/dL by 18
+        to get mmol/L. The factor comes from the molar mass of glucose, 180g per mole, divided by 10 to account for
+        decilitres.
+      </p>
+    </div>
+
+    <div class="mt-6 max-w-prose overflow-x-auto">
+      <table class="w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Blood glucose concentration converted to grams of glucose in five litres of blood</caption>
+        <thead>
+          <tr class="border-b border-line text-muted">
+            <th scope="col" class="py-2 pr-4 font-semibold">mg/dL</th>
+            <th scope="col" class="py-2 pr-4 font-semibold">mmol/L</th>
+            <th scope="col" class="py-2 font-semibold">Grams in 5 litres</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            levels.map((l) => (
+              <tr class="border-b border-line">
+                <td class="py-2 pr-4 text-ink">{l.mgdl}</td>
+                <td class="py-2 pr-4 text-body">{l.mmol}</td>
+                <td class="py-2 font-serif text-base text-coral">{((l.mgdl * 50) / 1000).toFixed(1)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose-body mt-8">
+      <p>
+        For reference, the American Diabetes Association uses a fasting level below 100 mg/dL (5.6 mmol/L) as normal, 100
+        to 125 mg/dL as prediabetes, and 126 mg/dL (7.0 mmol/L) or above on repeated tests as one criterion for diabetes. On
+        an oral glucose tolerance test, 140 mg/dL (7.8 mmol/L) and 200 mg/dL (11.1 mmol/L) at two hours are the upper
+        thresholds for normal and prediabetes. Across that whole range, the difference is a few grams of glucose in the
+        entire bloodstream.
+      </p>
+
+      <h2>What happens when more glucose arrives</h2>
+      <p>
+        Starch and sugars from a meal are broken down in the gut into glucose and other simple sugars, which are absorbed
+        through the wall of the small intestine. Blood from the intestine goes first to the liver through the portal vein,
+        and the liver takes up part of the glucose before the rest reaches general circulation.
+      </p>
+      <p>
+        As blood glucose begins to rise, beta cells in the pancreas release insulin. Insulin does several things at once. It
+        signals muscle and fat cells to take glucose in. It tells the liver to stop releasing its own glucose and to store
+        incoming glucose as glycogen, a compact chain of glucose molecules. Muscles store glycogen too.
+      </p>
+      <p>
+        Glycogen storage is limited. Textbook estimates for an adult are roughly 100g in the liver and around 400g in
+        skeletal muscle, varying with body size, activity and recent meals. When those stores are full, the liver can
+        convert surplus glucose into fat, a process called de novo lipogenesis.
+      </p>
+      <p>
+        Some glucose is used straight away. The brain alone uses in the region of 120g of glucose a day in an adult at rest,
+        and red blood cells rely on glucose for all their energy.
+      </p>
+      <p>
+        When blood glucose falls between meals, the pancreas releases glucagon, which signals the liver to break glycogen
+        back down into glucose and to make new glucose from other sources. Between insulin and glucagon, the amount in the
+        blood stays within a narrow band for most people most of the time.
+      </p>
+      <p>
+        If blood glucose rises above roughly 10 mmol/L (180 mg/dL), the kidneys can no longer reabsorb all of it, and glucose
+        begins to appear in urine. That threshold varies between individuals.
+      </p>
+
+      <h2>Reading the two figures together</h2>
+      <p>
+        The bloodstream figure is a quantity: the glucose present in the blood at one moment. The teaspoon figures in the
+        calculator are glycaemic load equivalents: they compare the blood glucose response to a food, measured over about
+        two hours, with the response to a teaspoon of table sugar. A 10-teaspoon portion does not put 40g of glucose into
+        the blood all at once, because absorption, liver uptake and insulin all operate while digestion is under way.
+      </p>
+      <p>
+        The calculator places both figures on the same line, one under the running total. The page
+        <a href="/what-is-glycemic-load/">what is glycaemic load</a> explains how the food figures are calculated.
+      </p>
+
+      <h2>A note on measuring your own glucose</h2>
+      <p>
+        This page describes typical physiology and published reference ranges. It cannot tell you anything about your own
+        blood glucose. Readings, targets and what they mean for an individual are questions for a doctor, nurse or diabetes
+        educator, particularly for anyone taking medication that lowers blood glucose.
+      </p>
+    </div>
+  </article>
+</Layout>

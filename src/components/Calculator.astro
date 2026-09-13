@@ -1,0 +1,448 @@
+---
+import data from "../data/foods.json";
+
+const { categories, foods } = data;
+---
+
+<section id="calculator" class="bg-warm" aria-labelledby="calc-heading">
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <h2 id="calc-heading" class="font-serif text-2xl font-medium text-ink sm:text-3xl">Add what you ate</h2>
+    <p class="mt-2 max-w-prose leading-relaxed text-body">
+      Choose a category, then tap a food to add one portion. Tap it again to add another. Each number is
+      the count of 4g teaspoons of table sugar with the same effect on blood glucose as that portion.
+    </p>
+
+    <div role="tablist" aria-label="Food categories" class="mt-6 flex flex-wrap gap-2" data-tablist>
+      {
+        categories.map((c, i) => (
+          <button
+            type="button"
+            role="tab"
+            class="tab"
+            id={`tab-${c.id}`}
+            aria-controls={`panel-${c.id}`}
+            aria-selected={i === 0 ? "true" : "false"}
+            tabindex={i === 0 ? 0 : -1}
+            data-tab={c.id}
+          >
+            {c.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div>
+        {
+          categories.map((c, i) => (
+            <div role="tabpanel" id={`panel-${c.id}`} aria-labelledby={`tab-${c.id}`} hidden={i !== 0} data-panel={c.id}>
+              <div class="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 md:grid-cols-3">
+                {foods
+                  .filter((f) => f.category === c.id)
+                  .map((f) => (
+                    <button type="button" class="food-card" data-food={f.id} data-selected="false">
+                      <span class="block pr-9 font-semibold leading-snug text-ink">{f.name}</span>
+                      <span class="mt-0.5 block text-sm leading-snug text-muted">{f.portion}</span>
+                      <span class="mt-2 flex items-baseline gap-1.5">
+                        <span class="font-serif text-xl text-coral">{f.cubes.toFixed(1)}</span>
+                        <span class="text-sm text-muted">teaspoons</span>
+                      </span>
+                      <span
+                        class="absolute right-2 top-2 min-w-[1.75rem] rounded-full bg-green px-1.5 text-center text-sm font-semibold leading-6 text-paper"
+                        data-badge
+                        hidden
+                      />
+                    </button>
+                  ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <aside class="self-start rounded-md border border-line bg-paper p-5 lg:sticky lg:top-4" aria-labelledby="total-heading">
+        <h3 id="total-heading" class="text-sm font-semibold text-muted">Your total</h3>
+        <p class="mt-1 flex flex-wrap items-baseline gap-x-2">
+          <span class="font-serif text-5xl leading-tight text-coral" data-total>0.0</span>
+          <span class="text-body">teaspoons of sugar</span>
+        </p>
+        <div class="mt-3 flex min-h-[13px] flex-wrap gap-[3px]" data-cubes aria-hidden="true"></div>
+        <p class="mt-2 text-sm text-muted" data-overflow hidden></p>
+
+        <p class="mt-4 border-t border-line pt-3 text-sm leading-relaxed text-body">
+          Glucose in your bloodstream at any moment: about 1 teaspoon. Foods you added:
+          <span class="font-semibold text-coral" data-context-total>0.0</span> teaspoons.
+        </p>
+        <p class="sr-only" aria-live="polite" data-live></p>
+
+        <h3 class="mt-5 text-sm font-semibold text-muted">Foods added</h3>
+        <p class="mt-2 text-sm text-muted" data-empty>Nothing added yet.</p>
+        <ul class="divide-y divide-line" data-list></ul>
+
+        <p class="mt-3 rounded-md bg-sand px-3 py-2 text-sm text-ink" role="alert" data-error hidden></p>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button type="button" class="btn" data-copy disabled>Copy link</button>
+          <button type="button" class="btn" data-clear disabled>Clear all</button>
+        </div>
+        <p class="mt-2 min-h-[1.25rem] text-sm text-muted" aria-live="polite" data-copy-status></p>
+        <p class="mt-2 text-xs leading-relaxed text-muted">
+          Your list is kept in this page's address, so you can bookmark or share it. It is not saved anywhere else.
+        </p>
+      </aside>
+
+      <div class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper lg:hidden" data-mobile-bar hidden>
+        <a href="#total-heading" class="mx-auto flex min-h-[52px] max-w-5xl items-center justify-between gap-3 px-4">
+          <span class="text-sm text-muted">Your total</span>
+          <span class="flex items-baseline gap-1.5">
+            <span class="font-serif text-2xl text-coral" data-mobile-total>0.0</span>
+            <span class="text-sm text-body">teaspoons</span>
+          </span>
+          <span class="text-sm font-semibold text-green">See list</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import data from "../data/foods.json";
+
+  type Food = (typeof data.foods)[number];
+  type Row = {
+    li: HTMLLIElement;
+    input: HTMLInputElement;
+    subtotal: HTMLSpanElement;
+    error: HTMLParagraphElement;
+  };
+
+  const MAX_QTY = 20;
+  const MAX_DRAWN = 120;
+  const MAX_URL_ITEMS = 100;
+
+  const foods = new Map<string, Food>(data.foods.map((f) => [f.id, f]));
+  const root = document.getElementById("calculator") as HTMLElement;
+  const q = <T extends Element>(sel: string) => root.querySelector(sel) as T;
+
+  const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-tab]"));
+  const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-panel]"));
+  const cards = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-food]"));
+  const totalEl = q<HTMLElement>("[data-total]");
+  const contextTotalEl = q<HTMLElement>("[data-context-total]");
+  const cubesEl = q<HTMLElement>("[data-cubes]");
+  const overflowEl = q<HTMLElement>("[data-overflow]");
+  const liveEl = q<HTMLElement>("[data-live]");
+  const emptyEl = q<HTMLElement>("[data-empty]");
+  const listEl = q<HTMLUListElement>("[data-list]");
+  const errorEl = q<HTMLElement>("[data-error]");
+  const copyBtn = q<HTMLButtonElement>("[data-copy]");
+  const clearBtn = q<HTMLButtonElement>("[data-clear]");
+  const copyStatus = q<HTMLElement>("[data-copy-status]");
+
+  const mobileBar = q<HTMLElement>("[data-mobile-bar]");
+  const mobileTotal = q<HTMLElement>("[data-mobile-total]");
+
+  const selection = new Map<string, number>();
+  const rows = new Map<string, Row>();
+  let drawn = 0;
+
+  // The phone layout stacks the total below the food grid, so a slim bar shows
+  // it while the food grid is on screen and the total panel is not.
+  let asideOnScreen = false;
+  let calculatorOnScreen = false;
+  function syncMobileBar() {
+    mobileBar.hidden = selection.size === 0 || asideOnScreen || !calculatorOnScreen;
+  }
+  new IntersectionObserver(([entry]) => {
+    asideOnScreen = entry.isIntersecting;
+    syncMobileBar();
+  }).observe(q<HTMLElement>("aside"));
+  new IntersectionObserver(([entry]) => {
+    calculatorOnScreen = entry.isIntersecting;
+    syncMobileBar();
+  }).observe(q<HTMLElement>("[data-panel]").parentElement!);
+
+  const round1 = (n: number) => Math.round(n * 10) / 10;
+  const fmt = (n: number) => round1(n).toFixed(1);
+
+  // Tabs
+  function selectTab(id: string, focus = false) {
+    for (const tab of tabs) {
+      const on = tab.dataset.tab === id;
+      tab.setAttribute("aria-selected", on ? "true" : "false");
+      tab.tabIndex = on ? 0 : -1;
+      if (on && focus) tab.focus();
+    }
+    for (const panel of panels) panel.hidden = panel.dataset.panel !== id;
+  }
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => selectTab(tab.dataset.tab!));
+    tab.addEventListener("keydown", (e) => {
+      let next = -1;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (i + 1) % tabs.length;
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = tabs.length - 1;
+      if (next < 0) return;
+      e.preventDefault();
+      selectTab(tabs[next].dataset.tab!, true);
+    });
+  });
+
+  function showError(message: string) {
+    errorEl.textContent = message;
+    errorEl.hidden = message === "";
+  }
+
+  // Rows in the "foods added" list
+  function el<K extends keyof HTMLElementTagNameMap>(tag: K, className = "", text = "") {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text) node.textContent = text;
+    return node;
+  }
+
+  function ensureRow(id: string): Row {
+    const existing = rows.get(id);
+    if (existing) return existing;
+    const food = foods.get(id)!;
+
+    const li = el("li", "py-3");
+    const top = el("div", "flex items-start justify-between gap-2");
+    const labels = el("div", "min-w-0");
+    labels.append(el("p", "font-semibold leading-snug text-ink", food.name), el("p", "text-sm text-muted", food.portion));
+    const removeBtn = el("button", "btn text-lg text-muted", "×");
+    removeBtn.type = "button";
+    removeBtn.setAttribute("aria-label", `Remove ${food.name}`);
+    removeBtn.addEventListener("click", () => {
+      showError("");
+      removeFood(id);
+    });
+    top.append(labels, removeBtn);
+
+    const controls = el("div", "mt-2 flex items-center gap-2");
+    const dec = el("button", "btn text-lg", "−");
+    dec.type = "button";
+    dec.setAttribute("aria-label", `One fewer portion of ${food.name}`);
+    const inputId = `qty-${id}`;
+    const label = el("label", "sr-only", `Portions of ${food.name}`);
+    label.htmlFor = inputId;
+    const input = el("input", "h-11 w-16 rounded-md border border-line bg-paper text-center text-ink");
+    input.id = inputId;
+    input.type = "number";
+    input.inputMode = "numeric";
+    input.min = "1";
+    input.max = String(MAX_QTY);
+    input.step = "1";
+    const inc = el("button", "btn text-lg", "+");
+    inc.type = "button";
+    inc.setAttribute("aria-label", `One more portion of ${food.name}`);
+    const subtotal = el("span", "ml-auto font-serif text-lg text-coral");
+    controls.append(dec, label, input, inc, subtotal);
+
+    const error = el("p", "mt-2 rounded-md bg-sand px-2 py-1 text-sm text-ink");
+    error.hidden = true;
+    const errorId = `qty-error-${id}`;
+    error.id = errorId;
+
+    dec.addEventListener("click", () => {
+      showError("");
+      setQty(id, (selection.get(id) ?? 1) - 1);
+    });
+    inc.addEventListener("click", () => addFood(id));
+
+    input.addEventListener("input", () => {
+      const raw = input.value.trim();
+      const n = Number(raw);
+      if (raw === "" || !Number.isInteger(n) || n < 1 || n > MAX_QTY) {
+        setRowError(row, `Enter a whole number from 1 to ${MAX_QTY}. The total has not been changed.`);
+        return;
+      }
+      setRowError(row, "");
+      selection.set(id, n);
+      refresh();
+    });
+    input.addEventListener("change", () => {
+      const raw = input.value.trim();
+      const n = Number(raw);
+      if (raw !== "" && Number.isInteger(n) && n >= 1 && n <= MAX_QTY) return;
+      const fallback = selection.get(id) ?? 1;
+      const clamped = raw === "" || !Number.isFinite(n) ? fallback : Math.min(MAX_QTY, Math.max(1, Math.round(n)));
+      selection.set(id, clamped);
+      setRowError(row, `Portions must be a whole number from 1 to ${MAX_QTY}. Set to ${clamped}.`);
+      refresh();
+    });
+
+    li.append(top, controls, error);
+    listEl.append(li);
+    const row: Row = { li, input, subtotal, error };
+    rows.set(id, row);
+    return row;
+  }
+
+  function setRowError(row: Row, message: string) {
+    row.error.textContent = message;
+    row.error.hidden = message === "";
+    if (message) {
+      row.input.setAttribute("aria-invalid", "true");
+      row.input.setAttribute("aria-describedby", row.error.id);
+    } else {
+      row.input.removeAttribute("aria-invalid");
+      row.input.removeAttribute("aria-describedby");
+    }
+  }
+
+  // State changes
+  function addFood(id: string) {
+    const food = foods.get(id);
+    if (!food) return;
+    const current = selection.get(id) ?? 0;
+    if (current >= MAX_QTY) {
+      showError(`${food.name}: ${MAX_QTY} portions is the most this calculator adds for one food.`);
+      return;
+    }
+    showError("");
+    setQty(id, current + 1);
+  }
+
+  function setQty(id: string, qty: number) {
+    if (qty < 1) {
+      removeFood(id);
+      return;
+    }
+    selection.set(id, Math.min(MAX_QTY, qty));
+    const row = ensureRow(id);
+    setRowError(row, "");
+    refresh();
+  }
+
+  function removeFood(id: string) {
+    selection.delete(id);
+    rows.get(id)?.li.remove();
+    rows.delete(id);
+    refresh();
+  }
+
+  function total() {
+    let sum = 0;
+    for (const [id, qty] of selection) sum += foods.get(id)!.cubes * qty;
+    return round1(sum);
+  }
+
+  function drawCubes(t: number) {
+    const whole = Math.floor(t + 1e-9);
+    const fraction = round1(t - whole);
+    const shown = Math.min(whole, MAX_DRAWN);
+    const nodes: HTMLElement[] = [];
+    for (let i = 0; i < shown; i++) {
+      const cube = el("span", i >= drawn ? "cube cube-in" : "cube");
+      nodes.push(cube);
+    }
+    if (whole < MAX_DRAWN && fraction > 0) {
+      const part = el("span", "cube-part");
+      part.style.width = `${Math.max(4, Math.round(fraction * 13))}px`;
+      part.append(el("span", "cube"));
+      nodes.push(part);
+    }
+    cubesEl.replaceChildren(...nodes);
+    drawn = shown;
+    if (whole > MAX_DRAWN) {
+      overflowEl.textContent = `The first ${MAX_DRAWN} teaspoons are drawn; ${fmt(t - MAX_DRAWN)} more are counted in the total.`;
+      overflowEl.hidden = false;
+    } else {
+      overflowEl.hidden = true;
+    }
+  }
+
+  function writeUrl() {
+    const url = new URL(window.location.href);
+    url.search = selection.size ? "?f=" + Array.from(selection, ([id, qty]) => `${id}:${qty}`).join(",") : "";
+    history.replaceState(null, "", url);
+  }
+
+  function refresh() {
+    const t = total();
+    totalEl.textContent = fmt(t);
+    contextTotalEl.textContent = fmt(t);
+    mobileTotal.textContent = fmt(t);
+    syncMobileBar();
+    drawCubes(t);
+
+    for (const [id, qty] of selection) {
+      const row = rows.get(id);
+      if (!row) continue;
+      if (document.activeElement !== row.input) row.input.value = String(qty);
+      row.subtotal.textContent = fmt(foods.get(id)!.cubes * qty);
+    }
+
+    for (const card of cards) {
+      const qty = selection.get(card.dataset.food!) ?? 0;
+      card.dataset.selected = qty > 0 ? "true" : "false";
+      const badge = card.querySelector<HTMLElement>("[data-badge]")!;
+      badge.hidden = qty === 0;
+      badge.textContent = qty > 0 ? `×${qty}` : "";
+      card.setAttribute(
+        "aria-label",
+        `${card.querySelector("span")!.textContent}, ${qty > 0 ? `${qty} added, ` : ""}add one portion`,
+      );
+    }
+
+    emptyEl.hidden = selection.size > 0;
+    copyBtn.disabled = selection.size === 0;
+    clearBtn.disabled = selection.size === 0;
+    liveEl.textContent = `Total ${fmt(t)} teaspoons.`;
+    writeUrl();
+  }
+
+  function readUrl() {
+    const raw = new URLSearchParams(window.location.search).get("f");
+    if (!raw) return;
+    let unknown = 0;
+    let invalid = 0;
+    let clamped = 0;
+    const parts = raw.split(",").filter(Boolean);
+    if (parts.length > MAX_URL_ITEMS) invalid += parts.length - MAX_URL_ITEMS;
+    for (const part of parts.slice(0, MAX_URL_ITEMS)) {
+      const [id, qtyText] = part.split(":");
+      if (!foods.has(id)) {
+        unknown++;
+        continue;
+      }
+      const n = qtyText === undefined ? 1 : Number(qtyText);
+      if (!Number.isInteger(n) || n < 1) {
+        invalid++;
+        continue;
+      }
+      const next = (selection.get(id) ?? 0) + n;
+      if (next > MAX_QTY) clamped++;
+      selection.set(id, Math.min(MAX_QTY, next));
+      ensureRow(id);
+    }
+    const notes: string[] = [];
+    if (unknown) notes.push(`${unknown} food${unknown > 1 ? "s" : ""} in the link ${unknown > 1 ? "were" : "was"} not recognised and left out`);
+    if (invalid) notes.push(`${invalid} entr${invalid > 1 ? "ies" : "y"} had an unusable quantity and ${invalid > 1 ? "were" : "was"} left out`);
+    if (clamped) notes.push(`${clamped} quantit${clamped > 1 ? "ies were" : "y was"} above ${MAX_QTY} and reduced to ${MAX_QTY}`);
+    if (notes.length) showError(`From the link: ${notes.join("; ")}.`);
+  }
+
+  cards.forEach((card) => card.addEventListener("click", () => addFood(card.dataset.food!)));
+
+  clearBtn.addEventListener("click", () => {
+    for (const id of Array.from(selection.keys())) removeFood(id);
+    showError("");
+    copyStatus.textContent = "";
+  });
+
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      copyStatus.textContent = "Link copied.";
+    } catch {
+      copyStatus.textContent = "Could not copy. The link is in your browser's address bar.";
+    }
+  });
+
+  readUrl();
+  refresh();
+</script>

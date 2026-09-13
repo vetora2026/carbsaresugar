@@ -1,0 +1,103 @@
+name: Validate data sources
+
+on:
+  schedule:
+    # Twice a year: 1 April and 1 October at 09:00 UTC
+    - cron: '0 9 1 4,10 *'
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check source URLs and PHC page hash, open issue if anything changed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const crypto = require('crypto');
+
+            const sources = JSON.parse(fs.readFileSync('src/data/sources.json', 'utf8'));
+            const PHC_URL = 'https://phcuk.org/sugar/';
+
+            const urls = new Set([PHC_URL]);
+            for (const s of sources.sources) {
+              if (s.url) urls.add(s.url);
+              for (const extra of s.check_urls || []) urls.add(extra);
+            }
+
+            const problems = [];
+            const results = [];
+            let phcHash = null;
+
+            for (const url of urls) {
+              try {
+                const res = await fetch(url, {
+                  redirect: 'follow',
+                  headers: { 'User-Agent': 'Mozilla/5.0 (compatible; carbsaresugar-validator)' },
+                });
+                results.push(`| ${url} | ${res.status} |`);
+                if (res.status !== 200) problems.push(`\`${url}\` returned HTTP ${res.status}`);
+                if (url === PHC_URL && res.status === 200) {
+                  // Hash only the visible text so rotating script bundles do not trigger false alarms.
+                  const html = await res.text();
+                  const text = html
+                    .replace(/<script[\s\S]*?<\/script>/gi, '')
+                    .replace(/<style[\s\S]*?<\/style>/gi, '')
+                    .replace(/<[^>]+>/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+                  phcHash = crypto.createHash('sha256').update(text).digest('hex');
+                }
+              } catch (err) {
+                results.push(`| ${url} | error |`);
+                problems.push(`\`${url}\` could not be fetched: ${err.message}`);
+              }
+            }
+
+            const knownHash = sources.phc_page_text_sha256 || null;
+            if (phcHash && knownHash && phcHash !== knownHash) {
+              problems.push(`PHC sugar page text hash changed.\n  - stored: \`${knownHash}\`\n  - current: \`${phcHash}\``);
+            }
+            if (phcHash && !knownHash) {
+              problems.push(`No stored PHC page hash in sources.json. Current hash: \`${phcHash}\``);
+            }
+
+            core.info(results.join('\n'));
+            if (problems.length === 0) {
+              core.info('All sources returned 200 and the PHC page text is unchanged.');
+              return;
+            }
+
+            const today = new Date().toISOString().slice(0, 10);
+            const body = [
+              'The scheduled source check found something that needs a human to look at it. This workflow does not edit any data.',
+              '',
+              '### Problems',
+              ...problems.map((p) => `- ${p}`),
+              '',
+              '### All URLs checked',
+              '| URL | Status |',
+              '| --- | --- |',
+              ...results,
+              '',
+              '### Checklist',
+              '- [ ] Open https://phcuk.org/sugar/ and compare each infographic against `src/data/foods.json`',
+              '- [ ] Confirm any moved source URL and update `src/data/sources.json`',
+              '- [ ] If the PHC page change is cosmetic, update `phc_page_text_sha256` in `sources.json`',
+              '- [ ] Update `last_verified` in `sources.json` only after the values have actually been re-checked',
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Data source review needed — ${today}`,
+              body,
+            });

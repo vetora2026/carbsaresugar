@@ -1,0 +1,148 @@
+{
+  "last_verified": "2026-09-13",
+  "last_verified_note": "Every value in foods.json was read or calculated during the build session and each URL below was fetched and returned HTTP 200 on the date accessed.",
+  "phc_page_text_sha256": "7a3643e57d4fb15c61a5e2555719b3bc40af300e6fe0d27ebbeb943c7cb0d53d",
+  "sources": [
+    {
+      "id": "phc-infographic-common-foods",
+      "title": "Common foods (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/common-foods.jpg",
+      "check_urls": [
+        "https://phcuk.org/sugar/"
+      ],
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-bread",
+      "title": "Bread (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/bread.jpg",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-breakfast-cereals",
+      "title": "Breakfast cereals (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/breakfast-cereals.jpg",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-fruits",
+      "title": "Fruits (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/fruits.jpg",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-fruits-vegetables",
+      "title": "Fruits vs vegetables (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/fruits-vegetables.jpg",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-white-brown-green",
+      "title": "White, brown or green foods? (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/white-brown-green-foods.jpg",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-common-breakfast",
+      "title": "A healthy breakfast: cereals, toast, fruit juice? (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/common-breakfast.png",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-sugar-burden",
+      "title": "The sugar burden (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/sugar-burden.jpg",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-african-caribbean",
+      "title": "African and Caribbean foods (sugar infographic)",
+      "author": "Dr David Unwin and Dr Geoffrey Livesey",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/african-caribbean-foods.jpg",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "phc-infographic-south-asian",
+      "title": "South Asian foods (sugar infographic)",
+      "author": "Dr David Unwin",
+      "publisher": "Public Health Collaboration",
+      "url": "https://phcuk.org/images/sugar/south-asian-foods.jpg",
+      "date_accessed": "2026-09-13",
+      "licence": "No licence statement found on https://phcuk.org/sugar/ when accessed (page footer: © Public Health Collaboration). Distributed by PHC as free downloads. Attributed here in the form CC BY 4.0 requires."
+    },
+    {
+      "id": "unwin-2016-table-1",
+      "title": "It is the glycaemic response to, not the carbohydrate content of food that matters in diabetes and obesity: The glycaemic index revisited — Table 1",
+      "author": "Unwin D, Haslam D, Livesey G",
+      "publisher": "Journal of Insulin Resistance 2016;1(1):a8 (journal now published as the Journal of Metabolic Health). DOI 10.4102/jir.v1i1.8",
+      "url": "https://journalofmetabolichealth.org/index.php/jmh/article/view/8",
+      "check_urls": [
+        "https://journalofmetabolichealth.org/index.php/jmh/article/download/8/9"
+      ],
+      "date_accessed": "2026-09-13",
+      "licence": "Journal states all articles are published under Creative Commons Attribution 4.0 International (CC BY 4.0) unless otherwise stated. The article page's own licence field reads 'Other'. © 2016 David Unwin, David Haslam, Geoffrey Livesey."
+    },
+    {
+      "id": "unwin-2016-figure-1",
+      "title": "Same paper — Figure 1 and Box 1 (baked potato worked example)",
+      "author": "Unwin D, Haslam D, Livesey G",
+      "publisher": "Journal of Insulin Resistance 2016;1(1):a8. DOI 10.4102/jir.v1i1.8",
+      "url": "https://journalofmetabolichealth.org/index.php/jmh/article/download/8/9",
+      "date_accessed": "2026-09-13",
+      "licence": "As above."
+    },
+    {
+      "id": "usda-fooddata-central",
+      "title": "FoodData Central (SR Legacy): FDC IDs 171477, 175168, 174032",
+      "author": "U.S. Department of Agriculture, Agricultural Research Service",
+      "publisher": "USDA",
+      "url": "https://fdc.nal.usda.gov/",
+      "date_accessed": "2026-09-13",
+      "licence": "Public domain (U.S. Government work)."
+    },
+    {
+      "id": "wasserman-2009",
+      "title": "Four grams of glucose",
+      "author": "Wasserman DH",
+      "publisher": "American Journal of Physiology — Endocrinology and Metabolism 2009;296(1):E11–E21. DOI 10.1152/ajpendo.90563.2008. PMCID PMC2636990",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2636990/",
+      "date_accessed": "2026-09-13",
+      "licence": "Cited, not reproduced. Used only for the bloodstream glucose figure."
+    },
+    {
+      "id": "atkinson-2008",
+      "title": "International tables of glycemic index and glycemic load values: 2008",
+      "author": "Atkinson FS, Foster-Powell K, Brand-Miller JC",
+      "publisher": "Diabetes Care 2008;31(12):2281–2283. DOI 10.2337/dc08-1239",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2584181/",
+      "date_accessed": "2026-09-13",
+      "licence": "Cited, not reproduced. The GI values printed on the PHC infographics and in Unwin 2016 Table 1 are taken from these tables."
+    }
+  ]
+}

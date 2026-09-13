@@ -1,0 +1,236 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import foodsData from "../data/foods.json";
+import sourcesData from "../data/sources.json";
+
+const { foods, categories } = foodsData;
+const { sources, last_verified } = sourcesData;
+const sourceById = new Map(sources.map((s) => [s.id, s]));
+const categoryLabel = new Map(categories.map((c) => [c.id, c.label]));
+const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).length;
+---
+
+<Layout
+  title="Sources and attribution: every food value and where it comes from"
+  description="Full provenance for every food in the sugar teaspoon calculator, with attribution to Dr David Unwin and the Public Health Collaboration and links to the published research."
+>
+  <PageIntro
+    slot="intro"
+    title="Sources"
+    lede="Every value in the calculator, where it was read or how it was calculated, and the people whose work it rests on."
+  />
+
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <div class="prose-body">
+      <h2 style="margin-top:0">Attribution</h2>
+      <p>
+        The teaspoon-of-sugar method and nearly every food value on this site are the work of <strong>Dr David Unwin</strong>,
+        a general practitioner at Norwood Surgery in Southport, England, and his co-authors <strong>Dr David Haslam</strong> and
+        <strong>Dr Geoffrey Livesey</strong>. The paper credits Dr Livesey with the calculations that produce the teaspoon
+        equivalents.
+      </p>
+      <p>
+        The method is published as: Unwin D, Haslam D, Livesey G. It is the glycaemic response to, not the carbohydrate
+        content of food that matters in diabetes and obesity: The glycaemic index revisited. <em>Journal of Insulin
+        Resistance</em>. 2016;1(1):a8. DOI:
+        <a href="https://doi.org/10.4102/jir.v1i1.8">10.4102/jir.v1i1.8</a>. The journal now publishes as the Journal of
+        Metabolic Health, and the article is available at
+        <a href="https://journalofmetabolichealth.org/index.php/jmh/article/view/8">journalofmetabolichealth.org</a>.
+      </p>
+      <p>
+        The sugar infographics are distributed free by the <strong>Public Health Collaboration</strong>, a UK registered
+        charity, at <a href="https://phcuk.org/sugar/">phcuk.org/sugar</a>, where they are also available in more than 40
+        translations.
+      </p>
+
+      <h2>Licence notice</h2>
+      <p>
+        This site reproduces numerical values from the infographics and the paper. It does not reproduce the infographic
+        images. The values are attributed here in the form required by the
+        <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International licence (CC BY
+        4.0)</a>: the work, its authors and its source are named above, and the changes made are listed below.
+      </p>
+      <p>What each source states about reuse, as checked when this page was built:</p>
+      <ul>
+        <li>
+          The Journal of Insulin Resistance (Journal of Metabolic Health) states that all its articles are published under
+          CC BY 4.0 unless otherwise stated. The licence field on this article's own page reads "Other". The article is
+          © 2016 David Unwin, David Haslam and Geoffrey Livesey.
+        </li>
+        <li>
+          The Public Health Collaboration's sugar page offers the infographics as free downloads. No licence statement was
+          found on that page; its footer reads © Public Health Collaboration.
+        </li>
+      </ul>
+      <p>
+        <strong>Changes made:</strong> values are shown to one decimal place; portion descriptions have been expanded with
+        US-recognisable measures alongside the published gram weights; foods from several charts have been combined into
+        one list and sorted into categories; where charts disagree, one value is used and the other is recorded below.
+      </p>
+      <p>
+        This site is independent. It is not affiliated with, reviewed by or endorsed by Dr Unwin, his co-authors, the
+        Public Health Collaboration or the journal.
+      </p>
+
+      <h2>How each value was produced</h2>
+      <p>Every food carries one of three derivation labels:</p>
+      <ul>
+        <li>
+          <strong>Read from infographic</strong> ({derivationCount("read from infographic")} foods): the teaspoon figure is
+          printed on one of Dr Unwin's charts and was copied as printed.
+        </li>
+        <li>
+          <strong>Published GL table</strong> ({derivationCount("published GL table")} foods): the teaspoon figure is
+          printed in Table 1 of the 2016 paper, which also gives GI, carbohydrate and glycaemic load.
+        </li>
+        <li>
+          <strong>Calculated from GI and carb content</strong> ({derivationCount("calculated from GI and carb content")}
+          foods): chicken, salmon and beef. USDA FoodData Central lists 0.0g carbohydrate per 100g for each, so the
+          glycaemic load is 0 whatever GI is assumed.
+        </li>
+      </ul>
+      <p>
+        Where a chart prints a teaspoon figure but no glycaemic load, the GL column below was back-calculated as teaspoons ×
+        2.73, the glycaemic load of one teaspoon of table sugar given in the paper. Those rows say so in their notes. The
+        teaspoon figure is always the published one.
+      </p>
+      <p>Sources last verified: {last_verified}.</p>
+    </div>
+  </section>
+
+  <section class="border-y border-line bg-paper" aria-labelledby="table-heading">
+    <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+      <h2 id="table-heading" class="font-serif text-2xl font-medium text-ink">All {foods.length} foods</h2>
+      <p class="mt-2 max-w-prose text-sm text-muted">The table scrolls sideways on narrow screens.</p>
+      <div class="mt-5 overflow-x-auto rounded-md border border-line">
+        <table class="min-w-[64rem] border-collapse text-left text-sm">
+          <caption class="sr-only">Every food in the calculator with its portion, teaspoon figure, glycaemic load, source, derivation and notes</caption>
+          <thead class="bg-sand text-ink">
+            <tr>
+              <th scope="col" class="px-3 py-2 font-semibold">Food</th>
+              <th scope="col" class="px-3 py-2 font-semibold">Category</th>
+              <th scope="col" class="px-3 py-2 font-semibold">Portion</th>
+              <th scope="col" class="px-3 py-2 font-semibold">Teaspoons</th>
+              <th scope="col" class="px-3 py-2 font-semibold">GL</th>
+              <th scope="col" class="px-3 py-2 font-semibold">Source</th>
+              <th scope="col" class="px-3 py-2 font-semibold">Derivation</th>
+              <th scope="col" class="px-3 py-2 font-semibold">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              foods.map((food) => {
+                const src = sourceById.get(food.source);
+                return (
+                  <tr class="border-t border-line align-top">
+                    <th scope="row" class="px-3 py-2 font-semibold text-ink">{food.name}</th>
+                    <td class="px-3 py-2 text-body">{categoryLabel.get(food.category)}</td>
+                    <td class="px-3 py-2 text-body">{food.portion}</td>
+                    <td class="px-3 py-2 font-serif text-base text-coral">{food.cubes.toFixed(1)}</td>
+                    <td class="px-3 py-2 text-body">{food.gl}</td>
+                    <td class="px-3 py-2">
+                      {src ? <a class="link" href={src.url}>{src.title}</a> : food.source}
+                    </td>
+                    <td class="px-3 py-2 text-body">{food.derivation}</td>
+                    <td class="max-w-[22rem] px-3 py-2 text-body">{food.notes}</td>
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <div class="prose-body">
+      <h2 style="margin-top:0">Where the published sources disagree</h2>
+      <p>
+        The charts were drawn at different times from different table entries, and a few figures do not match from one
+        chart to the next. None of these has been adjusted. The value used, and the other value, are recorded here.
+      </p>
+      <ul>
+        <li><strong>Banana, 120g:</strong> 5.9 on the fruits chart (used); 5.7 on the common foods and fruits vs vegetables charts.</li>
+        <li><strong>Apple, 120g:</strong> 2.2 on the fruits chart (used); 2.3 on the common foods chart and in Table 1 of the paper.</li>
+        <li><strong>Brown or wholemeal bread, 30g slice:</strong> 3.3 on the bread chart (used); 3.0 on the common foods chart.</li>
+        <li><strong>Cornflakes, 30g:</strong> 8.4 on the breakfast cereals chart (used); 8.5 in Table 1.</li>
+        <li><strong>Bran flakes, 30g:</strong> both give 3.7, but the chart lists GI 74 and Table 1 lists GI 50.</li>
+        <li><strong>Broccoli:</strong> 0.2 for 80g on the common foods chart (used); 0.1 for 250g on the white, brown or green chart.</li>
+        <li>
+          <strong>Apple juice:</strong> 4.0 for 200ml on the healthy breakfast chart (used); 4.3 per 100ml on the sugar
+          burden chart, which would be 8.6 for 200ml.
+        </li>
+        <li>
+          <strong>Bread, two slices (60g):</strong> the white, brown or green chart gives 8 (white) and 6 (brown), which are
+          not exactly double the single-slice figures of 3.7 and 3.3. The calculator uses the single-slice chart.
+        </li>
+        <li>
+          <strong>Cauliflower, tomato and mushrooms (Table 1):</strong> the printed glycaemic load column (0.32, 0.24,
+          0.03) does not equal GI × carbohydrate ÷ 100 (1.9, 0.9, 0.2), but the printed teaspoon figures match the
+          calculated loads. The teaspoon figures are used as printed, and the GL column here holds the calculated load.
+        </li>
+      </ul>
+
+      <h2>Foods left out</h2>
+      <p>These appear on the charts or were considered, and were not included.</p>
+      <ul>
+        <li>
+          <strong>Couscous (Table 1):</strong> listed as 150g rehydrated with 14g of available carbohydrate and 3.3
+          teaspoons. That carbohydrate figure is well below typical values for cooked couscous, and the discrepancy could
+          not be resolved from the paper.
+        </li>
+        <li>
+          <strong>Fizzy orange, skimmed milk and apple juice per 100ml (sugar burden chart):</strong> the drink figures on
+          this chart are not consistent with the other charts, so none of them is used.
+        </li>
+        <li>
+          <strong>Chocolate:</strong> the chocolate chart counts grams of sugar per bar, not glycaemic load, so its figures are
+          a different measure.
+        </li>
+        <li>
+          <strong>Beans and pulses chart:</strong> found only in translated sets. The Public Health Collaboration notes that
+          translations have not been independently verified.
+        </li>
+        <li>
+          <strong>Cheese, nuts, olive oil, spinach, salad leaves, courgette and similar:</strong> the charts list these as
+          very low glycaemic foods but print no figure for them.
+        </li>
+        <li>
+          <strong>Duplicates:</strong> foods that appear on more than one chart with the same portion are listed once.
+        </li>
+      </ul>
+      <p>
+        No foods were added from other GI tables. The Harvard Health GI and GL list sits behind a subscription wall, and the
+        online appendix of the 2008 international tables could not be retrieved, so neither was used as a direct source.
+      </p>
+
+      <h2>Reference list</h2>
+    </div>
+
+    <ol class="mt-4 max-w-prose space-y-4 text-[0.95rem] leading-relaxed text-body">
+      {
+        sources.map((s) => (
+          <li class="rounded-md border border-line bg-paper p-4">
+            <p class="font-semibold text-ink">{s.title}</p>
+            <p class="mt-1">{s.author}. {s.publisher}.</p>
+            <p class="mt-1 break-words">
+              <a class="link" href={s.url}>{s.url}</a>
+            </p>
+            <p class="mt-1 text-sm text-muted">Accessed {s.date_accessed}. {s.licence}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="prose-body mt-10">
+      <h2 style="margin-top:0">Reporting an error</h2>
+      <p>
+        If a value here does not match its source, or a better source exists, please write in through the
+        <a href="/contact/">contact page</a> and include the source. Values are re-checked against the sources above twice a
+        year.
+      </p>
+    </div>
+  </section>
+</Layout>

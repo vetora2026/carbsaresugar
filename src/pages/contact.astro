@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+---
+
+<Layout
+  title="Contact carbs are sugar: corrections, errors and method questions"
+  description="How to contact carbsaresugar.com by email, and what is most useful to send: corrections to food values with a source, calculator errors and questions about the method."
+>
+  <PageIntro slot="intro" title="Contact" lede="Email is the only way to reach this site. There is no contact form." />
+
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <div class="max-w-prose rounded-md border border-line bg-paper p-5">
+      <p class="text-sm text-muted">Email</p>
+      <p class="mt-1">
+        <a class="inline-flex min-h-[44px] items-center font-serif text-2xl text-green underline underline-offset-4" href="mailto:vetorainfo@gmail.com">vetorainfo@gmail.com</a>
+      </p>
+    </div>
+
+    <div class="prose-body mt-10">
+      <h2 style="margin-top:0">What is worth writing in about</h2>
+      <h3>Corrections to food values, with a source</h3>
+      <p>
+        This is the most useful mail the site receives. If a teaspoon figure, glycaemic load or portion on the site does not
+        match its published source, or if you know of a better source for a food, please send:
+      </p>
+      <ul>
+        <li>the food and the figure shown on this site,</li>
+        <li>the figure you believe is correct,</li>
+        <li>the source: a link, or a full reference for a paper or table, with the page or table number if you have it.</li>
+      </ul>
+      <p>
+        Corrections with sources are checked against the source and, where they hold up, the data is changed and the change
+        is recorded on the <a href="/sources/">sources page</a>. A correction without a source can still be useful, but it
+        takes longer to verify.
+      </p>
+
+      <h3>Errors in the calculator</h3>
+      <p>
+        If the total looks wrong, a button does not respond, a shared link does not restore the right foods, or something
+        displays badly on your device, please describe what you did and what you saw. The link from your browser's address
+        bar, and the device and browser you were using, make it much easier to reproduce.
+      </p>
+
+      <h3>Questions about the method</h3>
+      <p>
+        Questions about glycaemic index, glycaemic load or the teaspoon conversion are welcome, particularly where the
+        <a href="/what-is-glycemic-load/">explanation on this site</a> is unclear. Clearer explanations often start with a
+        question that was not answered well.
+      </p>
+
+      <h2>What this address cannot help with</h2>
+      <p>
+        This site cannot give personal medical or dietary advice, and cannot comment on an individual's blood glucose
+        readings, medication or diet. Please take those questions to a doctor, nurse, pharmacist or registered dietitian.
+      </p>
+      <p>
+        The site is independent of Dr David Unwin and the Public Health Collaboration, and cannot pass messages to them.
+        Questions about the original infographics can be directed to the Public Health Collaboration through
+        <a href="https://phcuk.org/sugar/">phcuk.org</a>.
+      </p>
+
+      <h2>What happens to your email</h2>
+      <p>
+        Your message is read by a person. Your address is used only to reply, and is not added to any list or shared. See the
+        <a href="/privacy/">privacy policy</a> for more.
+      </p>
+    </div>
+  </section>
+</Layout>

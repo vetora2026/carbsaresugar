@@ -1,0 +1,18 @@
+---
+interface Props {
+  count: number;
+  class?: string;
+}
+const { count, class: className } = Astro.props;
+const whole = Math.floor(count);
+const part = Math.round((count - whole) * 13);
+---
+
+<span class:list={["flex flex-wrap gap-[3px]", className]} aria-hidden="true">
+  {Array.from({ length: whole }, () => <span class="cube" />)}
+  {part > 0 && (
+    <span class="cube-part" style={`width:${part}px`}>
+      <span class="cube" />
+    </span>
+  )}
+</span>

@@ -1,0 +1,802 @@
+{
+  "teaspoon_gl": 2.73,
+  "categories": [
+    {
+      "id": "breads",
+      "label": "Breads"
+    },
+    {
+      "id": "cereals",
+      "label": "Breakfast cereals"
+    },
+    {
+      "id": "fruits",
+      "label": "Fruits"
+    },
+    {
+      "id": "staples",
+      "label": "Staples"
+    },
+    {
+      "id": "vegetables",
+      "label": "Vegetables"
+    },
+    {
+      "id": "dairy",
+      "label": "Dairy"
+    },
+    {
+      "id": "drinks",
+      "label": "Drinks"
+    },
+    {
+      "id": "snacks",
+      "label": "Snacks and sweets"
+    },
+    {
+      "id": "protein",
+      "label": "Meat, fish and eggs"
+    }
+  ],
+  "foods": [
+    {
+      "id": "white-bread-slice",
+      "name": "White bread",
+      "portion": "1 small slice (30g)",
+      "category": "breads",
+      "cubes": 3.7,
+      "gl": 10,
+      "source": "phc-infographic-bread",
+      "derivation": "read from infographic",
+      "notes": "GI 71 as printed."
+    },
+    {
+      "id": "brown-bread-slice",
+      "name": "Brown bread",
+      "portion": "1 small slice (30g)",
+      "category": "breads",
+      "cubes": 3.3,
+      "gl": 9,
+      "source": "phc-infographic-bread",
+      "derivation": "read from infographic",
+      "notes": "GI 74 as printed. The common foods poster shows a 30g wholemeal slice at GI 74 as 3.0; the bread poster value is used here. Unwin 2016 Box 2 works this example as 9 / 2.73 = 3.3."
+    },
+    {
+      "id": "rye-bread-slice",
+      "name": "Rye bread (69% whole-grain rye flour)",
+      "portion": "1 small slice (30g)",
+      "category": "breads",
+      "cubes": 4.0,
+      "gl": 11,
+      "source": "phc-infographic-bread",
+      "derivation": "read from infographic",
+      "notes": "GI 78 as printed."
+    },
+    {
+      "id": "barley-bread-slice",
+      "name": "Wholegrain barley bread (50% barley)",
+      "portion": "1 small slice (30g)",
+      "category": "breads",
+      "cubes": 5.5,
+      "gl": 15,
+      "source": "phc-infographic-bread",
+      "derivation": "read from infographic",
+      "notes": "GI 85 as printed."
+    },
+    {
+      "id": "stoneground-wholemeal-slice",
+      "name": "Wholemeal bread, stoneground flour",
+      "portion": "1 small slice (30g)",
+      "category": "breads",
+      "cubes": 2.6,
+      "gl": 7,
+      "source": "phc-infographic-bread",
+      "derivation": "read from infographic",
+      "notes": "GI 59 as printed."
+    },
+    {
+      "id": "wholemeal-pita",
+      "name": "Wholemeal pita",
+      "portion": "30g portion (about half a small pita)",
+      "category": "breads",
+      "cubes": 2.9,
+      "gl": 8,
+      "source": "phc-infographic-bread",
+      "derivation": "read from infographic",
+      "notes": "GI 56 as printed."
+    },
+    {
+      "id": "oatmeal-bread-slice",
+      "name": "Oatmeal bread",
+      "portion": "1 small slice (30g)",
+      "category": "breads",
+      "cubes": 3.3,
+      "gl": 9,
+      "source": "phc-infographic-bread",
+      "derivation": "read from infographic",
+      "notes": "GI 62 as printed. Listed on the poster as 'Oatmeal batch'."
+    },
+    {
+      "id": "roti-wheat",
+      "name": "Roti (wheat flour)",
+      "portion": "1 roti (40g)",
+      "category": "breads",
+      "cubes": 5.7,
+      "gl": 15.6,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 57 as printed. GL not printed on the source; back-calculated as 5.7 x 2.73 = 15.6."
+    },
+    {
+      "id": "roti-almond",
+      "name": "Roti (almond flour)",
+      "portion": "1 roti (50g)",
+      "category": "breads",
+      "cubes": 0.2,
+      "gl": 0.5,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 15 as printed. GL not printed on the source; back-calculated as 0.2 x 2.73 = 0.5."
+    },
+    {
+      "id": "coco-pops",
+      "name": "Coco Pops (chocolate puffed rice)",
+      "portion": "1 bowl, dry (30g)",
+      "category": "cereals",
+      "cubes": 7.3,
+      "gl": 19.9,
+      "source": "phc-infographic-breakfast-cereals",
+      "derivation": "read from infographic",
+      "notes": "GI 77 as printed. GL not printed on the source; back-calculated as 7.3 x 2.73 = 19.9. UK product. The sugar burden poster gives chocolate rice crispies as 24.4 per 100g, which is 7.3 per 30g, consistent with this value."
+    },
+    {
+      "id": "cornflakes",
+      "name": "Cornflakes",
+      "portion": "1 bowl, dry (30g)",
+      "category": "cereals",
+      "cubes": 8.4,
+      "gl": 22.9,
+      "source": "phc-infographic-breakfast-cereals",
+      "derivation": "read from infographic",
+      "notes": "GI 93 as printed. GL not printed on the source; back-calculated as 8.4 x 2.73 = 22.9. Unwin 2016 Table 1 prints 8.5 (GL 23) for the same portion; the poster value is used."
+    },
+    {
+      "id": "mini-wheats",
+      "name": "Mini Wheats",
+      "portion": "1 bowl, dry (30g)",
+      "category": "cereals",
+      "cubes": 4.4,
+      "gl": 12.0,
+      "source": "phc-infographic-breakfast-cereals",
+      "derivation": "read from infographic",
+      "notes": "GI 59 as printed. GL not printed on the source; back-calculated as 4.4 x 2.73 = 12.0. UK product; poster does not state whether frosted."
+    },
+    {
+      "id": "shredded-wheat",
+      "name": "Shredded wheat",
+      "portion": "1 bowl, dry (30g)",
+      "category": "cereals",
+      "cubes": 4.8,
+      "gl": 13.1,
+      "source": "phc-infographic-breakfast-cereals",
+      "derivation": "read from infographic",
+      "notes": "GI 67 as printed. GL not printed on the source; back-calculated as 4.8 x 2.73 = 13.1."
+    },
+    {
+      "id": "special-k",
+      "name": "Special K",
+      "portion": "1 bowl, dry (30g)",
+      "category": "cereals",
+      "cubes": 4.0,
+      "gl": 10.9,
+      "source": "phc-infographic-breakfast-cereals",
+      "derivation": "read from infographic",
+      "notes": "GI 54 as printed. GL not printed on the source; back-calculated as 4.0 x 2.73 = 10.9. UK formulation; US Special K may differ."
+    },
+    {
+      "id": "bran-flakes",
+      "name": "Bran flakes",
+      "portion": "1 bowl, dry (30g)",
+      "category": "cereals",
+      "cubes": 3.7,
+      "gl": 10.1,
+      "source": "phc-infographic-breakfast-cereals",
+      "derivation": "read from infographic",
+      "notes": "GI 74 as printed. GL not printed on the source; back-calculated as 3.7 x 2.73 = 10.1. Unwin 2016 Table 1 gives the same 3.7 for 30g but lists GI 50 and GL 10. The a healthy breakfast poster also gives 3.7."
+    },
+    {
+      "id": "oat-porridge",
+      "name": "Oat porridge",
+      "portion": "1 serving, cooked (150ml)",
+      "category": "cereals",
+      "cubes": 4.4,
+      "gl": 12.0,
+      "source": "phc-infographic-breakfast-cereals",
+      "derivation": "read from infographic",
+      "notes": "GI 63 as printed. GL not printed on the source; back-calculated as 4.4 x 2.73 = 12.0. Portion is by volume on the poster."
+    },
+    {
+      "id": "banana",
+      "name": "Banana",
+      "portion": "1 medium, peeled (120g)",
+      "category": "fruits",
+      "cubes": 5.9,
+      "gl": 16,
+      "source": "phc-infographic-fruits",
+      "derivation": "read from infographic",
+      "notes": "GI 62 as printed. The common foods and fruits vs vegetables posters show 5.7 for the same 120g portion; the fruit poster value is used."
+    },
+    {
+      "id": "grapes-black",
+      "name": "Black grapes",
+      "portion": "about 20 grapes (120g)",
+      "category": "fruits",
+      "cubes": 4.0,
+      "gl": 11,
+      "source": "phc-infographic-fruits",
+      "derivation": "read from infographic",
+      "notes": "GI 59 as printed."
+    },
+    {
+      "id": "apple",
+      "name": "Apple (Golden Delicious)",
+      "portion": "1 small apple (120g)",
+      "category": "fruits",
+      "cubes": 2.2,
+      "gl": 6,
+      "source": "phc-infographic-fruits",
+      "derivation": "read from infographic",
+      "notes": "GI 39 as printed. The common foods poster and Unwin 2016 Table 1 give 2.3 for the same portion."
+    },
+    {
+      "id": "watermelon",
+      "name": "Watermelon",
+      "portion": "about 3/4 cup diced (120g)",
+      "category": "fruits",
+      "cubes": 1.8,
+      "gl": 5,
+      "source": "phc-infographic-fruits",
+      "derivation": "read from infographic",
+      "notes": "GI 80 as printed."
+    },
+    {
+      "id": "nectarine",
+      "name": "Nectarine",
+      "portion": "1 medium (120g)",
+      "category": "fruits",
+      "cubes": 1.5,
+      "gl": 4,
+      "source": "phc-infographic-fruits",
+      "derivation": "read from infographic",
+      "notes": "GI 43 as printed."
+    },
+    {
+      "id": "apricots",
+      "name": "Apricots, fresh",
+      "portion": "about 3 apricots (120g)",
+      "category": "fruits",
+      "cubes": 1.1,
+      "gl": 3,
+      "source": "phc-infographic-fruits",
+      "derivation": "read from infographic",
+      "notes": "GI 34 as printed."
+    },
+    {
+      "id": "strawberries",
+      "name": "Strawberries",
+      "portion": "about 8 strawberries (120g)",
+      "category": "fruits",
+      "cubes": 1.4,
+      "gl": 3.8,
+      "source": "phc-infographic-fruits",
+      "derivation": "read from infographic",
+      "notes": "GI 40 as printed."
+    },
+    {
+      "id": "raisins",
+      "name": "Raisins",
+      "portion": "about 1/3 cup (60g)",
+      "category": "fruits",
+      "cubes": 10.3,
+      "gl": 28.1,
+      "source": "phc-infographic-fruits-vegetables",
+      "derivation": "read from infographic",
+      "notes": "GI 64 as printed. GL not printed on the source; back-calculated as 10.3 x 2.73 = 28.1."
+    },
+    {
+      "id": "dried-mixed-fruit",
+      "name": "Dried mixed fruit",
+      "portion": "about 1/3 cup (60g)",
+      "category": "fruits",
+      "cubes": 9.0,
+      "gl": 24,
+      "source": "unwin-2016-table-1",
+      "derivation": "published GL table",
+      "notes": "GI 60 as printed. Table 1 lists 41g available carbohydrate per serving."
+    },
+    {
+      "id": "basmati-rice",
+      "name": "Basmati rice, boiled",
+      "portion": "1 bowl, cooked (150g)",
+      "category": "staples",
+      "cubes": 10.1,
+      "gl": 28,
+      "source": "phc-infographic-common-foods",
+      "derivation": "read from infographic",
+      "notes": "GI 69 as printed. GL 28 and 40g available carbohydrate from Unwin 2016 Table 1. The South Asian poster also gives 10.1 for 150g boiled rice."
+    },
+    {
+      "id": "white-rice",
+      "name": "White rice, boiled",
+      "portion": "1 bowl, cooked (150g)",
+      "category": "staples",
+      "cubes": 9.6,
+      "gl": 26,
+      "source": "phc-infographic-white-brown-green",
+      "derivation": "read from infographic",
+      "notes": ""
+    },
+    {
+      "id": "brown-rice",
+      "name": "Brown rice, boiled",
+      "portion": "1 bowl, cooked (150g)",
+      "category": "staples",
+      "cubes": 7.3,
+      "gl": 20,
+      "source": "phc-infographic-white-brown-green",
+      "derivation": "read from infographic",
+      "notes": ""
+    },
+    {
+      "id": "potato-boiled",
+      "name": "White potato, boiled",
+      "portion": "1 medium (150g)",
+      "category": "staples",
+      "cubes": 9.1,
+      "gl": 24.8,
+      "source": "phc-infographic-common-foods",
+      "derivation": "read from infographic",
+      "notes": "GI 96 as printed. GL not printed on the source; back-calculated as 9.1 x 2.73 = 24.8."
+    },
+    {
+      "id": "potato-baked",
+      "name": "White potato, baked",
+      "portion": "1 medium (150g)",
+      "category": "staples",
+      "cubes": 8.2,
+      "gl": 22,
+      "source": "unwin-2016-figure-1",
+      "derivation": "read from infographic",
+      "notes": "GI 86 as printed. From the version of the common foods chart printed as Figure 1 in Unwin 2016; Box 1 works it as 17g carb per 100g x 150g = 25.5g carb, x 86 / 100 = GL 22."
+    },
+    {
+      "id": "french-fries",
+      "name": "French fries, oven baked",
+      "portion": "1 serving (150g)",
+      "category": "staples",
+      "cubes": 7.5,
+      "gl": 21,
+      "source": "phc-infographic-common-foods",
+      "derivation": "read from infographic",
+      "notes": "GI 64 as printed. GL 21 and 32g available carbohydrate from Unwin 2016 Table 1."
+    },
+    {
+      "id": "spaghetti-white",
+      "name": "Spaghetti, white, boiled",
+      "portion": "1 plate, cooked (180g)",
+      "category": "staples",
+      "cubes": 6.6,
+      "gl": 18,
+      "source": "phc-infographic-common-foods",
+      "derivation": "read from infographic",
+      "notes": "GI 39 as printed. GL 18 from the white, brown or green poster and Unwin 2016 Table 1."
+    },
+    {
+      "id": "spaghetti-wholemeal",
+      "name": "Spaghetti, wholemeal, boiled",
+      "portion": "1 plate, cooked (180g)",
+      "category": "staples",
+      "cubes": 6.2,
+      "gl": 17,
+      "source": "phc-infographic-white-brown-green",
+      "derivation": "read from infographic",
+      "notes": ""
+    },
+    {
+      "id": "white-yam",
+      "name": "White yam, boiled",
+      "portion": "1 serving (150g)",
+      "category": "staples",
+      "cubes": 4.8,
+      "gl": 13.1,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 4.8 x 2.73 = 13.1."
+    },
+    {
+      "id": "cassava",
+      "name": "Cassava, boiled",
+      "portion": "1 serving (150g)",
+      "category": "staples",
+      "cubes": 11.3,
+      "gl": 30.8,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 11.3 x 2.73 = 30.8."
+    },
+    {
+      "id": "black-eyed-peas",
+      "name": "Black-eyed peas, boiled",
+      "portion": "1 serving (150g)",
+      "category": "staples",
+      "cubes": 4.0,
+      "gl": 10.9,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 4.0 x 2.73 = 10.9."
+    },
+    {
+      "id": "plantain-green",
+      "name": "Green plantain, boiled",
+      "portion": "1 serving (150g)",
+      "category": "staples",
+      "cubes": 4.4,
+      "gl": 12.0,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 4.4 x 2.73 = 12.0."
+    },
+    {
+      "id": "plantain-ripe",
+      "name": "Ripe plantain, boiled",
+      "portion": "1 serving (150g)",
+      "category": "staples",
+      "cubes": 5.8,
+      "gl": 15.8,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 5.8 x 2.73 = 15.8."
+    },
+    {
+      "id": "cassava-flour",
+      "name": "Cassava flour",
+      "portion": "100g dry flour",
+      "category": "staples",
+      "cubes": 12.4,
+      "gl": 33.9,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 12.4 x 2.73 = 33.9."
+    },
+    {
+      "id": "yam-flour",
+      "name": "Yam flour",
+      "portion": "100g dry flour",
+      "category": "staples",
+      "cubes": 10.8,
+      "gl": 29.5,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 10.8 x 2.73 = 29.5."
+    },
+    {
+      "id": "cassava-fufu",
+      "name": "Fufu made with cassava flour",
+      "portion": "1 serving (100g)",
+      "category": "staples",
+      "cubes": 3.4,
+      "gl": 9.3,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 3.4 x 2.73 = 9.3."
+    },
+    {
+      "id": "almond-fufu",
+      "name": "Fufu made with almond flour",
+      "portion": "1 serving (100g)",
+      "category": "staples",
+      "cubes": 1.1,
+      "gl": 3.0,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 1.1 x 2.73 = 3.0. Printed as 1.12; rounded to one decimal place."
+    },
+    {
+      "id": "red-lentils",
+      "name": "Red lentils",
+      "portion": "100g dry weight, before cooking",
+      "category": "staples",
+      "cubes": 3.5,
+      "gl": 9.6,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 24 as printed. GL not printed on the source; back-calculated as 3.5 x 2.73 = 9.6. Poster labels the portion 'raw'."
+    },
+    {
+      "id": "chickpeas",
+      "name": "Chickpeas, cooked",
+      "portion": "about 2/3 cup (100g)",
+      "category": "staples",
+      "cubes": 1.9,
+      "gl": 5.2,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 28 as printed. GL not printed on the source; back-calculated as 1.9 x 2.73 = 5.2."
+    },
+    {
+      "id": "millet",
+      "name": "Millet, boiled",
+      "portion": "about 1/2 cup (100g)",
+      "category": "staples",
+      "cubes": 3.9,
+      "gl": 10.6,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 65 as printed. GL not printed on the source; back-calculated as 3.9 x 2.73 = 10.6."
+    },
+    {
+      "id": "dal-khichdi",
+      "name": "Dal khichdi",
+      "portion": "1 bowl (200g)",
+      "category": "staples",
+      "cubes": 4.5,
+      "gl": 12.3,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 60 as printed. GL not printed on the source; back-calculated as 4.5 x 2.73 = 12.3."
+    },
+    {
+      "id": "sweet-corn",
+      "name": "Sweet corn, boiled",
+      "portion": "about 1/2 cup (80g)",
+      "category": "vegetables",
+      "cubes": 4.0,
+      "gl": 11,
+      "source": "phc-infographic-common-foods",
+      "derivation": "read from infographic",
+      "notes": "GI 60 as printed. GL 11 and 18g available carbohydrate from Unwin 2016 Table 1."
+    },
+    {
+      "id": "peas-frozen",
+      "name": "Peas, frozen, boiled",
+      "portion": "about 1/2 cup (80g)",
+      "category": "vegetables",
+      "cubes": 1.3,
+      "gl": 4,
+      "source": "phc-infographic-common-foods",
+      "derivation": "read from infographic",
+      "notes": "GI 51 as printed. GL 4 and 7g available carbohydrate from Unwin 2016 Table 1."
+    },
+    {
+      "id": "broccoli",
+      "name": "Broccoli, boiled",
+      "portion": "about 1 cup (80g)",
+      "category": "vegetables",
+      "cubes": 0.2,
+      "gl": 0.5,
+      "source": "phc-infographic-common-foods",
+      "derivation": "read from infographic",
+      "notes": "GI 15 as printed. GL not printed on the source; back-calculated as 0.2 x 2.73 = 0.5. The white, brown or green poster gives 0.1 for a larger 250g portion (GL 0.3); the smaller-portion value from the common foods poster is used."
+    },
+    {
+      "id": "cabbage",
+      "name": "Cabbage",
+      "portion": "about 1 cup shredded (80g)",
+      "category": "vegetables",
+      "cubes": 0.1,
+      "gl": 0.3,
+      "source": "phc-infographic-fruits-vegetables",
+      "derivation": "read from infographic",
+      "notes": "GI 10 as printed. GL not printed on the source; back-calculated as 0.1 x 2.73 = 0.3."
+    },
+    {
+      "id": "cauliflower",
+      "name": "Cauliflower",
+      "portion": "about 3/4 cup (80g)",
+      "category": "vegetables",
+      "cubes": 0.7,
+      "gl": 1.9,
+      "source": "unwin-2016-table-1",
+      "derivation": "published GL table",
+      "notes": "GI 60 as printed. Table 1 prints 3.2g carbohydrate and a GL of 0.32, but 3.2 x 60 / 100 = 1.9, and its own teaspoon figure (0.7 = 1.9 / 2.73) matches 1.9. GL recorded as 1.9 on that basis."
+    },
+    {
+      "id": "tomato",
+      "name": "Tomato, raw",
+      "portion": "1 small tomato (50g)",
+      "category": "vegetables",
+      "cubes": 0.3,
+      "gl": 0.9,
+      "source": "unwin-2016-table-1",
+      "derivation": "published GL table",
+      "notes": "GI 54 as printed. Table 1 prints 1.6g carbohydrate and a GL of 0.24, but 1.6 x 54 / 100 = 0.86, and its teaspoon figure (0.3) matches 0.86. The paper states the GI for this food was estimated from composition and is likely to be overestimated."
+    },
+    {
+      "id": "mushrooms",
+      "name": "Mushrooms",
+      "portion": "about 1 cup sliced (80g)",
+      "category": "vegetables",
+      "cubes": 0.1,
+      "gl": 0.2,
+      "source": "unwin-2016-table-1",
+      "derivation": "published GL table",
+      "notes": "GI 70 as printed. Table 1 prints 0.3g carbohydrate and GL 0.03; 0.3 x 70 / 100 = 0.21, which matches its teaspoon figure. The paper states the GI was estimated from composition and is likely to be overestimated."
+    },
+    {
+      "id": "okra",
+      "name": "Okra",
+      "portion": "about 1 cup (100g)",
+      "category": "vegetables",
+      "cubes": 0.3,
+      "gl": 0.8,
+      "source": "phc-infographic-african-caribbean",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 0.3 x 2.73 = 0.8."
+    },
+    {
+      "id": "bitter-gourd",
+      "name": "Bitter gourd",
+      "portion": "1 serving (100g)",
+      "category": "vegetables",
+      "cubes": 0.1,
+      "gl": 0.3,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 15 as printed. GL not printed on the source; back-calculated as 0.1 x 2.73 = 0.3."
+    },
+    {
+      "id": "milk-whole",
+      "name": "Milk, whole",
+      "portion": "1 large glass (250ml)",
+      "category": "dairy",
+      "cubes": 2.0,
+      "gl": 5,
+      "source": "unwin-2016-table-1",
+      "derivation": "published GL table",
+      "notes": "GI 46 as printed. Table 1 lists 12g available carbohydrate. The a healthy breakfast poster gives 1.0 for 125ml of milk, consistent with this."
+    },
+    {
+      "id": "greek-yogurt",
+      "name": "Greek-style yogurt",
+      "portion": "1 pot (200g)",
+      "category": "dairy",
+      "cubes": 0.4,
+      "gl": 1,
+      "source": "unwin-2016-table-1",
+      "derivation": "published GL table",
+      "notes": "GI 12 as printed. Table 1 lists 8g available carbohydrate."
+    },
+    {
+      "id": "raspberry-yogurt",
+      "name": "Raspberry yogurt",
+      "portion": "100g",
+      "category": "dairy",
+      "cubes": 2.4,
+      "gl": 6.6,
+      "source": "phc-infographic-sugar-burden",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 2.4 x 2.73 = 6.6. The sugar burden poster gives values per 100g."
+    },
+    {
+      "id": "raita",
+      "name": "Raita",
+      "portion": "1 serving (100g)",
+      "category": "dairy",
+      "cubes": 0.2,
+      "gl": 0.5,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 20 as printed. GL not printed on the source; back-calculated as 0.2 x 2.73 = 0.5."
+    },
+    {
+      "id": "apple-juice",
+      "name": "Apple juice, pure",
+      "portion": "1 glass (200ml)",
+      "category": "drinks",
+      "cubes": 4.0,
+      "gl": 10.9,
+      "source": "phc-infographic-common-breakfast",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 4.0 x 2.73 = 10.9. The sugar burden poster gives apple juice as 4.3 per 100ml, which would be 8.6 for 200ml. The two posters disagree; the a healthy breakfast value is used and the conflict is listed on the sources page."
+    },
+    {
+      "id": "mango-juice",
+      "name": "Mango juice",
+      "portion": "1 glass (200ml)",
+      "category": "drinks",
+      "cubes": 5.0,
+      "gl": 13.7,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 55 as printed. GL not printed on the source; back-calculated as 5.0 x 2.73 = 13.7."
+    },
+    {
+      "id": "digestive-biscuits",
+      "name": "Digestive biscuits, plain",
+      "portion": "25g (a little under 2 biscuits)",
+      "category": "snacks",
+      "cubes": 2.3,
+      "gl": 6,
+      "source": "unwin-2016-table-1",
+      "derivation": "published GL table",
+      "notes": "GI 39 as printed. Table 1 lists 16g available carbohydrate. The sugar burden poster gives 8.8 per 100g, which is 2.2 per 25g, consistent with this."
+    },
+    {
+      "id": "malt-loaf",
+      "name": "Malt loaf",
+      "portion": "100g",
+      "category": "snacks",
+      "cubes": 14.7,
+      "gl": 40.1,
+      "source": "phc-infographic-sugar-burden",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 14.7 x 2.73 = 40.1. The sugar burden poster gives values per 100g. A UK sticky fruit loaf."
+    },
+    {
+      "id": "honey",
+      "name": "Honey",
+      "portion": "100g (about 5 tablespoons)",
+      "category": "snacks",
+      "cubes": 17.6,
+      "gl": 48.0,
+      "source": "phc-infographic-sugar-burden",
+      "derivation": "read from infographic",
+      "notes": "GL not printed on the source; back-calculated as 17.6 x 2.73 = 48.0. The sugar burden poster gives values per 100g. Tablespoon equivalent uses 21g per tablespoon (USDA FoodData Central)."
+    },
+    {
+      "id": "poppadom",
+      "name": "Poppadom",
+      "portion": "1 poppadom (9g)",
+      "category": "snacks",
+      "cubes": 1.5,
+      "gl": 4.1,
+      "source": "phc-infographic-south-asian",
+      "derivation": "read from infographic",
+      "notes": "GI 70 as printed. GL not printed on the source; back-calculated as 1.5 x 2.73 = 4.1."
+    },
+    {
+      "id": "eggs",
+      "name": "Eggs",
+      "portion": "1 large egg (60g)",
+      "category": "protein",
+      "cubes": 0.0,
+      "gl": 0,
+      "source": "phc-infographic-common-foods",
+      "derivation": "read from infographic",
+      "notes": "GI 0 as printed. Also shown as 0 on the African and Caribbean foods poster."
+    },
+    {
+      "id": "chicken-breast",
+      "name": "Chicken breast, roasted",
+      "portion": "1 portion (100g)",
+      "category": "protein",
+      "cubes": 0.0,
+      "gl": 0,
+      "source": "usda-fooddata-central",
+      "derivation": "calculated from GI and carb content",
+      "notes": "Carbohydrate 0.0g per 100g (USDA FoodData Central, SR Legacy FDC ID 171477). With no carbohydrate, GL = GI x 0 / 100 = 0 whatever the GI; no GI value is measurable or needed. PHC posters list chicken in the very low glycaemic range."
+    },
+    {
+      "id": "salmon",
+      "name": "Salmon, cooked",
+      "portion": "1 fillet (100g)",
+      "category": "protein",
+      "cubes": 0.0,
+      "gl": 0,
+      "source": "usda-fooddata-central",
+      "derivation": "calculated from GI and carb content",
+      "notes": "Carbohydrate 0.0g per 100g (USDA FoodData Central, SR Legacy FDC ID 175168, Atlantic farmed, dry heat). GL = GI x 0 / 100 = 0. PHC posters list oily fish in the very low glycaemic range."
+    },
+    {
+      "id": "ground-beef",
+      "name": "Ground beef patty, 85% lean",
+      "portion": "1 patty (100g)",
+      "category": "protein",
+      "cubes": 0.0,
+      "gl": 0,
+      "source": "usda-fooddata-central",
+      "derivation": "calculated from GI and carb content",
+      "notes": "Carbohydrate 0.0g per 100g (USDA FoodData Central, SR Legacy FDC ID 174032). GL = GI x 0 / 100 = 0. PHC posters list meat in the very low glycaemic range."
+    }
+  ]
+}

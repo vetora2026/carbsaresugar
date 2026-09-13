@@ -1,0 +1,91 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+
+const articles = [
+  {
+    href: "/what-is-glycemic-load/",
+    title: "What is glycaemic load?",
+    description:
+      "The difference between glycaemic index and glycaemic load, why a food with a high GI can carry a small load, and the exact arithmetic that turns a portion of food into teaspoons of table sugar. Includes worked examples for rice, brown bread and apple, and why the divisor is 2.73 rather than 4.",
+  },
+  {
+    href: "/why-brown-bread-is-still-sugar/",
+    title: "Why brown bread is still sugar",
+    description:
+      "White and brown bread measured the same way, per small slice and per two slices. All seven breads from Dr Unwin's bread chart with their GI, glycaemic load and teaspoon figures, what the names on the loaf mean, and why finely milled flours test at similar values.",
+  },
+  {
+    href: "/how-much-sugar-is-in-your-blood/",
+    title: "How much sugar is in your blood?",
+    description:
+      "The four-gram figure for glucose in an adult's bloodstream, the paper it comes from, and the arithmetic that checks it. Covers reference ranges in mg/dL and mmol/L, and what insulin, the liver, muscles and kidneys do when more glucose arrives from a meal.",
+  },
+];
+---
+
+<Layout
+  title="Articles: glycaemic load, bread and blood glucose explained"
+  description="Three explainers behind the sugar teaspoon calculator: how glycaemic load works, white and brown bread compared, and how much glucose is in the bloodstream."
+>
+  <PageIntro
+    slot="intro"
+    title="Articles"
+    lede="Three explainers that sit behind the numbers in the calculator. Each shows its arithmetic and names its sources."
+  />
+
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <ul class="grid gap-4 md:grid-cols-3">
+      {
+        articles.map((a) => (
+          <li class="flex">
+            <a href={a.href} class="group flex w-full flex-col rounded-md border border-blue bg-paper p-5 hover:bg-warm">
+              <span class="font-serif text-xl font-medium leading-snug text-ink group-hover:text-green">{a.title}</span>
+              <span class="mt-3 text-[0.95rem] leading-relaxed text-body">{a.description}</span>
+              <span class="mt-4 text-sm font-semibold text-green">Read the article</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="prose-body mt-12">
+      <h2 style="margin-top:0">Why these three</h2>
+      <p>
+        The calculator on the home page does one thing: it converts portions of food into teaspoons of table sugar with the
+        same effect on blood glucose, and adds them up. A number like that is only as useful as the reader's understanding
+        of where it came from. These articles cover the three questions that most often follow a first look at the
+        figures.
+      </p>
+      <p>
+        The first is about the method itself. Glycaemic index and glycaemic load are easy to confuse, and the conversion to
+        teaspoons adds a third step. <a href="/what-is-glycemic-load/">What is glycaemic load?</a> walks through each step
+        with real numbers from Dr David Unwin's published charts, so every figure in the calculator can be recalculated by
+        hand.
+      </p>
+      <p>
+        The second is about a specific comparison that surprises many people when they first see it on the charts: white
+        and brown bread. <a href="/why-brown-bread-is-still-sugar/">Why brown bread is still sugar</a> sets out the figures
+        for both, alongside five other breads from the same chart, and explains what drives the values.
+      </p>
+      <p>
+        The third is about the other number on the home page. The calculator places each running total next to the amount
+        of glucose circulating in an adult's blood at any moment. <a href="/how-much-sugar-is-in-your-blood/">How much sugar
+        is in your blood?</a> traces that figure to its source, checks it with basic arithmetic, and describes what the body
+        does as glucose from a meal arrives.
+      </p>
+
+      <h2>How the articles are written</h2>
+      <p>
+        Each article shows its working. Where a figure comes from a published chart, the chart is named. Where a figure is
+        calculated, the calculation is printed. Where two published sources disagree, both figures are given. The articles
+        describe what the numbers are and how they are produced. They do not recommend foods or diets, and they are not a
+        substitute for advice from a doctor, dietitian or diabetes educator.
+      </p>
+      <p>
+        The full list of foods, values and references is on the <a href="/sources/">sources page</a>. Corrections, with a
+        source, are welcome through the <a href="/contact/">contact page</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
