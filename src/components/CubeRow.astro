@@ -4,15 +4,13 @@ interface Props {
   class?: string;
 }
 const { count, class: className } = Astro.props;
-const whole = Math.floor(count);
-const part = Math.round((count - whole) * 13);
+const whole = Math.floor(count + 1e-9);
+// Percentage of the last cube to fill; floored at 15% so a 0.1 still shows.
+const fraction = Math.round((count - whole) * 100);
+const fill = fraction > 0 ? Math.max(15, fraction) : 0;
 ---
 
-<span class:list={["flex flex-wrap gap-[3px]", className]} aria-hidden="true">
+<span class:list={["cube-tray", className]} aria-hidden="true">
   {Array.from({ length: whole }, () => <span class="cube" />)}
-  {part > 0 && (
-    <span class="cube-part" style={`width:${part}px`}>
-      <span class="cube" />
-    </span>
-  )}
+  {fill > 0 && <span class="cube cube-partial" style={`--fill:${fill}%`} />}
 </span>

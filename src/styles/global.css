@@ -79,11 +79,33 @@
     background: #ffffff;
     box-shadow: inset -1px -1px 0 #eae5db;
   }
-  .cube-part {
-    display: inline-block;
-    height: 13px;
-    overflow: hidden;
+  /* A white fill only reads against a tint, so cubes always sit on sand. */
+  .cube-tray {
+    @apply bg-sand;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+  }
+  .cube-tray:empty {
+    display: none;
+  }
+  /* Same cube, white fill up to --fill, sand showing through the rest. */
+  .cube-partial {
+    background: linear-gradient(to right, #ffffff var(--fill), transparent var(--fill));
+  }
+  .cube-mark {
+    @apply bg-sand;
+    display: inline-flex;
     flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 23px;
+    height: 23px;
+    border-radius: 4px;
   }
 
   .tab {
