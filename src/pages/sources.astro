@@ -41,28 +41,39 @@ const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).l
       </p>
       <p>
         The sugar infographics are distributed free by the <strong>Public Health Collaboration</strong>, a UK registered
-        charity, at <a href="https://phcuk.org/sugar/">phcuk.org/sugar</a>, where they are also available in more than 40
+        charity, at <a href="https://phcuk.org/sugar">phcuk.org/sugar</a>, where they are also available in more than 40
         translations.
       </p>
 
       <h2>Licence and permission to reuse</h2>
       <p>
         This site reproduces numerical values from the infographics and the paper. It does not reproduce the infographic
-        images. Three different kinds of permission bear on that material, and they are not the same thing. Each is set
-        out separately below, as checked when this page was built.
+        images. Written permission from the charts' distributor, a public statement by their author and the licence of a
+        journal article are different things. Each is set out separately below, starting with the one the site rests on.
       </p>
 
-      <h3>What is formally licensed</h3>
+      <h3>Written permission from the Public Health Collaboration</h3>
       <p>
-        The Journal of Insulin Resistance (Journal of Metabolic Health) states that all its articles are published under
-        the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International licence
-        (CC BY 4.0)</a> unless otherwise stated. The licence field on this article's own page reads "Other", so this site
-        could not confirm that the 2016 paper itself carries CC BY 4.0. The article is © 2016 David Unwin, David Haslam and
-        Geoffrey Livesey. As a precaution, the values are attributed here in the form CC BY 4.0 requires: the work, its
-        authors and its source are named above, and the changes made are listed below.
+        The operator of this site wrote to the Public Health Collaboration asking whether the values read from the sugar
+        infographics could be reproduced here with attribution. On 14 September 2026, Team PHC replied in writing:
+      </p>
+      <blockquote>
+        "Yes, we're happy for you to use the infographics on your website along with attribution to Dr Unwin and PHC."
+      </blockquote>
+      <p>
+        The reply asks that any attribution include a link to
+        <a href="https://phcuk.org/sugar">https://phcuk.org/sugar</a>. This written permission is the basis on which the
+        site uses the infographic values, and it is conditional: every attribution on the site names Dr David Unwin and the
+        Public Health Collaboration and links to that address. The permission covers the infographics without a limit on
+        which charts. It is permission for this site only, it is not a statement about the licence of the 2016 journal
+        article, and it is not an endorsement of this site.
+      </p>
+      <p>
+        No public licence statement was found on the Public Health Collaboration's sugar page, whose footer reads ©
+        Public Health Collaboration.
       </p>
 
-      <h3>What the author has stated publicly</h3>
+      <h3>Dr Unwin's public statement, 2021</h3>
       <p>
         On 26 May 2021, Dr Unwin posted a seven-part thread on X from his account @lowcarbGP introducing the sugar
         infographics. The first post links to phcuk.org/sugar and describes the charts as "Freely available". The
@@ -73,16 +84,22 @@ const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).l
       </blockquote>
       <p>
         This is a public statement by the author on social media. It is not a formal licence: it names no licence terms,
-        it refers to the seven charts published at that date, and it is not a statement by the Public Health Collaboration,
-        which distributes the charts, or by the journal. This site records it for completeness and does not rely on it for
-        any claim made elsewhere on the site.
+        and it is not a statement by the Public Health Collaboration, which distributes the charts, or by the journal. It
+        is consistent with the written permission above and is recorded here as corroboration. The site does not rest on it.
       </p>
 
-      <h3>What is neither</h3>
+      <h3>The 2016 journal article</h3>
       <p>
-        The Public Health Collaboration's sugar page offers the infographics as free downloads. No licence statement was
-        found on that page; its footer reads © Public Health Collaboration. Any chart added to the set after May 2021 is
-        not covered by the statement above, and no licence for it was found.
+        The Journal of Insulin Resistance (Journal of Metabolic Health) states that all its articles are published under
+        the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International licence
+        (CC BY 4.0)</a> unless otherwise stated. The licence field on this article's own page reads "Other", so this site
+        could not confirm that the 2016 paper itself carries CC BY 4.0. The article is © 2016 David Unwin, David Haslam and
+        Geoffrey Livesey. As a precaution, the values are attributed here in the form CC BY 4.0 requires: the work, its
+        authors and its source are named above, and the changes made are listed below.
+      </p>
+      <p>
+        The Public Health Collaboration's permission above concerns the infographics. It does not answer the licence
+        question for the article.
       </p>
       <p>
         <strong>Changes made:</strong> values are shown to one decimal place; portion descriptions have been expanded with
@@ -264,6 +281,12 @@ const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).l
               <a class="link" href={s.url}>{s.url}</a>
             </p>
             <p class="mt-1 text-sm text-muted">Accessed {s.date_accessed}. {s.licence}</p>
+            {s.publisher === "Public Health Collaboration" && (
+              <p class="mt-1 text-sm text-muted">
+                Attribution: Dr David Unwin and the Public Health Collaboration,{" "}
+                <a class="link" href="https://phcuk.org/sugar">phcuk.org/sugar</a>.
+              </p>
+            )}
           </li>
         ))
       }

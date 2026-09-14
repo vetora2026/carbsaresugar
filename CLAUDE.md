@@ -2,7 +2,16 @@
 
 ## What this is
 
-A sugar teaspoon calculator. Users tap foods; the site totals how many 4g teaspoons of table sugar would have the same blood glucose effect, using Dr David Unwin's glycaemic load method (Unwin, Haslam, Livesey, J Insulin Resist 2016;1(1):a8) and the PHC infographics at https://phcuk.org/sugar/.
+A sugar teaspoon calculator. Users tap foods; the site totals how many 4g teaspoons of table sugar would have the same blood glucose effect, using Dr David Unwin's glycaemic load method (Unwin, Haslam, Livesey, J Insulin Resist 2016;1(1):a8) and the infographics by Dr David Unwin published by the Public Health Collaboration (PHC) at https://phcuk.org/sugar.
+
+## Permission and attribution condition
+
+PHC gave written permission on 14 September 2026 to use the infographics on this site, on condition that attribution names both Dr Unwin and PHC and includes a link to https://phcuk.org/sugar (that exact URL, no trailing slash). This is binding:
+
+- The footer in `src/layouts/Layout.astro` carries a compliant attribution on every page. Do not remove it.
+- Every page that credits Dr Unwin's charts carries at least one sentence naming Dr Unwin and the Public Health Collaboration with a live link to https://phcuk.org/sugar. Food pages get it from the Source section of `src/pages/foods/[slug].astro`.
+- The permission is from PHC about the infographics. It is not a statement about the journal article's licence (which reads "Other"; do not assert CC BY 4.0) and not an endorsement. Do not present it as either.
+- The email itself is private correspondence. Never commit it; `*.pdf` is gitignored for that reason.
 
 Stack: Astro 4 static output, Tailwind 3, vanilla TypeScript for the calculator. No React, no server code, no storage. Fonts self-hosted via @fontsource. Only third-party script: Google AdSense (in `src/layouts/Layout.astro`).
 

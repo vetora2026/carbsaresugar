@@ -5,3 +5,5 @@ dist/
 .playwright-mcp/
 .env
 *.log
+# Private correspondence (permission emails) is kept locally, never published
+*.pdf

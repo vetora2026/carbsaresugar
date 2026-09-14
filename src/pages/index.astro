@@ -27,7 +27,8 @@ const calcCount = count("calculated from GI and carb content");
       <p class="mt-5 max-w-prose text-lg leading-relaxed text-body">
         Tap the foods you ate. The total shows how many 4g teaspoons of table sugar would raise your blood glucose by
         the same amount. The figures use Dr David Unwin's glycaemic load method, published in the Journal of Insulin
-        Resistance and shared free by the Public Health Collaboration.
+        Resistance and shared free by the Public Health Collaboration at
+        <a class="link" href="https://phcuk.org/sugar">phcuk.org/sugar</a>.
       </p>
 
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
@@ -141,6 +142,7 @@ const calcCount = count("calculated from GI and carb content");
         <h2>Where the foods come from</h2>
         <p>
           Of the {data.foods.length} foods in the calculator, {readCount} are read directly from Dr Unwin's infographics,
+          published by the Public Health Collaboration at <a href="https://phcuk.org/sugar">phcuk.org/sugar</a>,
           {tableCount} come from Table 1 of the 2016 paper, and {calcCount} (meat and fish) are calculated from a
           carbohydrate content of zero. No value has been estimated to fill a gap. Foods without a published figure were
           left out, and where two posters give different figures for the same food, both figures are recorded.
