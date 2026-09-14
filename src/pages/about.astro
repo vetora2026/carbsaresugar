@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import data from "../data/foods.json";
+import { TEASPOON_GL } from "../lib/foods";
 ---
 
 <Layout
@@ -41,7 +42,7 @@ import data from "../data/foods.json";
       <p>
         The calculator currently lists {data.foods.length} foods. Almost all of the figures are copied directly from Dr
         Unwin's charts, distributed by the Public Health Collaboration, or from Table 1 of the 2016 paper that sets out the
-        method. A food's teaspoon figure is its glycaemic load divided by 2.73, which is the glycaemic load of one 4g
+        method. A food's teaspoon figure is its glycaemic load divided by {TEASPOON_GL}, which is the glycaemic load of one 4g
         teaspoon of table sugar. The page <a href="/what-is-glycemic-load/">what is glycaemic load</a> shows that arithmetic
         step by step.
       </p>

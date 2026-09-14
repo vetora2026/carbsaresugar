@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import foodsData from "../data/foods.json";
 import sourcesData from "../data/sources.json";
+import { TEASPOON_GL } from "../lib/foods";
 
 const { foods, categories } = foodsData;
 const { sources, last_verified } = sourcesData;
@@ -112,7 +113,7 @@ const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).l
       </ul>
       <p>
         Where a chart prints a teaspoon figure but no glycaemic load, the GL column below was back-calculated as teaspoons ×
-        2.73, the glycaemic load of one teaspoon of table sugar given in the paper. Those rows say so in their notes. The
+        {TEASPOON_GL}, the glycaemic load of one teaspoon of table sugar given in the paper. Those rows say so in their notes. The
         teaspoon figure is always the published one.
       </p>
       <p>Sources last verified: {last_verified}.</p>
@@ -144,7 +145,9 @@ const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).l
                 const src = sourceById.get(food.source);
                 return (
                   <tr class="border-t border-line align-top">
-                    <th scope="row" class="px-3 py-2 font-semibold text-ink">{food.name}</th>
+                    <th scope="row" class="px-3 py-2 font-semibold text-ink">
+                      <a class="link" href={`/foods/${food.id}/`}>{food.name}</a>
+                    </th>
                     <td class="px-3 py-2 text-body">{categoryLabel.get(food.category)}</td>
                     <td class="px-3 py-2 text-body">{food.portion}</td>
                     <td class="px-3 py-2 font-serif text-base text-coral">{food.cubes.toFixed(1)}</td>
@@ -172,12 +175,34 @@ const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).l
         chart to the next. None of these has been adjusted. The value used, and the other value, are recorded here.
       </p>
       <ul>
-        <li><strong>Banana, 120g:</strong> 5.9 on the fruits chart (used); 5.7 on the common foods and fruits vs vegetables charts.</li>
+        <li>
+          <strong>Banana, 120g:</strong> 5.9 on the fruits chart (used), which the sugar burden chart's 4.9 per 100g also
+          gives for 120g; 5.7 on the common foods and fruits vs vegetables charts and in Figure 1 of the paper.
+        </li>
         <li><strong>Apple, 120g:</strong> 2.2 on the fruits chart (used); 2.3 on the common foods chart and in Table 1 of the paper.</li>
         <li><strong>Brown or wholemeal bread, 30g slice:</strong> 3.3 on the bread chart (used); 3.0 on the common foods chart.</li>
         <li><strong>Cornflakes, 30g:</strong> 8.4 on the breakfast cereals chart (used); 8.5 in Table 1.</li>
         <li><strong>Bran flakes, 30g:</strong> both give 3.7, but the chart lists GI 74 and Table 1 lists GI 50.</li>
-        <li><strong>Broccoli:</strong> 0.2 for 80g on the common foods chart (used); 0.1 for 250g on the white, brown or green chart.</li>
+        <li>
+          <strong>Broccoli:</strong> 0.2 for 80g on the common foods chart (used); 0.1 for 250g on the white, brown or green
+          chart. The common foods chart prints GI 15; Figure 1 and the text of the paper give GI 54.
+        </li>
+        <li>
+          <strong>Baked potato, 150g:</strong> 8.2 in Figure 1 of the paper (used), whose Box 1 load of 22 divides to 8.1;
+          6.3 per 100g on the sugar burden chart, which would be 9.5 for 150g.
+        </li>
+        <li>
+          <strong>Sweet corn, 80g:</strong> 4.0 on the common foods and fruits vs vegetables charts and in Table 1 (used);
+          7.3 in Figure 1 of the paper.
+        </li>
+        <li>
+          <strong>French fries, 150g:</strong> 7.5 on the common foods chart and in Table 1 (used); 5.1 per 100g on the
+          sugar burden chart, which would be 7.7 for 150g.
+        </li>
+        <li>
+          <strong>White rice, 150g:</strong> the white, brown or green chart prints a glycaemic load of 26 and 9.6 teaspoons,
+          although 26 ÷ {TEASPOON_GL} is 9.5. The printed 9.6 is used.
+        </li>
         <li>
           <strong>Apple juice:</strong> 4.0 for 200ml on the healthy breakfast chart (used); 4.3 per 100ml on the sugar
           burden chart, which would be 8.6 for 200ml.

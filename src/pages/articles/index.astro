@@ -1,13 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageIntro from "../../components/PageIntro.astro";
+import { TEASPOON_GL } from "../../lib/foods";
 
 const articles = [
   {
     href: "/what-is-glycemic-load/",
     title: "What is glycaemic load?",
-    description:
-      "The difference between glycaemic index and glycaemic load, why a food with a high GI can carry a small load, and the exact arithmetic that turns a portion of food into teaspoons of table sugar. Includes worked examples for rice, brown bread and apple, and why the divisor is 2.73 rather than 4.",
+    description: `The difference between glycaemic index and glycaemic load, why a food with a high GI can carry a small load, and the exact arithmetic that turns a portion of food into teaspoons of table sugar. Includes worked examples for rice, brown bread and apple, and why the divisor is ${TEASPOON_GL} rather than 4.`,
   },
   {
     href: "/why-brown-bread-is-still-sugar/",

@@ -1,0 +1,114 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import CubeRow from "../../components/CubeRow.astro";
+import { foods, categories, foodPath, fmt1, TEASPOON_GL } from "../../lib/foods";
+
+const groups = categories.map((c) => ({ ...c, items: foods.filter((f) => f.category === c.id) }));
+const zeroCount = foods.filter((f) => f.cubes === 0).length;
+const perHundred = foods.filter((f) => /^100(g|ml)\b/.test(f.portion)).length;
+---
+
+<Layout
+  title={`Teaspoons of sugar in ${foods.length} foods, by category`}
+  description={`Every food in the sugar teaspoon calculator grouped by category, with its portion and teaspoon-of-sugar equivalent, each linked to the figures and source behind it.`}
+>
+  <PageIntro
+    slot="intro"
+    title="Teaspoons of sugar, food by food"
+    lede={`All ${foods.length} foods in the calculator, grouped by category. Each figure is the number of 4g teaspoons of table sugar with about the same effect on blood glucose as the portion shown.`}
+  />
+
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <nav aria-label="Categories">
+      <ul class="flex flex-wrap gap-2">
+        {
+          groups.map((g) => (
+            <li>
+              <a class="tab" href={`#${g.id}`}>
+                {g.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    {
+      groups.map((g) => (
+        <section id={g.id} class="mt-10 scroll-mt-4" aria-labelledby={`${g.id}-heading`}>
+          <h2 id={`${g.id}-heading`} class="font-serif text-2xl font-medium text-ink">
+            {g.label}
+          </h2>
+          <ul class="mt-4 divide-y divide-line rounded-md border border-line bg-paper">
+            {g.items.map((f) => (
+              <li>
+                <a href={foodPath(f)} class="group flex min-h-[44px] flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3 hover:bg-warm">
+                  <span class="min-w-0">
+                    <span class="block font-semibold leading-snug text-ink group-hover:text-green">{f.name}</span>
+                    <span class="block text-sm leading-snug text-muted">{f.portion}</span>
+                  </span>
+                  <span class="flex flex-wrap items-center gap-3">
+                    <CubeRow count={f.cubes} class="hidden sm:flex" />
+                    <span class="flex items-baseline gap-1.5">
+                      <span class="font-serif text-xl text-coral">{fmt1(f.cubes)}</span>
+                      <span class="text-sm text-muted">teaspoons</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+
+    <div class="prose-body mt-14">
+      <h2 style="margin-top:0">What each figure is</h2>
+      <p>
+        The figure next to each food answers one question: how many 4g teaspoons of table sugar would raise blood glucose by
+        about as much as that portion? It is not the "sugars" line from a nutrition label. A label counts sugars as a
+        chemical group and leaves starch out, even though digestion turns starch into glucose. The teaspoon figure covers all
+        the digestible carbohydrate in the portion, whether it started as sugar or as starch.
+      </p>
+      <p>
+        The method belongs to Dr David Unwin, Dr David Haslam and Dr Geoffrey Livesey, who published it in the Journal of
+        Insulin Resistance in 2016. A food's glycaemic load is its glycaemic index multiplied by the grams of available
+        carbohydrate in the portion, divided by 100. One teaspoon of table sugar has a glycaemic load of {TEASPOON_GL}, so a
+        food's teaspoon figure is its glycaemic load divided by {TEASPOON_GL}. The page
+        <a href="/what-is-glycemic-load/">what is glycaemic load</a> works through the arithmetic.
+      </p>
+
+      <h2>How to read the list</h2>
+      <p>
+        Read the portion before the number. Most portions are an ordinary serving with a gram weight: a 30g slice of bread, a
+        150g bowl of rice, a 120g piece of fruit. {perHundred} foods are given per 100g or 100ml because that is how their
+        source printed them, and 100g of honey is a larger amount than most people eat at once. Twice the portion is twice
+        the figure.
+      </p>
+      <p>
+        The categories follow the calculator's tabs. Within each category, foods are listed in the order of the calculator
+        rather than by size of figure, so neighbouring rows are not a ranking. {zeroCount} foods carry a figure of zero,
+        because their portion contains no measurable available carbohydrate or has a glycaemic index of zero.
+      </p>
+
+      <h2>What each food page shows</h2>
+      <p>
+        Each food links to a page of its own. That page gives the glycaemic index and the grams of carbohydrate where the
+        source printed them, the glycaemic load, and the arithmetic that leads to the teaspoon figure. It names the chart or
+        table the figure was read from, notes where two published charts give different figures for the same food, and sets
+        the food beside two or three others from the list.
+      </p>
+      <p>
+        Every value comes from Dr Unwin's charts, distributed free by the Public Health Collaboration, from Table 1 of the
+        2016 paper, or, for three meats and fish, from a carbohydrate content of zero in USDA FoodData Central. No value was
+        estimated to fill a gap. The complete record, including foods that were left out and why, is on the
+        <a href="/sources/">sources page</a>.
+      </p>
+      <p>
+        The figures are averages from published tables, and individual blood glucose responses vary. They are educational
+        estimates, not medical or dietary advice. To add several foods together, use the <a href="/">calculator</a>.
+      </p>
+    </div>
+  </section>
+</Layout>

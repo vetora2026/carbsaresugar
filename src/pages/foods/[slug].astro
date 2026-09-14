@@ -1,0 +1,147 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import CubeRow from "../../components/CubeRow.astro";
+import {
+  foods,
+  foodById,
+  sourceById,
+  categoryLabel,
+  foodPath,
+  fmt1,
+  num,
+  working,
+  type Food,
+} from "../../lib/foods";
+
+export function getStaticPaths() {
+  return foods.map((food) => ({ params: { slug: food.id }, props: { food } }));
+}
+
+const { food } = Astro.props as { food: Food };
+
+const entry = await getEntry("foods", food.id);
+if (!entry) throw new Error(`src/content/foods/${food.id}.md is missing`);
+const { Content } = await entry.render();
+
+const compare = entry.data.compare.map((id) => {
+  const other = foodById.get(id);
+  if (!other || other.id === food.id) throw new Error(`${food.id}: bad comparison id "${id}"`);
+  return other;
+});
+
+const source = sourceById.get(food.source);
+if (!source) throw new Error(`${food.id}: unknown source "${food.source}"`);
+
+const category = categoryLabel.get(food.category)!;
+const work = working(food);
+
+const glBasis: Record<string, string> = {
+  printed: "as printed on the source",
+  "back-calculated": "back-calculated from the teaspoon figure",
+  calculated: "calculated",
+};
+
+const derivation: Record<string, string> = {
+  "read from infographic": "Read from a published chart",
+  "published GL table": "Taken from a published glycaemic load table",
+  "calculated from GI and carb content": "Calculated from carbohydrate content",
+};
+
+const cards = [food, ...compare];
+---
+
+<Layout title={entry.data.title} description={entry.data.description}>
+  <section slot="intro" class="bg-paper">
+    <div class="mx-auto max-w-5xl px-4 pb-10 pt-8 sm:px-6 sm:pt-12">
+      <nav aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center gap-x-2 text-sm text-muted">
+          <li><a class="inline-flex min-h-[44px] min-w-[44px] items-center underline underline-offset-2 hover:text-ink" href="/foods/">Foods</a></li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <a class="inline-flex min-h-[44px] min-w-[44px] items-center underline underline-offset-2 hover:text-ink" href={`/foods/#${food.category}`}>{category}</a>
+          </li>
+        </ol>
+      </nav>
+      <h1 class="max-w-3xl font-serif text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        {food.name}, <span class="text-body">{food.portion}</span>
+      </h1>
+      <div class="mt-6 max-w-xl rounded-md border border-line bg-paper p-5">
+        <p class="flex flex-wrap items-baseline gap-x-2">
+          <span class="font-serif text-5xl leading-tight text-coral">{fmt1(food.cubes)}</span>
+          <span class="text-body">teaspoons of sugar</span>
+        </p>
+        <CubeRow count={food.cubes} class="mt-4" />
+        <p class="mt-3 text-sm text-muted">
+          {food.gi !== null && <>GI {food.gi} · </>}GL {num(food.gl)}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+    <div class="prose-body food-prose">
+      <Content />
+    </div>
+
+    <div class="prose-body mt-10">
+      <h2>The numbers</h2>
+    </div>
+    <dl class="mt-4 grid max-w-prose grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-[1.0625rem] leading-relaxed">
+      <dt class="font-semibold text-ink">Glycaemic index</dt>
+      <dd class="text-body">{food.gi !== null ? food.gi : "not printed on this source"}</dd>
+      <dt class="font-semibold text-ink">Available carbohydrate</dt>
+      <dd class="text-body">{food.carbs_g !== null ? `${num(food.carbs_g)}g` : "not printed on this source"}</dd>
+      <dt class="font-semibold text-ink">Glycaemic load</dt>
+      <dd class="text-body">{num(food.gl)}, {glBasis[food.gl_basis]}</dd>
+      <dt class="font-semibold text-ink">Teaspoons</dt>
+      <dd class="text-body">{fmt1(food.cubes)}</dd>
+    </dl>
+    <div class="prose-body mt-5">
+      <p class="sum" set:html={work.lines.map((l) => l.replace(/&/g, "&amp;").replace(/</g, "&lt;")).join("<br />")} />
+      {
+        work.mismatch && (
+          <p>
+            Worked through, the arithmetic gives {work.mismatch.calculated}. The source prints {work.mismatch.printed}, and the
+            printed figure is the one used here.
+          </p>
+        )
+      }
+
+      <h2>Source</h2>
+      <p>
+        {derivation[food.derivation]}: <a href={source.url}>{source.title}</a>. {source.author}. {source.publisher}.
+      </p>
+    </div>
+
+    <section class="mt-12" aria-labelledby="compare-heading">
+      <h2 id="compare-heading" class="font-serif text-2xl font-medium text-ink">Side by side</h2>
+      <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          cards.map((c) => (
+            <li class="rounded-md border border-line bg-paper p-4">
+              {c.id === food.id ? (
+                <p class="font-semibold leading-snug text-ink">{c.name}</p>
+              ) : (
+                <a class="inline-flex min-h-[44px] items-center font-semibold leading-snug text-green underline underline-offset-2" href={foodPath(c)}>
+                  {c.name}
+                </a>
+              )}
+              <p class="text-sm text-muted">{c.portion}</p>
+              <p class="mt-2 flex items-baseline gap-1.5">
+                <span class="font-serif text-2xl text-coral">{fmt1(c.cubes)}</span>
+                <span class="text-sm text-muted">teaspoons</span>
+              </p>
+              <CubeRow count={c.cubes} class="mt-2" />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a class="btn btn-primary" href={`/?f=${food.id}:1#calculator`}>Add to the calculator</a>
+      <a class="btn" href="/foods/">All foods</a>
+    </div>
+  </article>
+</Layout>

@@ -2,16 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import data from "../data/foods.json";
+import { TEASPOON_GL, fmt1 } from "../lib/foods";
 
 const f = (id: string) => data.foods.find((x) => x.id === id)!;
 const giRows = [
-  { food: f("watermelon"), gi: 80 },
-  { food: f("rye-bread-slice"), gi: 78 },
-  { food: f("sweet-corn"), gi: 60 },
-  { food: f("peas-frozen"), gi: 51 },
-  { food: f("apple"), gi: 39 },
-  { food: f("spaghetti-white"), gi: 39 },
-];
+  f("watermelon"),
+  f("rye-bread-slice"),
+  f("sweet-corn"),
+  f("peas-frozen"),
+  f("apple"),
+  f("spaghetti-white"),
+].map((food) => ({ food, gi: food.gi }));
 ---
 
 <Layout
@@ -117,9 +118,10 @@ const giRows = [
           fructose raises blood glucose very little, so its GI is lower than pure glucose.
         </li>
       </ol>
-      <p class="sum">Glycaemic load of one teaspoon of table sugar: 4.2g × 65 ÷ 100 = 2.73</p>
+      <p class="sum">Glycaemic load of one teaspoon of table sugar: 4.2g × 65 ÷ 100 = {TEASPOON_GL}</p>
       <p>
-        Every food's teaspoon figure is its glycaemic load divided by 2.73. That single division is the whole conversion.
+        Every food's teaspoon figure is its glycaemic load divided by {TEASPOON_GL}. That single division is the whole
+        conversion.
       </p>
 
       <h2>Worked examples</h2>
@@ -127,28 +129,28 @@ const giRows = [
       <p class="sum">
         Carbohydrate: 40g (Unwin 2016, Table 1)<br />
         GL: 40 × 69 ÷ 100 = 27.6<br />
-        Teaspoons: 27.6 ÷ 2.73 = 10.1
+        Teaspoons: 27.6 ÷ {TEASPOON_GL} = {fmt1(27.6 / TEASPOON_GL)}
       </p>
       <h3>Brown bread, one small 30g slice</h3>
       <p class="sum">
         Carbohydrate: 40g per 100g × 30g ÷ 100 = 12g<br />
         GL: 12 × 74 ÷ 100 = 8.9, rounded in the paper to 9<br />
-        Teaspoons: 9 ÷ 2.73 = 3.3
+        Teaspoons: 9 ÷ {TEASPOON_GL} = {fmt1(9 / TEASPOON_GL)}
       </p>
       <h3>Apple, 120g</h3>
       <p class="sum">
         Carbohydrate: 16g (Unwin 2016, Table 1)<br />
         GL: 16 × 39 ÷ 100 = 6.2<br />
-        Teaspoons: 6.2 ÷ 2.73 = 2.3
+        Teaspoons: 6.2 ÷ {TEASPOON_GL} = {fmt1(6.2 / TEASPOON_GL)}
       </p>
 
-      <h2>Why the divisor is 2.73 and not 4</h2>
+      <h2>Why the divisor is {TEASPOON_GL} and not 4</h2>
       <p>
         A shorthand sometimes repeated online divides glycaemic load by 4, on the reasoning that a teaspoon weighs 4g. That
         treats the teaspoon as 4g of pure glucose with a GI of 100. Dr Unwin's published figures do not use that shortcut.
-        With a divisor of 4, the bowl of basmati rice above would come out at 6.9 teaspoons rather than 10.1, and the slice
-        of brown bread at 2.3 rather than 3.3. The figures on this site match the published infographics, which means they
-        use 2.73.
+        With a divisor of 4, the bowl of basmati rice above would come out at {fmt1(27.6 / 4)} teaspoons rather than
+        {fmt1(27.6 / TEASPOON_GL)}, and the slice of brown bread at {fmt1(9 / 4)} rather than {fmt1(9 / TEASPOON_GL)}. The
+        figures on this site match the published infographics, which means they use {TEASPOON_GL}.
       </p>
 
       <h2>Portion size is the lever</h2>

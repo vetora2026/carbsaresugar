@@ -46,9 +46,12 @@
       "category": "breads",
       "cubes": 3.7,
       "gl": 10,
+      "gl_basis": "printed",
+      "gi": 71,
+      "carbs_g": null,
       "source": "phc-infographic-bread",
       "derivation": "read from infographic",
-      "notes": "GI 71 as printed."
+      "notes": "GI 71 as printed. The white, brown or green poster gives two slices (60g) as 8 (GL 22), not exactly double."
     },
     {
       "id": "brown-bread-slice",
@@ -57,9 +60,12 @@
       "category": "breads",
       "cubes": 3.3,
       "gl": 9,
+      "gl_basis": "printed",
+      "gi": 74,
+      "carbs_g": 12,
       "source": "phc-infographic-bread",
       "derivation": "read from infographic",
-      "notes": "GI 74 as printed. The common foods poster shows a 30g wholemeal slice at GI 74 as 3.0; the bread poster value is used here. Unwin 2016 Box 2 works this example as 9 / 2.73 = 3.3."
+      "notes": "GI 74 as printed. The common foods poster shows a 30g wholemeal slice at GI 74 as 3.0; the bread poster value is used here. Unwin 2016 Box 2 works this example as 9 / 2.73 = 3.3. Box 2 gives 40g carbohydrate per 100g, so 12g for the 30g slice. The a healthy breakfast poster gives 3 for one 30g slice of brown toast. The white, brown or green poster gives two wholemeal slices (60g) as 6 (GL 16.2), not exactly double."
     },
     {
       "id": "rye-bread-slice",
@@ -68,6 +74,9 @@
       "category": "breads",
       "cubes": 4.0,
       "gl": 11,
+      "gl_basis": "printed",
+      "gi": 78,
+      "carbs_g": null,
       "source": "phc-infographic-bread",
       "derivation": "read from infographic",
       "notes": "GI 78 as printed."
@@ -79,6 +88,9 @@
       "category": "breads",
       "cubes": 5.5,
       "gl": 15,
+      "gl_basis": "printed",
+      "gi": 85,
+      "carbs_g": null,
       "source": "phc-infographic-bread",
       "derivation": "read from infographic",
       "notes": "GI 85 as printed."
@@ -90,6 +102,9 @@
       "category": "breads",
       "cubes": 2.6,
       "gl": 7,
+      "gl_basis": "printed",
+      "gi": 59,
+      "carbs_g": null,
       "source": "phc-infographic-bread",
       "derivation": "read from infographic",
       "notes": "GI 59 as printed."
@@ -101,6 +116,9 @@
       "category": "breads",
       "cubes": 2.9,
       "gl": 8,
+      "gl_basis": "printed",
+      "gi": 56,
+      "carbs_g": null,
       "source": "phc-infographic-bread",
       "derivation": "read from infographic",
       "notes": "GI 56 as printed."
@@ -112,6 +130,9 @@
       "category": "breads",
       "cubes": 3.3,
       "gl": 9,
+      "gl_basis": "printed",
+      "gi": 62,
+      "carbs_g": null,
       "source": "phc-infographic-bread",
       "derivation": "read from infographic",
       "notes": "GI 62 as printed. Listed on the poster as 'Oatmeal batch'."
@@ -123,6 +144,9 @@
       "category": "breads",
       "cubes": 5.7,
       "gl": 15.6,
+      "gl_basis": "back-calculated",
+      "gi": 57,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 57 as printed. GL not printed on the source; back-calculated as 5.7 x 2.73 = 15.6."
@@ -134,6 +158,9 @@
       "category": "breads",
       "cubes": 0.2,
       "gl": 0.5,
+      "gl_basis": "back-calculated",
+      "gi": 15,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 15 as printed. GL not printed on the source; back-calculated as 0.2 x 2.73 = 0.5."
@@ -145,6 +172,9 @@
       "category": "cereals",
       "cubes": 7.3,
       "gl": 19.9,
+      "gl_basis": "back-calculated",
+      "gi": 77,
+      "carbs_g": null,
       "source": "phc-infographic-breakfast-cereals",
       "derivation": "read from infographic",
       "notes": "GI 77 as printed. GL not printed on the source; back-calculated as 7.3 x 2.73 = 19.9. UK product. The sugar burden poster gives chocolate rice crispies as 24.4 per 100g, which is 7.3 per 30g, consistent with this value."
@@ -156,9 +186,12 @@
       "category": "cereals",
       "cubes": 8.4,
       "gl": 22.9,
+      "gl_basis": "back-calculated",
+      "gi": 93,
+      "carbs_g": null,
       "source": "phc-infographic-breakfast-cereals",
       "derivation": "read from infographic",
-      "notes": "GI 93 as printed. GL not printed on the source; back-calculated as 8.4 x 2.73 = 22.9. Unwin 2016 Table 1 prints 8.5 (GL 23) for the same portion; the poster value is used."
+      "notes": "GI 93 as printed. GL not printed on the source; back-calculated as 8.4 x 2.73 = 22.9. Unwin 2016 Table 1 prints 8.5 (GL 23) for the same portion; the poster value is used. Table 1 lists 25g available carbohydrate."
     },
     {
       "id": "mini-wheats",
@@ -167,6 +200,9 @@
       "category": "cereals",
       "cubes": 4.4,
       "gl": 12.0,
+      "gl_basis": "back-calculated",
+      "gi": 59,
+      "carbs_g": null,
       "source": "phc-infographic-breakfast-cereals",
       "derivation": "read from infographic",
       "notes": "GI 59 as printed. GL not printed on the source; back-calculated as 4.4 x 2.73 = 12.0. UK product; poster does not state whether frosted."
@@ -178,6 +214,9 @@
       "category": "cereals",
       "cubes": 4.8,
       "gl": 13.1,
+      "gl_basis": "back-calculated",
+      "gi": 67,
+      "carbs_g": null,
       "source": "phc-infographic-breakfast-cereals",
       "derivation": "read from infographic",
       "notes": "GI 67 as printed. GL not printed on the source; back-calculated as 4.8 x 2.73 = 13.1."
@@ -189,6 +228,9 @@
       "category": "cereals",
       "cubes": 4.0,
       "gl": 10.9,
+      "gl_basis": "back-calculated",
+      "gi": 54,
+      "carbs_g": null,
       "source": "phc-infographic-breakfast-cereals",
       "derivation": "read from infographic",
       "notes": "GI 54 as printed. GL not printed on the source; back-calculated as 4.0 x 2.73 = 10.9. UK formulation; US Special K may differ."
@@ -200,9 +242,12 @@
       "category": "cereals",
       "cubes": 3.7,
       "gl": 10.1,
+      "gl_basis": "back-calculated",
+      "gi": 74,
+      "carbs_g": null,
       "source": "phc-infographic-breakfast-cereals",
       "derivation": "read from infographic",
-      "notes": "GI 74 as printed. GL not printed on the source; back-calculated as 3.7 x 2.73 = 10.1. Unwin 2016 Table 1 gives the same 3.7 for 30g but lists GI 50 and GL 10. The a healthy breakfast poster also gives 3.7."
+      "notes": "GI 74 as printed. GL not printed on the source; back-calculated as 3.7 x 2.73 = 10.1. Unwin 2016 Table 1 gives the same 3.7 for 30g but lists GI 50 and GL 10. The a healthy breakfast poster also gives 3.7. Table 1 lists 20g available carbohydrate."
     },
     {
       "id": "oat-porridge",
@@ -211,6 +256,9 @@
       "category": "cereals",
       "cubes": 4.4,
       "gl": 12.0,
+      "gl_basis": "back-calculated",
+      "gi": 63,
+      "carbs_g": null,
       "source": "phc-infographic-breakfast-cereals",
       "derivation": "read from infographic",
       "notes": "GI 63 as printed. GL not printed on the source; back-calculated as 4.4 x 2.73 = 12.0. Portion is by volume on the poster."
@@ -222,9 +270,12 @@
       "category": "fruits",
       "cubes": 5.9,
       "gl": 16,
+      "gl_basis": "printed",
+      "gi": 62,
+      "carbs_g": null,
       "source": "phc-infographic-fruits",
       "derivation": "read from infographic",
-      "notes": "GI 62 as printed. The common foods and fruits vs vegetables posters show 5.7 for the same 120g portion; the fruit poster value is used."
+      "notes": "GI 62 as printed. The common foods and fruits vs vegetables posters show 5.7 for the same 120g portion; the fruit poster value is used. The sugar burden poster gives banana as 4.9 per 100g, which is 5.9 for 120g. Unwin 2016 Figure 1 and its text give 5.7."
     },
     {
       "id": "grapes-black",
@@ -233,6 +284,9 @@
       "category": "fruits",
       "cubes": 4.0,
       "gl": 11,
+      "gl_basis": "printed",
+      "gi": 59,
+      "carbs_g": null,
       "source": "phc-infographic-fruits",
       "derivation": "read from infographic",
       "notes": "GI 59 as printed."
@@ -244,9 +298,12 @@
       "category": "fruits",
       "cubes": 2.2,
       "gl": 6,
+      "gl_basis": "printed",
+      "gi": 39,
+      "carbs_g": null,
       "source": "phc-infographic-fruits",
       "derivation": "read from infographic",
-      "notes": "GI 39 as printed. The common foods poster and Unwin 2016 Table 1 give 2.3 for the same portion."
+      "notes": "GI 39 as printed. The common foods poster and Unwin 2016 Table 1 give 2.3 for the same portion. Table 1 lists 16g available carbohydrate."
     },
     {
       "id": "watermelon",
@@ -255,6 +312,9 @@
       "category": "fruits",
       "cubes": 1.8,
       "gl": 5,
+      "gl_basis": "printed",
+      "gi": 80,
+      "carbs_g": null,
       "source": "phc-infographic-fruits",
       "derivation": "read from infographic",
       "notes": "GI 80 as printed."
@@ -266,6 +326,9 @@
       "category": "fruits",
       "cubes": 1.5,
       "gl": 4,
+      "gl_basis": "printed",
+      "gi": 43,
+      "carbs_g": null,
       "source": "phc-infographic-fruits",
       "derivation": "read from infographic",
       "notes": "GI 43 as printed."
@@ -277,6 +340,9 @@
       "category": "fruits",
       "cubes": 1.1,
       "gl": 3,
+      "gl_basis": "printed",
+      "gi": 34,
+      "carbs_g": null,
       "source": "phc-infographic-fruits",
       "derivation": "read from infographic",
       "notes": "GI 34 as printed."
@@ -288,6 +354,9 @@
       "category": "fruits",
       "cubes": 1.4,
       "gl": 3.8,
+      "gl_basis": "printed",
+      "gi": 40,
+      "carbs_g": null,
       "source": "phc-infographic-fruits",
       "derivation": "read from infographic",
       "notes": "GI 40 as printed."
@@ -299,9 +368,12 @@
       "category": "fruits",
       "cubes": 10.3,
       "gl": 28.1,
+      "gl_basis": "back-calculated",
+      "gi": 64,
+      "carbs_g": null,
       "source": "phc-infographic-fruits-vegetables",
       "derivation": "read from infographic",
-      "notes": "GI 64 as printed. GL not printed on the source; back-calculated as 10.3 x 2.73 = 28.1."
+      "notes": "GI 64 as printed. GL not printed on the source; back-calculated as 10.3 x 2.73 = 28.1. The sugar burden poster gives 17.1 per 100g, which is 10.3 for 60g, consistent with this value."
     },
     {
       "id": "dried-mixed-fruit",
@@ -310,6 +382,9 @@
       "category": "fruits",
       "cubes": 9.0,
       "gl": 24,
+      "gl_basis": "printed",
+      "gi": 60,
+      "carbs_g": 41,
       "source": "unwin-2016-table-1",
       "derivation": "published GL table",
       "notes": "GI 60 as printed. Table 1 lists 41g available carbohydrate per serving."
@@ -321,9 +396,12 @@
       "category": "staples",
       "cubes": 10.1,
       "gl": 28,
+      "gl_basis": "printed",
+      "gi": 69,
+      "carbs_g": 40,
       "source": "phc-infographic-common-foods",
       "derivation": "read from infographic",
-      "notes": "GI 69 as printed. GL 28 and 40g available carbohydrate from Unwin 2016 Table 1. The South Asian poster also gives 10.1 for 150g boiled rice."
+      "notes": "GI 69 as printed. GL 28 and 40g available carbohydrate from Unwin 2016 Table 1. The South Asian poster also gives 10.1 for 150g boiled rice. The sugar burden poster gives 6.8 per 100g, which is 10.2 for 150g. Table 1 describes the rice as white basmati boiled 8 minutes."
     },
     {
       "id": "white-rice",
@@ -332,9 +410,12 @@
       "category": "staples",
       "cubes": 9.6,
       "gl": 26,
+      "gl_basis": "printed",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-white-brown-green",
       "derivation": "read from infographic",
-      "notes": ""
+      "notes": "The white, brown or green poster prints GL 26 and no GI; its footnote says the rice is boiled. 26 / 2.73 = 9.5, but the poster prints 9.6; the poster value is used."
     },
     {
       "id": "brown-rice",
@@ -343,9 +424,12 @@
       "category": "staples",
       "cubes": 7.3,
       "gl": 20,
+      "gl_basis": "printed",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-white-brown-green",
       "derivation": "read from infographic",
-      "notes": ""
+      "notes": "The white, brown or green poster prints GL 20 and no GI; its footnote says the rice is boiled. 20 / 2.73 = 7.3."
     },
     {
       "id": "potato-boiled",
@@ -354,6 +438,9 @@
       "category": "staples",
       "cubes": 9.1,
       "gl": 24.8,
+      "gl_basis": "back-calculated",
+      "gi": 96,
+      "carbs_g": null,
       "source": "phc-infographic-common-foods",
       "derivation": "read from infographic",
       "notes": "GI 96 as printed. GL not printed on the source; back-calculated as 9.1 x 2.73 = 24.8."
@@ -365,9 +452,12 @@
       "category": "staples",
       "cubes": 8.2,
       "gl": 22,
+      "gl_basis": "printed",
+      "gi": 86,
+      "carbs_g": 25.5,
       "source": "unwin-2016-figure-1",
       "derivation": "read from infographic",
-      "notes": "GI 86 as printed. From the version of the common foods chart printed as Figure 1 in Unwin 2016; Box 1 works it as 17g carb per 100g x 150g = 25.5g carb, x 86 / 100 = GL 22."
+      "notes": "GI 86 as printed. From the version of the common foods chart printed as Figure 1 in Unwin 2016; Box 1 works it as 17g carb per 100g x 150g = 25.5g carb, x 86 / 100 = GL 22. 22 / 2.73 = 8.1, while Figure 1 prints 8.2. The sugar burden poster gives baked potato as 6.3 per 100g, which would be 9.5 for 150g. The two disagree; the Figure 1 value is used."
     },
     {
       "id": "french-fries",
@@ -376,9 +466,12 @@
       "category": "staples",
       "cubes": 7.5,
       "gl": 21,
+      "gl_basis": "printed",
+      "gi": 64,
+      "carbs_g": 32,
       "source": "phc-infographic-common-foods",
       "derivation": "read from infographic",
-      "notes": "GI 64 as printed. GL 21 and 32g available carbohydrate from Unwin 2016 Table 1."
+      "notes": "GI 64 as printed. GL 21 and 32g available carbohydrate from Unwin 2016 Table 1. The sugar burden poster gives 5.1 per 100g, which would be 7.7 for 150g. Table 1 describes them as baked 15 minutes."
     },
     {
       "id": "spaghetti-white",
@@ -387,9 +480,12 @@
       "category": "staples",
       "cubes": 6.6,
       "gl": 18,
+      "gl_basis": "printed",
+      "gi": 39,
+      "carbs_g": 46,
       "source": "phc-infographic-common-foods",
       "derivation": "read from infographic",
-      "notes": "GI 39 as printed. GL 18 from the white, brown or green poster and Unwin 2016 Table 1."
+      "notes": "GI 39 as printed. GL 18 from the white, brown or green poster and Unwin 2016 Table 1. Table 1 lists 46g available carbohydrate (a French spaghetti entry). The sugar burden poster gives 3.7 per 100g of boiled spaghetti, which is 6.7 for 180g."
     },
     {
       "id": "spaghetti-wholemeal",
@@ -398,9 +494,12 @@
       "category": "staples",
       "cubes": 6.2,
       "gl": 17,
+      "gl_basis": "printed",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-white-brown-green",
       "derivation": "read from infographic",
-      "notes": ""
+      "notes": "The white, brown or green poster prints GL 17 and no GI, and labels the row 'Spaghetti brown'; its footnote says the brown spaghetti is wholemeal and boiled. 17 / 2.73 = 6.2."
     },
     {
       "id": "white-yam",
@@ -409,6 +508,9 @@
       "category": "staples",
       "cubes": 4.8,
       "gl": 13.1,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 4.8 x 2.73 = 13.1."
@@ -420,6 +522,9 @@
       "category": "staples",
       "cubes": 11.3,
       "gl": 30.8,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 11.3 x 2.73 = 30.8."
@@ -431,6 +536,9 @@
       "category": "staples",
       "cubes": 4.0,
       "gl": 10.9,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 4.0 x 2.73 = 10.9."
@@ -442,6 +550,9 @@
       "category": "staples",
       "cubes": 4.4,
       "gl": 12.0,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 4.4 x 2.73 = 12.0."
@@ -453,6 +564,9 @@
       "category": "staples",
       "cubes": 5.8,
       "gl": 15.8,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 5.8 x 2.73 = 15.8."
@@ -464,6 +578,9 @@
       "category": "staples",
       "cubes": 12.4,
       "gl": 33.9,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 12.4 x 2.73 = 33.9."
@@ -475,6 +592,9 @@
       "category": "staples",
       "cubes": 10.8,
       "gl": 29.5,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 10.8 x 2.73 = 29.5."
@@ -486,6 +606,9 @@
       "category": "staples",
       "cubes": 3.4,
       "gl": 9.3,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 3.4 x 2.73 = 9.3."
@@ -497,6 +620,9 @@
       "category": "staples",
       "cubes": 1.1,
       "gl": 3.0,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 1.1 x 2.73 = 3.0. Printed as 1.12; rounded to one decimal place."
@@ -508,6 +634,9 @@
       "category": "staples",
       "cubes": 3.5,
       "gl": 9.6,
+      "gl_basis": "back-calculated",
+      "gi": 24,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 24 as printed. GL not printed on the source; back-calculated as 3.5 x 2.73 = 9.6. Poster labels the portion 'raw'."
@@ -519,6 +648,9 @@
       "category": "staples",
       "cubes": 1.9,
       "gl": 5.2,
+      "gl_basis": "back-calculated",
+      "gi": 28,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 28 as printed. GL not printed on the source; back-calculated as 1.9 x 2.73 = 5.2."
@@ -530,6 +662,9 @@
       "category": "staples",
       "cubes": 3.9,
       "gl": 10.6,
+      "gl_basis": "back-calculated",
+      "gi": 65,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 65 as printed. GL not printed on the source; back-calculated as 3.9 x 2.73 = 10.6."
@@ -541,6 +676,9 @@
       "category": "staples",
       "cubes": 4.5,
       "gl": 12.3,
+      "gl_basis": "back-calculated",
+      "gi": 60,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 60 as printed. GL not printed on the source; back-calculated as 4.5 x 2.73 = 12.3."
@@ -552,9 +690,12 @@
       "category": "vegetables",
       "cubes": 4.0,
       "gl": 11,
+      "gl_basis": "printed",
+      "gi": 60,
+      "carbs_g": 18,
       "source": "phc-infographic-common-foods",
       "derivation": "read from infographic",
-      "notes": "GI 60 as printed. GL 11 and 18g available carbohydrate from Unwin 2016 Table 1."
+      "notes": "GI 60 as printed. GL 11 and 18g available carbohydrate from Unwin 2016 Table 1. Figure 1 of Unwin 2016 prints 7.3 for the same 80g portion, which does not match Table 1 or the poster."
     },
     {
       "id": "peas-frozen",
@@ -563,6 +704,9 @@
       "category": "vegetables",
       "cubes": 1.3,
       "gl": 4,
+      "gl_basis": "printed",
+      "gi": 51,
+      "carbs_g": 7,
       "source": "phc-infographic-common-foods",
       "derivation": "read from infographic",
       "notes": "GI 51 as printed. GL 4 and 7g available carbohydrate from Unwin 2016 Table 1."
@@ -574,9 +718,12 @@
       "category": "vegetables",
       "cubes": 0.2,
       "gl": 0.5,
+      "gl_basis": "back-calculated",
+      "gi": 15,
+      "carbs_g": null,
       "source": "phc-infographic-common-foods",
       "derivation": "read from infographic",
-      "notes": "GI 15 as printed. GL not printed on the source; back-calculated as 0.2 x 2.73 = 0.5. The white, brown or green poster gives 0.1 for a larger 250g portion (GL 0.3); the smaller-portion value from the common foods poster is used."
+      "notes": "GI 15 as printed. GL not printed on the source; back-calculated as 0.2 x 2.73 = 0.5. The white, brown or green poster gives 0.1 for a larger 250g portion (GL 0.3); the smaller-portion value from the common foods poster is used. Figure 1 of Unwin 2016 and the paper's text give broccoli a GI of 54, with the same 0.2 teaspoons for 80g; the paper says the broccoli value was approximated from carbohydrate composition."
     },
     {
       "id": "cabbage",
@@ -585,6 +732,9 @@
       "category": "vegetables",
       "cubes": 0.1,
       "gl": 0.3,
+      "gl_basis": "back-calculated",
+      "gi": 10,
+      "carbs_g": null,
       "source": "phc-infographic-fruits-vegetables",
       "derivation": "read from infographic",
       "notes": "GI 10 as printed. GL not printed on the source; back-calculated as 0.1 x 2.73 = 0.3."
@@ -596,6 +746,9 @@
       "category": "vegetables",
       "cubes": 0.7,
       "gl": 1.9,
+      "gl_basis": "calculated",
+      "gi": 60,
+      "carbs_g": 3.2,
       "source": "unwin-2016-table-1",
       "derivation": "published GL table",
       "notes": "GI 60 as printed. Table 1 prints 3.2g carbohydrate and a GL of 0.32, but 3.2 x 60 / 100 = 1.9, and its own teaspoon figure (0.7 = 1.9 / 2.73) matches 1.9. GL recorded as 1.9 on that basis."
@@ -607,6 +760,9 @@
       "category": "vegetables",
       "cubes": 0.3,
       "gl": 0.9,
+      "gl_basis": "calculated",
+      "gi": 54,
+      "carbs_g": 1.6,
       "source": "unwin-2016-table-1",
       "derivation": "published GL table",
       "notes": "GI 54 as printed. Table 1 prints 1.6g carbohydrate and a GL of 0.24, but 1.6 x 54 / 100 = 0.86, and its teaspoon figure (0.3) matches 0.86. The paper states the GI for this food was estimated from composition and is likely to be overestimated."
@@ -618,6 +774,9 @@
       "category": "vegetables",
       "cubes": 0.1,
       "gl": 0.2,
+      "gl_basis": "calculated",
+      "gi": 70,
+      "carbs_g": 0.3,
       "source": "unwin-2016-table-1",
       "derivation": "published GL table",
       "notes": "GI 70 as printed. Table 1 prints 0.3g carbohydrate and GL 0.03; 0.3 x 70 / 100 = 0.21, which matches its teaspoon figure. The paper states the GI was estimated from composition and is likely to be overestimated."
@@ -629,6 +788,9 @@
       "category": "vegetables",
       "cubes": 0.3,
       "gl": 0.8,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-african-caribbean",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 0.3 x 2.73 = 0.8."
@@ -640,6 +802,9 @@
       "category": "vegetables",
       "cubes": 0.1,
       "gl": 0.3,
+      "gl_basis": "back-calculated",
+      "gi": 15,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 15 as printed. GL not printed on the source; back-calculated as 0.1 x 2.73 = 0.3."
@@ -651,6 +816,9 @@
       "category": "dairy",
       "cubes": 2.0,
       "gl": 5,
+      "gl_basis": "printed",
+      "gi": 46,
+      "carbs_g": 12,
       "source": "unwin-2016-table-1",
       "derivation": "published GL table",
       "notes": "GI 46 as printed. Table 1 lists 12g available carbohydrate. The a healthy breakfast poster gives 1.0 for 125ml of milk, consistent with this."
@@ -662,6 +830,9 @@
       "category": "dairy",
       "cubes": 0.4,
       "gl": 1,
+      "gl_basis": "printed",
+      "gi": 12,
+      "carbs_g": 8,
       "source": "unwin-2016-table-1",
       "derivation": "published GL table",
       "notes": "GI 12 as printed. Table 1 lists 8g available carbohydrate."
@@ -673,6 +844,9 @@
       "category": "dairy",
       "cubes": 2.4,
       "gl": 6.6,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-sugar-burden",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 2.4 x 2.73 = 6.6. The sugar burden poster gives values per 100g."
@@ -684,6 +858,9 @@
       "category": "dairy",
       "cubes": 0.2,
       "gl": 0.5,
+      "gl_basis": "back-calculated",
+      "gi": 20,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 20 as printed. GL not printed on the source; back-calculated as 0.2 x 2.73 = 0.5."
@@ -695,9 +872,12 @@
       "category": "drinks",
       "cubes": 4.0,
       "gl": 10.9,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-common-breakfast",
       "derivation": "read from infographic",
-      "notes": "GL not printed on the source; back-calculated as 4.0 x 2.73 = 10.9. The sugar burden poster gives apple juice as 4.3 per 100ml, which would be 8.6 for 200ml. The two posters disagree; the a healthy breakfast value is used and the conflict is listed on the sources page."
+      "notes": "GL not printed on the source; back-calculated as 4.0 x 2.73 = 10.9. The sugar burden poster gives apple juice as 4.3 per 100ml, which would be 8.6 for 200ml. The two posters disagree; the a healthy breakfast value is used and the conflict is listed on the sources page. The a healthy breakfast poster totals its four-item breakfast at 11.7."
     },
     {
       "id": "mango-juice",
@@ -706,6 +886,9 @@
       "category": "drinks",
       "cubes": 5.0,
       "gl": 13.7,
+      "gl_basis": "back-calculated",
+      "gi": 55,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 55 as printed. GL not printed on the source; back-calculated as 5.0 x 2.73 = 13.7."
@@ -717,6 +900,9 @@
       "category": "snacks",
       "cubes": 2.3,
       "gl": 6,
+      "gl_basis": "printed",
+      "gi": 39,
+      "carbs_g": 16,
       "source": "unwin-2016-table-1",
       "derivation": "published GL table",
       "notes": "GI 39 as printed. Table 1 lists 16g available carbohydrate. The sugar burden poster gives 8.8 per 100g, which is 2.2 per 25g, consistent with this."
@@ -728,6 +914,9 @@
       "category": "snacks",
       "cubes": 14.7,
       "gl": 40.1,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-sugar-burden",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 14.7 x 2.73 = 40.1. The sugar burden poster gives values per 100g. A UK sticky fruit loaf."
@@ -739,6 +928,9 @@
       "category": "snacks",
       "cubes": 17.6,
       "gl": 48.0,
+      "gl_basis": "back-calculated",
+      "gi": null,
+      "carbs_g": null,
       "source": "phc-infographic-sugar-burden",
       "derivation": "read from infographic",
       "notes": "GL not printed on the source; back-calculated as 17.6 x 2.73 = 48.0. The sugar burden poster gives values per 100g. Tablespoon equivalent uses 21g per tablespoon (USDA FoodData Central)."
@@ -750,6 +942,9 @@
       "category": "snacks",
       "cubes": 1.5,
       "gl": 4.1,
+      "gl_basis": "back-calculated",
+      "gi": 70,
+      "carbs_g": null,
       "source": "phc-infographic-south-asian",
       "derivation": "read from infographic",
       "notes": "GI 70 as printed. GL not printed on the source; back-calculated as 1.5 x 2.73 = 4.1."
@@ -761,6 +956,9 @@
       "category": "protein",
       "cubes": 0.0,
       "gl": 0,
+      "gl_basis": "calculated",
+      "gi": 0,
+      "carbs_g": null,
       "source": "phc-infographic-common-foods",
       "derivation": "read from infographic",
       "notes": "GI 0 as printed. Also shown as 0 on the African and Caribbean foods poster."
@@ -772,6 +970,9 @@
       "category": "protein",
       "cubes": 0.0,
       "gl": 0,
+      "gl_basis": "calculated",
+      "gi": null,
+      "carbs_g": 0,
       "source": "usda-fooddata-central",
       "derivation": "calculated from GI and carb content",
       "notes": "Carbohydrate 0.0g per 100g (USDA FoodData Central, SR Legacy FDC ID 171477). With no carbohydrate, GL = GI x 0 / 100 = 0 whatever the GI; no GI value is measurable or needed. PHC posters list chicken in the very low glycaemic range."
@@ -783,6 +984,9 @@
       "category": "protein",
       "cubes": 0.0,
       "gl": 0,
+      "gl_basis": "calculated",
+      "gi": null,
+      "carbs_g": 0,
       "source": "usda-fooddata-central",
       "derivation": "calculated from GI and carb content",
       "notes": "Carbohydrate 0.0g per 100g (USDA FoodData Central, SR Legacy FDC ID 175168, Atlantic farmed, dry heat). GL = GI x 0 / 100 = 0. PHC posters list oily fish in the very low glycaemic range."
@@ -794,6 +998,9 @@
       "category": "protein",
       "cubes": 0.0,
       "gl": 0,
+      "gl_basis": "calculated",
+      "gi": null,
+      "carbs_g": 0,
       "source": "usda-fooddata-central",
       "derivation": "calculated from GI and carb content",
       "notes": "Carbohydrate 0.0g per 100g (USDA FoodData Central, SR Legacy FDC ID 174032). GL = GI x 0 / 100 = 0. PHC posters list meat in the very low glycaemic range."

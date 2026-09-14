@@ -4,8 +4,10 @@ import Divider from "../components/Divider.astro";
 import CubeRow from "../components/CubeRow.astro";
 import Calculator from "../components/Calculator.astro";
 import data from "../data/foods.json";
+import { TEASPOON_GL, num, fmt1 } from "../lib/foods";
 
 const rice = data.foods.find((f) => f.id === "basmati-rice")!;
+const riceGl = (rice.carbs_g! * rice.gi!) / 100;
 const count = (d: string) => data.foods.filter((f) => f.derivation === d).length;
 const readCount = count("read from infographic");
 const tableCount = count("published GL table");
@@ -79,12 +81,12 @@ const calcCount = count("calculated from GI and carb content");
         <p>
           Dr Unwin and his co-authors, Dr David Haslam and Dr Geoffrey Livesey, asked the same question of a teaspoon of
           table sugar. A 4g teaspoon of sucrose yields 4.2g of carbohydrate once digested, and table sugar has a GI of 65.
-          Its glycaemic load is 4.2 × 65 ÷ 100 = 2.73. Dividing any food's glycaemic load by 2.73 gives the number of
-          teaspoons shown here.
+          Its glycaemic load is 4.2 × 65 ÷ 100 = {TEASPOON_GL}. Dividing any food's glycaemic load by {TEASPOON_GL} gives the
+          number of teaspoons shown here.
         </p>
         <p class="sum">
-          Basmati rice, 150g boiled: 40g carbohydrate × GI 69 ÷ 100 = GL 27.6<br />
-          27.6 ÷ 2.73 = 10.1 teaspoons
+          Basmati rice, 150g boiled: {rice.carbs_g}g carbohydrate × GI {rice.gi} ÷ 100 = GL {num(riceGl)}<br />
+          {num(riceGl)} ÷ {TEASPOON_GL} = {fmt1(riceGl / TEASPOON_GL)} teaspoons
         </p>
         <p>
           The full arithmetic, with more examples, is on the page
@@ -144,6 +146,7 @@ const calcCount = count("calculated from GI and carb content");
           left out, and where two posters give different figures for the same food, both figures are recorded.
         </p>
         <p>
+          Each food also has <a href="/foods/">a page of its own</a>, with its figures and the arithmetic behind them.
           Every value, its source and its derivation are listed on the <a href="/sources/">sources page</a>. If you find
           an error, the <a href="/contact/">contact page</a> explains what to send.
         </p>
