@@ -13,9 +13,11 @@ interface Props {
   description: string;
   /** Pages that place the divider themselves (the home page) pass false. */
   divider?: boolean;
+  /** The 404 page passes true: it is served at many addresses, so it gets noindex and no canonical. */
+  noindex?: boolean;
 }
 
-const { title, description, divider = true } = Astro.props;
+const { title, description, divider = true, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
 
@@ -48,7 +50,7 @@ const isActive = (href: string) => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />

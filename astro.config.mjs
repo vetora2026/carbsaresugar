@@ -6,5 +6,6 @@ export default defineConfig({
   site: "https://carbsaresugar.com",
   output: "static",
   trailingSlash: "always",
-  integrations: [tailwind({ applyBaseStyles: true }), sitemap()],
+  // lastmod is the build date for every URL. Pages are not tracked individually.
+  integrations: [tailwind({ applyBaseStyles: true }), sitemap({ lastmod: new Date() })],
 });

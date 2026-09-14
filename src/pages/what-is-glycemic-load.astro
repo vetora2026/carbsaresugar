@@ -2,9 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import data from "../data/foods.json";
-import { TEASPOON_GL, fmt1 } from "../lib/foods";
+import { TEASPOON_GL, fmt1, num } from "../lib/foods";
 
 const f = (id: string) => data.foods.find((x) => x.id === id)!;
+const potato = f("potato-baked");
+const rice = f("basmati-rice");
+const brown = f("brown-bread-slice");
+const apple = f("apple");
+const potatoGl = (potato.carbs_g! * potato.gi!) / 100;
+const riceGl = (rice.carbs_g! * rice.gi!) / 100;
+const brownGl = (brown.carbs_g! * brown.gi!) / 100;
+// Table 1 of the paper prints 16g carbohydrate for this apple; the calculator uses the fruits chart's rounded load.
+const appleTableCarbs = 16;
+const appleTableGl = (appleTableCarbs * apple.gi!) / 100;
 const giRows = [
   f("watermelon"),
   f("rye-bread-slice"),
@@ -65,8 +75,8 @@ const giRows = [
       </p>
       <p>The paper's own worked example uses a 150g baked potato:</p>
       <p class="sum">
-        Carbohydrate: 17g per 100g × 150g ÷ 100 = 25.5g<br />
-        Glycaemic load: 25.5g × GI 86 ÷ 100 = 22g
+        Carbohydrate: 17g per 100g × 150g ÷ 100 = {num(potato.carbs_g!)}g<br />
+        Glycaemic load: {num(potato.carbs_g!)}g × GI {potato.gi} ÷ 100 = {num(potatoGl)}g, printed in the paper as {num(potato.gl)}g
       </p>
 
       <h2>GI and GL do not rank foods the same way</h2>
@@ -128,29 +138,34 @@ const giRows = [
       <h2>Worked examples</h2>
       <h3>Basmati rice, 150g boiled</h3>
       <p class="sum">
-        Carbohydrate: 40g (Unwin 2016, Table 1)<br />
-        GL: 40 × 69 ÷ 100 = 27.6<br />
-        Teaspoons: 27.6 ÷ {TEASPOON_GL} = {fmt1(27.6 / TEASPOON_GL)}
+        Carbohydrate: {num(rice.carbs_g!)}g (Unwin 2016, Table 1)<br />
+        GL: {num(rice.carbs_g!)} × {rice.gi} ÷ 100 = {num(riceGl)}<br />
+        Teaspoons: {num(riceGl)} ÷ {TEASPOON_GL} = {fmt1(riceGl / TEASPOON_GL)}
       </p>
       <h3>Brown bread, one small 30g slice</h3>
       <p class="sum">
-        Carbohydrate: 40g per 100g × 30g ÷ 100 = 12g<br />
-        GL: 12 × 74 ÷ 100 = 8.9, rounded in the paper to 9<br />
-        Teaspoons: 9 ÷ {TEASPOON_GL} = {fmt1(9 / TEASPOON_GL)}
+        Carbohydrate: 40g per 100g × 30g ÷ 100 = {num(brown.carbs_g!)}g<br />
+        GL: {num(brown.carbs_g!)} × {brown.gi} ÷ 100 = {num(brownGl)}, rounded in the paper to {num(brown.gl)}<br />
+        Teaspoons: {num(brown.gl)} ÷ {TEASPOON_GL} = {fmt1(brown.gl / TEASPOON_GL)}
       </p>
       <h3>Apple, 120g</h3>
       <p class="sum">
-        Carbohydrate: 16g (Unwin 2016, Table 1)<br />
-        GL: 16 × 39 ÷ 100 = 6.2<br />
-        Teaspoons: 6.2 ÷ {TEASPOON_GL} = {fmt1(6.2 / TEASPOON_GL)}
+        Carbohydrate: {appleTableCarbs}g (Unwin 2016, Table 1)<br />
+        GL: {appleTableCarbs} × {apple.gi} ÷ 100 = {num(appleTableGl)}<br />
+        Teaspoons: {num(appleTableGl)} ÷ {TEASPOON_GL} = {fmt1(appleTableGl / TEASPOON_GL)}
+      </p>
+      <p>
+        That is the Table 1 working. The fruits chart, which the calculator and the table above use, prints a rounded load
+        of {num(apple.gl)} for the same apple, and {num(apple.gl)} ÷ {TEASPOON_GL} = {fmt1(apple.gl / TEASPOON_GL)}. The two
+        figures differ only by rounding, and both are recorded on the <a href="/foods/apple/">apple page</a>.
       </p>
 
       <h2>Why the divisor is {TEASPOON_GL} and not 4</h2>
       <p>
         A shorthand sometimes repeated online divides glycaemic load by 4, on the reasoning that a teaspoon weighs 4g. That
         treats the teaspoon as 4g of pure glucose with a GI of 100. Dr Unwin's published figures do not use that shortcut.
-        With a divisor of 4, the bowl of basmati rice above would come out at {fmt1(27.6 / 4)} teaspoons rather than
-        {fmt1(27.6 / TEASPOON_GL)}, and the slice of brown bread at {fmt1(9 / 4)} rather than {fmt1(9 / TEASPOON_GL)}. The
+        With a divisor of 4, the bowl of basmati rice above would come out at {fmt1(riceGl / 4)} teaspoons rather than
+        {fmt1(riceGl / TEASPOON_GL)}, and the slice of brown bread at {fmt1(brown.gl / 4)} rather than {fmt1(brown.gl / TEASPOON_GL)}. The
         figures on this site match the published infographics, which means they use {TEASPOON_GL}.
       </p>
 

@@ -3,11 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import CubeRow from "../components/CubeRow.astro";
 import data from "../data/foods.json";
-import { TEASPOON_GL } from "../lib/foods";
+import { TEASPOON_GL, num, fmt1 } from "../lib/foods";
 
 const f = (id: string) => data.foods.find((x) => x.id === id)!;
 const white = f("white-bread-slice");
 const brown = f("brown-bread-slice");
+const stoneground = f("stoneground-wholemeal-slice");
+const rye = f("rye-bread-slice");
+const barley = f("barley-bread-slice");
+const brownGl = (brown.carbs_g! * brown.gi!) / 100;
 const breadRows = [
   white,
   brown,
@@ -38,7 +42,7 @@ const breadRows = [
           <span class="font-serif text-5xl leading-tight text-coral">{white.cubes.toFixed(1)}</span>
           <span class="text-body">teaspoons</span>
         </p>
-        <p class="mt-1 text-sm text-muted">GI 71 · GL {white.gl}</p>
+        <p class="mt-1 text-sm text-muted">GI {white.gi} · GL {white.gl}</p>
         <CubeRow count={white.cubes} class="mt-4" />
       </div>
       <div class="rounded-md border border-line bg-paper p-5">
@@ -47,7 +51,7 @@ const breadRows = [
           <span class="font-serif text-5xl leading-tight text-coral">{brown.cubes.toFixed(1)}</span>
           <span class="text-body">teaspoons</span>
         </p>
-        <p class="mt-1 text-sm text-muted">GI 74 · GL {brown.gl}</p>
+        <p class="mt-1 text-sm text-muted">GI {brown.gi} · GL {brown.gl}</p>
         <CubeRow count={brown.cubes} class="mt-4" />
       </div>
     </div>
@@ -96,7 +100,8 @@ const breadRows = [
         16.2 and a teaspoon figure of 6.
       </p>
       <p>
-        The two charts do not scale exactly: 8 is not quite twice 3.7, and 6 is not quite twice 3.3. They draw on different
+        The two charts do not scale exactly: 8 is not quite twice {white.cubes.toFixed(1)}, and 6 is not quite twice
+        {brown.cubes.toFixed(1)}. They draw on different
         entries in the published GI tables, for different loaves. Both are recorded on the <a href="/sources/">sources page</a>,
         and the calculator uses the single-slice chart.
       </p>
@@ -107,9 +112,9 @@ const breadRows = [
         steps.
       </p>
       <p class="sum">
-        1. Carbohydrate: 40g per 100g × 30g ÷ 100 = 12g<br />
-        2. Glycaemic load: 12g × GI 74 ÷ 100 = 9g<br />
-        3. Teaspoons: 9 ÷ {TEASPOON_GL} = 3.3
+        1. Carbohydrate: 40g per 100g × 30g ÷ 100 = {num(brown.carbs_g!)}g<br />
+        2. Glycaemic load: {num(brown.carbs_g!)}g × GI {brown.gi} ÷ 100 = {num(brownGl)}, rounded in the paper to {num(brown.gl)}<br />
+        3. Teaspoons: {num(brown.gl)} ÷ {TEASPOON_GL} = {fmt1(brown.gl / TEASPOON_GL)}
       </p>
       <p>
         The figure {TEASPOON_GL} is the glycaemic load of one 4g teaspoon of table sugar: 4.2g of carbohydrate after digestion,
@@ -146,8 +151,8 @@ const breadRows = [
       <p>
         The particle size of the flour is a larger factor. Coarsely milled and stoneground flours, or breads containing
         intact grains, tend to test lower, because enzymes reach the starch more slowly. On the chart, the stoneground
-        wholemeal loaf has a GI of 59 and a teaspoon figure of 2.6. The rye and barley loaves on the same chart test higher
-        than white bread, at GI 78 and 85.
+        wholemeal loaf has a GI of {stoneground.gi} and a teaspoon figure of {stoneground.cubes.toFixed(1)}. The rye and
+        barley loaves on the same chart test higher than white bread, at GI {rye.gi} and {barley.gi}.
       </p>
       <p>
         The amount of carbohydrate per slice is similar across ordinary loaves too, at around 40g per 100g in the paper's
