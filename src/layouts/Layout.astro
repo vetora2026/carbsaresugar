@@ -58,11 +58,17 @@ const isActive = (href: string) => {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta name="theme-color" content="#FFFFFF" />
-    <script
-      is:inline
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5806594895991752"
-      crossorigin="anonymous"></script>
+    {
+      /* AdSense must not load on the 404 page, which is the only page that passes noindex. */
+      !noindex && (
+        <script
+          is:inline
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5806594895991752"
+          crossorigin="anonymous"
+        />
+      )
+    }
   </head>
   <body class="min-h-screen flex flex-col">
     <a

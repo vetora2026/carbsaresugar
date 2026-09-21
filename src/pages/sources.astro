@@ -11,16 +11,28 @@ const sourceById = new Map(sources.map((s) => [s.id, s]));
 const categoryLabel = new Map(categories.map((c) => [c.id, c.label]));
 const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).length;
 
-// Foods where Table 1's own GI and carbohydrate figures do not round to the
-// glycaemic load it prints. Every number below is read from foods.json.
-const rounding = ["french-fries", "milk-whole", "dried-mixed-fruit"].map((id) => {
-  const f = foods.find((x) => x.id === id);
-  if (!f || f.gi === null || f.carbs_g === null) throw new Error(`rounding disclosure: ${id} has no GI or carbohydrate`);
-  const calculated = (f.gi * f.carbs_g) / 100;
-  if (Math.round(calculated) === Math.round(f.gl)) throw new Error(`rounding disclosure: ${id} no longer disagrees`);
-  const portionShort = (f.portion.match(/\(([^)]+)\)\s*$/) ?? [null, f.portion])[1];
-  return { ...f, calculated, portionShort };
-});
+// Foods whose printed glycaemic load does not divide to the teaspoon figure the
+// source prints, because the teaspoon figure follows from the unrounded GI x
+// carbohydrate load. Selected from the data, not by id. A food that misses by
+// more than 0.05 either way is only listed when the unrounded load reconciles
+// it; potato-baked does not, and is covered by its own entry above.
+const short = (portion: string) =>
+  portion.match(/\b(\d+(?:\.\d+)?\s?(?:g|ml|kg|l))\b/i)?.[1] ??
+  portion.match(/\(([^)]+)\)\s*$/)?.[1] ??
+  portion;
+
+const rounding = foods
+  .filter((f) => f.gi !== null && f.carbs_g !== null && Math.abs(f.gl / TEASPOON_GL - f.cubes) > 0.05)
+  .map((f) => ({ ...f, calculated: (f.gi! * f.carbs_g!) / 100 }))
+  .filter((f) => Math.abs(f.calculated / TEASPOON_GL - f.cubes) <= 0.05)
+  .map((f) => ({ ...f, portionShort: short(f.portion) }));
+if (rounding.length === 0) throw new Error("rounding disclosure: no food disagrees any more");
+
+// The baked potato entry below compares the printed load with the unrounded one.
+const potatoFood = foods.find((f) => f.id === "potato-baked");
+if (!potatoFood || potatoFood.gi === null || potatoFood.carbs_g === null)
+  throw new Error("baked potato: no GI or carbohydrate");
+const potato = { ...potatoFood, calculated: (potatoFood.gi * potatoFood.carbs_g) / 100 };
 ---
 
 <Layout
@@ -216,8 +228,9 @@ const rounding = ["french-fries", "milk-whole", "dried-mixed-fruit"].map((id) =>
           chart. The common foods chart prints GI 15; Figure 1 and the text of the paper give GI 54.
         </li>
         <li>
-          <strong>Baked potato, 150g:</strong> 8.2 in Figure 1 of the paper (used), whose Box 1 load of 22 divides to 8.1;
-          6.3 per 100g on the sugar burden chart, which would be 9.5 for 150g.
+          <strong>Baked potato, 150g:</strong> 8.2 in Figure 1 of the paper (used), whose Box 1 load of {num(potato.gl)} divides
+          to {(potato.gl / TEASPOON_GL).toFixed(1)} (the unrounded {num(potato.calculated)} gives{" "}
+          {(potato.calculated / TEASPOON_GL).toFixed(1)}); 6.3 per 100g on the sugar burden chart, which would be 9.5 for 150g.
         </li>
         <li>
           <strong>Sweet corn, 80g:</strong> 4.0 on the common foods and fruits vs vegetables charts and in Table 1 (used);
@@ -246,8 +259,8 @@ const rounding = ["french-fries", "milk-whole", "dried-mixed-fruit"].map((id) =>
                 {f.name}, {f.portionShort}:
               </strong>{" "}
               Table 1 prints a glycaemic load of {num(f.gl)}, although its own GI {f.gi} and {num(f.carbs_g!)}g of available
-              carbohydrate give {f.gi} × {num(f.carbs_g!)} ÷ 100 = {num(f.calculated)}. The printed {num(f.gl)} is used, and the
-              teaspoon figure of {f.cubes.toFixed(1)} follows from it.
+              carbohydrate give {f.gi} × {num(f.carbs_g!)} ÷ 100 = {num(f.calculated)}. The printed {num(f.gl)} is shown, and the
+              teaspoon figure of {f.cubes.toFixed(1)} follows from the unrounded {num(f.calculated)}.
             </li>
           ))
         }

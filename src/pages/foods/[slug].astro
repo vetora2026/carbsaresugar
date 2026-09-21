@@ -46,7 +46,7 @@ const parenMatch = food.portion.match(/\(([^)]+)\)\s*$/);
 const portionShort = weightMatch?.[1] ?? parenMatch?.[1] ?? food.portion;
 const pageTitle = `How many teaspoons of sugar in ${entry.data.phrase}? ${tsp} (${portionShort})`;
 const glPart = food.gi !== null ? `glycaemic load ${num(food.gl)}, GI ${food.gi}` : `glycaemic load ${num(food.gl)}`;
-const pageDescription = `${capitalise(entry.data.phrase)} — ${food.portion} — raises blood glucose like ${tsp} ${tspWord} of table sugar (${glPart}). Dr David Unwin's method, with the source chart.`;
+const pageDescription = `${capitalise(entry.data.phrase)} — ${food.portion} — raises blood glucose like ${tsp} ${tspWord} of table sugar (${glPart}).`;
 
 const glBasis: Record<string, string> = {
   printed: "as printed on the source",
