@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in okra? Teaspoon equivalent, 100g"
-description: "About a cup of okra, 100g, as teaspoons of table sugar, from the African and Caribbean foods chart, which also names it among very low glycaemic foods."
+phrase: "okra"
 compare: ["cassava", "plantain-ripe"]
 ---
 

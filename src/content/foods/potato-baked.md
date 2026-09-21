@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a baked potato? Teaspoon equivalent, 150g"
-description: "A 150g baked white potato as teaspoons of table sugar, using the worked example in Unwin 2016 Box 1, and where the published charts disagree."
+phrase: "a baked potato"
 compare: ["broccoli", "greek-yogurt"]
 ---
 

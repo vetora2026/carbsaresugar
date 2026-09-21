@@ -7,3 +7,5 @@ dist/
 *.log
 # Private correspondence (permission emails) is kept locally, never published
 *.pdf
+
+audit-*/

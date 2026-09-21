@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a tomato? Teaspoon equivalent, 50g raw"
-description: "One small raw tomato, 50g, as teaspoons of table sugar, from Table 1 of Unwin 2016, which notes its GI was estimated and likely overestimated."
+phrase: "a tomato"
 compare: ["spaghetti-white", "apple-juice"]
 ---
 

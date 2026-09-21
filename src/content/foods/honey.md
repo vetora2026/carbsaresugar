@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in honey? Teaspoon equivalent per 100g"
-description: "100g of honey, about five tablespoons, as teaspoons of table sugar, from the naturally occurring sugars column of Dr Unwin's sugar burden chart."
+phrase: "honey"
 compare: ["greek-yogurt", "eggs"]
 ---
 

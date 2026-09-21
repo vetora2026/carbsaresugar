@@ -3,18 +3,29 @@ import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import foodsData from "../data/foods.json";
 import sourcesData from "../data/sources.json";
-import { TEASPOON_GL } from "../lib/foods";
+import { TEASPOON_GL, num } from "../lib/foods";
 
 const { foods, categories } = foodsData;
 const { sources, last_verified } = sourcesData;
 const sourceById = new Map(sources.map((s) => [s.id, s]));
 const categoryLabel = new Map(categories.map((c) => [c.id, c.label]));
 const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).length;
+
+// Foods where Table 1's own GI and carbohydrate figures do not round to the
+// glycaemic load it prints. Every number below is read from foods.json.
+const rounding = ["french-fries", "milk-whole", "dried-mixed-fruit"].map((id) => {
+  const f = foods.find((x) => x.id === id);
+  if (!f || f.gi === null || f.carbs_g === null) throw new Error(`rounding disclosure: ${id} has no GI or carbohydrate`);
+  const calculated = (f.gi * f.carbs_g) / 100;
+  if (Math.round(calculated) === Math.round(f.gl)) throw new Error(`rounding disclosure: ${id} no longer disagrees`);
+  const portionShort = (f.portion.match(/\(([^)]+)\)\s*$/) ?? [null, f.portion])[1];
+  return { ...f, calculated, portionShort };
+});
 ---
 
 <Layout
   title="Sources and attribution: every food value and where it comes from"
-  description="Full provenance for every food in the sugar teaspoon calculator, with attribution to Dr David Unwin and the Public Health Collaboration and links to the published research."
+  description="Provenance for every food in the sugar teaspoon calculator, attributed to Dr David Unwin and the Public Health Collaboration, with links to the research."
 >
   <PageIntro
     slot="intro"
@@ -228,6 +239,18 @@ const derivationCount = (d: string) => foods.filter((f) => f.derivation === d).l
           <strong>Bread, two slices (60g):</strong> the white, brown or green chart gives 8 (white) and 6 (brown), which are
           not exactly double the single-slice figures of 3.7 and 3.3. The calculator uses the single-slice chart.
         </li>
+        {
+          rounding.map((f) => (
+            <li>
+              <strong>
+                {f.name}, {f.portionShort}:
+              </strong>{" "}
+              Table 1 prints a glycaemic load of {num(f.gl)}, although its own GI {f.gi} and {num(f.carbs_g!)}g of available
+              carbohydrate give {f.gi} × {num(f.carbs_g!)} ÷ 100 = {num(f.calculated)}. The printed {num(f.gl)} is used, and the
+              teaspoon figure of {f.cubes.toFixed(1)} follows from it.
+            </li>
+          ))
+        }
         <li>
           <strong>Cauliflower, tomato and mushrooms (Table 1):</strong> the printed glycaemic load column (0.32, 0.24,
           0.03) does not equal GI × carbohydrate ÷ 100 (1.9, 0.9, 0.2), but the printed teaspoon figures match the

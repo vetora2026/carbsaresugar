@@ -1,6 +1,5 @@
 ---
-title: "Digestive biscuits: teaspoons of sugar in 25g"
-description: "25g of plain digestive biscuits, a little under two, as teaspoons of table sugar, with GI 39 and 16g of carbohydrate from Unwin 2016 Table 1."
+phrase: "digestive biscuits"
 compare: ["eggs", "apricots"]
 ---
 

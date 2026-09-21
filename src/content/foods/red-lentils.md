@@ -1,6 +1,5 @@
 ---
-title: "Red lentils: teaspoons of sugar in 100g, dry weight"
-description: "100g of red lentils, weighed dry before cooking, as teaspoons of table sugar, with GI 24 from Dr Unwin's South Asian foods chart."
+phrase: "red lentils"
 compare: ["basmati-rice", "eggs"]
 ---
 

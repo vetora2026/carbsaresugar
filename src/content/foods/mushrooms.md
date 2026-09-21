@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in mushrooms? Teaspoon equivalent, 80g"
-description: "About a cup of sliced mushrooms, 80g, as teaspoons of table sugar, from Table 1 of Unwin 2016, with its estimated GI and recalculated glycaemic load."
+phrase: "mushrooms"
 compare: ["potato-baked", "malt-loaf"]
 ---
 

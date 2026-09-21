@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in milk? Teaspoon equivalent for a 250ml glass"
-description: "A large 250ml glass of whole milk as teaspoons of table sugar, with GI 46 and 12g of carbohydrate from Table 1 of Unwin 2016."
+phrase: "milk"
 compare: ["apple-juice", "greek-yogurt"]
 ---
 

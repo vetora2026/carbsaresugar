@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a roti? Teaspoon equivalent for a 40g wheat roti"
-description: "One 40g wheat-flour roti as teaspoons of table sugar, with its glycaemic index from Dr Unwin's South Asian foods chart."
+phrase: "a roti"
 compare: ["roti-almond", "raita", "bitter-gourd"]
 ---
 

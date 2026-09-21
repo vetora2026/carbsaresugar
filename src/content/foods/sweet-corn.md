@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in sweet corn? Teaspoon equivalent, 80g boiled"
-description: "About half a cup of boiled sweet corn, 80g, in teaspoons of table sugar, with GI 60 and 18g of carbohydrate from Unwin 2016 Table 1."
+phrase: "sweet corn"
 compare: ["cabbage", "digestive-biscuits"]
 ---
 

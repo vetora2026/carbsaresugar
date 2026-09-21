@@ -1,6 +1,5 @@
 ---
-title: "Cassava fufu: teaspoons of sugar in a 100g serving"
-description: "A 100g serving of fufu made with cassava flour, in teaspoons of table sugar, next to almond-flour fufu on the African and Caribbean foods chart."
+phrase: "cassava fufu"
 compare: ["almond-fufu", "cassava-flour"]
 ---
 

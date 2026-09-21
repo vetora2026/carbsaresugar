@@ -1,6 +1,5 @@
 ---
-title: "Raspberry yogurt: teaspoons of sugar in 100g"
-description: "100g of raspberry yogurt as teaspoons of table sugar, from the foods with added sugars column of Dr Unwin's sugar burden chart."
+phrase: "raspberry yogurt"
 compare: ["greek-yogurt", "strawberries"]
 ---
 

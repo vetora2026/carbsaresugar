@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a bowl of basmati rice? Teaspoon equivalent"
-description: "A 150g bowl of boiled basmati rice as teaspoons of table sugar, with GI 69, 40g of carbohydrate and the full working from Unwin 2016."
+phrase: "a bowl of basmati rice"
 compare: ["cauliflower", "eggs", "chickpeas"]
 ---
 

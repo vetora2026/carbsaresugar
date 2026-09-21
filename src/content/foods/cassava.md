@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in cassava? Teaspoon equivalent, 150g boiled"
-description: "A 150g serving of boiled cassava in teaspoons of table sugar, from Dr Unwin and Dr Livesey's African and Caribbean foods chart."
+phrase: "cassava"
 compare: ["okra", "chicken-breast"]
 ---
 

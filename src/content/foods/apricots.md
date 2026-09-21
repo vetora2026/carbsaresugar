@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in apricots? Teaspoon equivalent for 120g fresh"
-description: "About three fresh apricots, 120g, as teaspoons of table sugar, with the GI and glycaemic load from Dr Unwin's fruit chart."
+phrase: "apricots"
 compare: ["dried-mixed-fruit", "potato-boiled"]
 ---
 

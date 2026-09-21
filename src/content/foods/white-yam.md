@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in boiled yam? Teaspoon equivalent, 150g white yam"
-description: "A 150g serving of boiled white yam in teaspoons of table sugar, from the African and Caribbean foods chart by Dr Unwin and Dr Livesey."
+phrase: "boiled yam"
 compare: ["okra", "eggs", "cassava"]
 ---
 

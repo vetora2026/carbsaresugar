@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a banana? Teaspoon equivalent, 120g"
-description: "A medium 120g banana as teaspoons of table sugar, with GI and glycaemic load from Dr Unwin's fruit chart and the charts that give 5.7 instead."
+phrase: "a banana"
 compare: ["strawberries", "eggs", "white-bread-slice"]
 ---
 

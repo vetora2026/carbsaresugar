@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in an egg? Teaspoon equivalent for one large egg"
-description: "One large 60g egg as teaspoons of table sugar, with the glycaemic index of 0 printed on Dr Unwin's common foods and African and Caribbean charts."
+phrase: "an egg"
 compare: ["cornflakes", "white-bread-slice"]
 ---
 

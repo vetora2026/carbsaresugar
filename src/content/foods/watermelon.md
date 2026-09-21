@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in watermelon? Teaspoon equivalent, 120g"
-description: "About three quarters of a cup of diced watermelon, 120g, in teaspoons of table sugar, with its GI of 80 and glycaemic load from Dr Unwin's fruit chart."
+phrase: "watermelon"
 compare: ["raisins", "tomato"]
 ---
 

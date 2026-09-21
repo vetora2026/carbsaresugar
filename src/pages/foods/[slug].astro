@@ -10,6 +10,7 @@ import {
   foodPath,
   fmt1,
   num,
+  capitalise,
   working,
   type Food,
 } from "../../lib/foods";
@@ -36,6 +37,14 @@ if (!source) throw new Error(`${food.id}: unknown source "${food.source}"`);
 const category = categoryLabel.get(food.category)!;
 const work = working(food);
 
+const tsp = fmt1(food.cubes);
+const tspWord = food.cubes === 1 ? "teaspoon" : "teaspoons";
+// "1 small slice (30g)" -> "30g"; if the portion has no parentheses, use it whole.
+const portionShort = (food.portion.match(/\(([^)]+)\)\s*$/) ?? [null, food.portion])[1];
+const pageTitle = `How many teaspoons of sugar in ${entry.data.phrase}? ${tsp} (${portionShort})`;
+const glPart = food.gi !== null ? `glycaemic load ${num(food.gl)}, GI ${food.gi}` : `glycaemic load ${num(food.gl)}`;
+const pageDescription = `${capitalise(entry.data.phrase)} — ${food.portion} — raises blood glucose like ${tsp} ${tspWord} of table sugar (${glPart}). Dr David Unwin's method, with the source chart.`;
+
 const glBasis: Record<string, string> = {
   printed: "as printed on the source",
   "back-calculated": "back-calculated from the teaspoon figure",
@@ -51,7 +60,7 @@ const derivation: Record<string, string> = {
 const cards = [food, ...compare];
 ---
 
-<Layout title={entry.data.title} description={entry.data.description}>
+<Layout title={pageTitle} description={pageDescription}>
   <section slot="intro" class="bg-paper">
     <div class="mx-auto max-w-5xl px-4 pb-10 pt-8 sm:px-6 sm:pt-12">
       <nav aria-label="Breadcrumb">
@@ -64,8 +73,11 @@ const cards = [food, ...compare];
         </ol>
       </nav>
       <h1 class="max-w-3xl font-serif text-3xl font-medium leading-tight text-ink sm:text-4xl">
-        {food.name}, <span class="text-body">{food.portion}</span>
+        How many teaspoons of sugar in {entry.data.phrase}?
       </h1>
+      <p class="mt-2 max-w-3xl font-serif text-xl leading-snug text-body sm:text-2xl">
+        {food.name}, {food.portion}
+      </p>
       <div class="mt-6 max-w-xl rounded-md border border-line bg-paper p-5">
         <p class="flex flex-wrap items-baseline gap-x-2">
           <span class="font-serif text-5xl leading-tight text-coral">{fmt1(food.cubes)}</span>

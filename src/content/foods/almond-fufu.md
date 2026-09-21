@@ -1,6 +1,5 @@
 ---
-title: "Almond flour fufu: teaspoons of sugar in a 100g serving"
-description: "A 100g serving of fufu made with almond flour as teaspoons of table sugar, with the 1.12 printed on the African and Caribbean foods chart."
+phrase: "almond flour fufu"
 compare: ["cassava-fufu", "white-bread-slice"]
 ---
 

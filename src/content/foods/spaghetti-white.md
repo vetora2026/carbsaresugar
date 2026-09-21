@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in spaghetti? Teaspoon equivalent per 180g plate"
-description: "A 180g plate of boiled white spaghetti in teaspoons of table sugar, with GI 39, 46g of carbohydrate and glycaemic load 18 from Unwin 2016."
+phrase: "spaghetti"
 compare: ["tomato", "mushrooms"]
 ---
 

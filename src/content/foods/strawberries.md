@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in strawberries? Teaspoon equivalent, 120g"
-description: "About eight strawberries, 120g, as teaspoons of table sugar, with GI 40 and glycaemic load 3.8 from Dr Unwin's fruit chart."
+phrase: "strawberries"
 compare: ["banana", "coco-pops"]
 ---
 

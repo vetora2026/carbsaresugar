@@ -1,6 +1,5 @@
 ---
-title: "Mini Wheats: teaspoons of sugar in a 30g bowl"
-description: "A 30g dry bowl of Mini Wheats, shown as teaspoons of table sugar, with the glycaemic index printed on Dr Unwin's breakfast cereals chart."
+phrase: "Mini Wheats"
 compare: ["raisins", "peas-frozen"]
 ---
 

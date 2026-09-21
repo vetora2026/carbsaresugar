@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in mango juice? Teaspoon equivalent for 200ml"
-description: "A 200ml glass of mango juice as teaspoons of table sugar, with GI 55 from Dr Unwin's South Asian foods chart."
+phrase: "mango juice"
 compare: ["nectarine", "bitter-gourd"]
 ---
 

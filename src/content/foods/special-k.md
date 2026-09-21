@@ -1,6 +1,5 @@
 ---
-title: "Special K: teaspoons of sugar in a 30g bowl"
-description: "A 30g bowl of Special K in teaspoons of table sugar, with the UK glycaemic index from Dr Unwin's breakfast cereals chart."
+phrase: "Special K"
 compare: ["cabbage", "apple-juice"]
 ---
 

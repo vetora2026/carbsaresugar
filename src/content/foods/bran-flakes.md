@@ -1,6 +1,5 @@
 ---
-title: "Bran flakes: teaspoons of sugar in a 30g bowl"
-description: "A 30g bowl of bran flakes as teaspoons of table sugar. Two published sources agree on the figure but list different glycaemic index values."
+phrase: "bran flakes"
 compare: ["chicken-breast", "dried-mixed-fruit"]
 ---
 

@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in raisins? Teaspoon equivalent for 60g"
-description: "About a third of a cup of raisins, 60g, as teaspoons of table sugar, from Dr Unwin's fruits vs vegetables chart, with the sugar burden chart's figure."
+phrase: "raisins"
 compare: ["grapes-black", "broccoli"]
 ---
 

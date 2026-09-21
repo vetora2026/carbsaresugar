@@ -1,6 +1,5 @@
 ---
-title: "Stoneground wholemeal bread: teaspoons of sugar per 30g slice"
-description: "One small slice of wholemeal bread made from stoneground flour, as teaspoons of table sugar, with its glycaemic index and load from the bread chart."
+phrase: "stoneground wholemeal bread"
 compare: ["cassava", "okra", "strawberries"]
 ---
 

@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in cabbage? Teaspoon equivalent, 80g"
-description: "About a cup of shredded cabbage, 80g, as teaspoons of table sugar, with GI 10 from Dr Unwin's fruits vs vegetables chart."
+phrase: "cabbage"
 compare: ["raisins", "potato-boiled"]
 ---
 

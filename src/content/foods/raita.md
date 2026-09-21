@@ -1,6 +1,5 @@
 ---
-title: "Raita: teaspoons of sugar in a 100g serving"
-description: "A 100g serving of raita, the yogurt side dish, as teaspoons of table sugar, with GI 20 from Dr Unwin's South Asian foods chart."
+phrase: "raita"
 compare: ["basmati-rice", "mango-juice"]
 ---
 

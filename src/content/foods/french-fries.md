@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in french fries? Teaspoon equivalent, 150g oven baked"
-description: "A 150g serving of oven-baked french fries in teaspoons of table sugar, with GI 64, 32g of carbohydrate and the working from Unwin 2016 Table 1."
+phrase: "french fries"
 compare: ["salmon", "cabbage"]
 ---
 

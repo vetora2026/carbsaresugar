@@ -25,6 +25,9 @@ export const fmt1 = (n: number) => (Math.round(n * 10) / 10).toFixed(1);
 /** Up to two decimal places, trailing zeros dropped. */
 export const num = (n: number) => String(Math.round(n * 100) / 100);
 
+/** First letter upper case, for a phrase used at the start of a sentence. */
+export const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
 export interface Working {
   lines: string[];
   /** Set when the arithmetic does not land exactly on the published figure. */

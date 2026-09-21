@@ -1,6 +1,5 @@
 ---
-title: "Green plantain: teaspoons of sugar in a 150g boiled serving"
-description: "A 150g serving of boiled green plantain as teaspoons of table sugar, beside ripe plantain on the African and Caribbean foods chart."
+phrase: "green plantain"
 compare: ["plantain-ripe", "eggs"]
 ---
 

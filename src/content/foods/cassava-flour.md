@@ -1,6 +1,5 @@
 ---
-title: "Cassava flour: teaspoons of sugar in 100g"
-description: "100g of dry cassava flour as teaspoons of table sugar, the highest figure on Dr Unwin and Dr Livesey's African and Caribbean foods chart."
+phrase: "cassava flour"
 compare: ["cassava-fufu", "almond-fufu"]
 ---
 

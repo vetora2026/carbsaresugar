@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in Coco Pops? Teaspoon equivalent per 30g bowl"
-description: "A 30g bowl of Coco Pops, dry, as teaspoons of table sugar, with its GI from Dr Unwin's breakfast cereals chart and the sugar burden chart's figure."
+phrase: "Coco Pops"
 compare: ["eggs", "greek-yogurt"]
 ---
 

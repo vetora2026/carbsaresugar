@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in cornflakes? Teaspoon equivalent per 30g bowl"
-description: "A 30g bowl of cornflakes in teaspoons of table sugar, with GI 93 from Dr Unwin's breakfast cereals chart and Table 1 of the 2016 paper."
+phrase: "cornflakes"
 compare: ["salmon", "strawberries", "milk-whole"]
 ---
 

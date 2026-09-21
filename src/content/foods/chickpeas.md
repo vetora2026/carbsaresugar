@@ -1,6 +1,5 @@
 ---
-title: "Chickpeas: teaspoons of sugar in 100g cooked"
-description: "About two thirds of a cup of cooked chickpeas, 100g, in teaspoons of table sugar, with GI 28 from Dr Unwin's South Asian foods chart."
+phrase: "chickpeas"
 compare: ["roti-wheat", "mango-juice"]
 ---
 

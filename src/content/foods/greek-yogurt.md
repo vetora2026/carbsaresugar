@@ -1,6 +1,5 @@
 ---
-title: "Greek yogurt: teaspoons of sugar in a 200g pot"
-description: "A 200g pot of Greek-style yogurt as teaspoons of table sugar, with GI 12 and 8g of carbohydrate from Table 1 of Unwin 2016."
+phrase: "Greek yogurt"
 compare: ["raspberry-yogurt", "coco-pops"]
 ---
 

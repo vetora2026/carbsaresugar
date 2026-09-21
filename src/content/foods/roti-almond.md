@@ -1,6 +1,5 @@
 ---
-title: "Almond flour roti: teaspoons of sugar in one 50g roti"
-description: "A 50g roti made with almond flour, in teaspoons of table sugar, set beside the wheat roti from Dr Unwin's South Asian foods chart."
+phrase: "an almond flour roti"
 compare: ["roti-wheat", "white-bread-slice", "dal-khichdi"]
 ---
 

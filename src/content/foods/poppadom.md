@@ -1,6 +1,5 @@
 ---
-title: "Poppadom: teaspoons of sugar in one 9g poppadom"
-description: "One 9g poppadom as teaspoons of table sugar, with GI 70 from Dr Unwin's South Asian foods chart, the lightest portion in the dataset."
+phrase: "a poppadom"
 compare: ["cassava-flour", "raita"]
 ---
 

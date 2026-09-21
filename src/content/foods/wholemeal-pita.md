@@ -1,6 +1,5 @@
 ---
-title: "Wholemeal pita: teaspoons of sugar in a 30g portion"
-description: "Half a small wholemeal pita, 30g, expressed as teaspoons of table sugar, with the glycaemic index and load printed on Dr Unwin's bread chart."
+phrase: "wholemeal pita"
 compare: ["greek-yogurt", "chickpeas", "malt-loaf"]
 ---
 

@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in white rice? Teaspoon equivalent per 150g bowl"
-description: "A 150g bowl of boiled white rice in teaspoons of table sugar, from Dr Unwin's white, brown or green foods chart, with the glycaemic load it prints."
+phrase: "white rice"
 compare: ["broccoli", "salmon"]
 ---
 

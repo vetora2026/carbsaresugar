@@ -1,6 +1,5 @@
 ---
-title: "Dried mixed fruit: teaspoons of sugar in a 60g portion"
-description: "A 60g portion of dried mixed fruit as teaspoons of table sugar, with GI, 41g of carbohydrate and glycaemic load from Table 1 of Unwin 2016."
+phrase: "dried mixed fruit"
 compare: ["apricots", "okra"]
 ---
 

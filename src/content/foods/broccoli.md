@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in broccoli? Teaspoon equivalent, 80g boiled"
-description: "About a cup of boiled broccoli, 80g, in teaspoons of table sugar, with the GI of 15 on Dr Unwin's common foods chart and the 54 given in the 2016 paper."
+phrase: "broccoli"
 compare: ["basmati-rice", "white-bread-slice"]
 ---
 

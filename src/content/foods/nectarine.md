@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a nectarine? Teaspoon equivalent, 120g"
-description: "One medium 120g nectarine as teaspoons of table sugar, with the GI of 43 and glycaemic load printed on Dr Unwin's fruit chart."
+phrase: "a nectarine"
 compare: ["coco-pops", "mango-juice"]
 ---
 

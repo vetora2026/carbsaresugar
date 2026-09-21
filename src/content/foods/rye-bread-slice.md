@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in rye bread? Teaspoon equivalent per 30g slice"
-description: "A 30g slice of rye bread made with 69% whole-grain rye flour, in teaspoons of table sugar, with its GI and glycaemic load from Dr Unwin's bread chart."
+phrase: "rye bread"
 compare: ["mushrooms", "chickpeas", "salmon"]
 ---
 

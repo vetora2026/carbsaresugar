@@ -1,6 +1,5 @@
 ---
-title: "Wholemeal spaghetti: teaspoons of sugar per 180g plate"
-description: "A 180g plate of boiled wholemeal spaghetti as teaspoons of table sugar, with the glycaemic load from Dr Unwin's white, brown or green foods chart."
+phrase: "wholemeal spaghetti"
 compare: ["broccoli", "ground-beef"]
 ---
 

@@ -1,6 +1,5 @@
 ---
-title: "Yam flour: teaspoons of sugar in 100g"
-description: "100g of dry yam flour, as used for amala, in teaspoons of table sugar, from the African and Caribbean foods chart by Dr Unwin and Dr Livesey."
+phrase: "yam flour"
 compare: ["white-yam", "okra"]
 ---
 

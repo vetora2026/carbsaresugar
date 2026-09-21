@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a boiled potato? Teaspoon equivalent, 150g"
-description: "A medium 150g boiled white potato in teaspoons of table sugar, with GI 96 from Dr Unwin's common foods and fruits vs vegetables charts."
+phrase: "a boiled potato"
 compare: ["cauliflower", "salmon"]
 ---
 

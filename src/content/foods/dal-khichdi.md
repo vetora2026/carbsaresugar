@@ -1,6 +1,5 @@
 ---
-title: "Dal khichdi: teaspoons of sugar in a 200g bowl"
-description: "A 200g bowl of dal khichdi, rice and lentils cooked together, in teaspoons of table sugar, with GI 60 from Dr Unwin's South Asian foods chart."
+phrase: "dal khichdi"
 compare: ["basmati-rice", "raita"]
 ---
 

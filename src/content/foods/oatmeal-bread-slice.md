@@ -1,6 +1,5 @@
 ---
-title: "Oatmeal bread: teaspoons of sugar per small slice"
-description: "A 30g slice of oatmeal batch bread in teaspoons of table sugar, with the glycaemic index and load from Dr Unwin's bread chart."
+phrase: "oatmeal bread"
 compare: ["salmon", "nectarine"]
 ---
 

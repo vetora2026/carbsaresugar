@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in grapes? Teaspoon equivalent for 120g black grapes"
-description: "About 20 black grapes, 120g, as teaspoons of table sugar, with the glycaemic index and load printed on Dr Unwin's fruit chart."
+phrase: "grapes"
 compare: ["raisins", "cauliflower", "apple"]
 ---
 

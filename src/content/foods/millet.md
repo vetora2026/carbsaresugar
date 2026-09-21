@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in millet? Teaspoon equivalent, 100g boiled"
-description: "About half a cup of boiled millet, 100g, as teaspoons of table sugar, with GI 65 from Dr Unwin's South Asian foods chart."
+phrase: "millet"
 compare: ["raita", "salmon"]
 ---
 

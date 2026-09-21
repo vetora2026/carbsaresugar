@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in apple juice? Teaspoon equivalent for 200ml"
-description: "A 200ml glass of pure apple juice as teaspoons of table sugar, from Dr Unwin's healthy breakfast chart, and the sugar burden chart's different figure."
+phrase: "apple juice"
 compare: ["apple", "milk-whole"]
 ---
 

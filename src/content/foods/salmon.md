@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in salmon? Teaspoon equivalent per 100g fillet"
-description: "A 100g cooked Atlantic salmon fillet as teaspoons of table sugar, calculated from a carbohydrate content of zero in USDA FoodData Central."
+phrase: "salmon"
 compare: ["potato-boiled", "white-rice"]
 ---
 

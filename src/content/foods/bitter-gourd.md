@@ -1,6 +1,5 @@
 ---
-title: "Bitter gourd: teaspoons of sugar in a 100g serving"
-description: "A 100g serving of bitter gourd, or karela, as teaspoons of table sugar, with GI 15 from Dr Unwin's South Asian foods chart."
+phrase: "bitter gourd"
 compare: ["mango-juice", "roti-wheat"]
 ---
 

@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a slice of white bread? Teaspoon equivalent"
-description: "A small 30g slice of white bread in teaspoons of table sugar, with its glycaemic index, glycaemic load and the bread chart it comes from."
+phrase: "a slice of white bread"
 compare: ["broccoli", "eggs", "apple"]
 ---
 

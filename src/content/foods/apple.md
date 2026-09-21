@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in an apple? Teaspoon equivalent, 120g"
-description: "A small 120g Golden Delicious apple in teaspoons of table sugar, with GI 39 from Dr Unwin's fruit chart and the 2.3 figure printed on other sources."
+phrase: "an apple"
 compare: ["apple-juice", "cornflakes", "black-eyed-peas"]
 ---
 

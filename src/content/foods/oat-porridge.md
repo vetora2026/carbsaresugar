@@ -1,6 +1,5 @@
 ---
-title: "Oat porridge: teaspoons of sugar in a 150ml serving"
-description: "A 150ml serving of cooked oat porridge as teaspoons of table sugar, with GI 63 from Dr Unwin's breakfast cereals chart and a note on its volume portion."
+phrase: "oat porridge"
 compare: ["eggs", "banana"]
 ---
 

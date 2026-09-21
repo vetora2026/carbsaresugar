@@ -1,6 +1,5 @@
 ---
-title: "Malt loaf: teaspoons of sugar in 100g"
-description: "100g of malt loaf, the sticky UK fruit bread, as teaspoons of table sugar, from the foods with added sugars column of Dr Unwin's sugar burden chart."
+phrase: "malt loaf"
 compare: ["salmon", "cabbage"]
 ---
 

@@ -1,6 +1,5 @@
 ---
-title: "Frozen peas: teaspoons of sugar in an 80g boiled portion"
-description: "About half a cup of frozen peas, boiled, 80g, as teaspoons of table sugar, with GI 51 and 7g of carbohydrate from Unwin 2016 Table 1."
+phrase: "frozen peas"
 compare: ["potato-boiled", "cornflakes"]
 ---
 

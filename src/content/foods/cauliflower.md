@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in cauliflower? Teaspoon equivalent, 80g"
-description: "About three quarters of a cup of cauliflower, 80g, as teaspoons of table sugar, from Unwin 2016 Table 1, with a note on its printed glycaemic load."
+phrase: "cauliflower"
 compare: ["basmati-rice", "potato-boiled"]
 ---
 

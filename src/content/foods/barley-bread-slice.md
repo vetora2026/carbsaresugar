@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in barley bread? Teaspoon equivalent per slice"
-description: "A 30g slice of wholegrain bread made with 50% barley, shown as teaspoons of table sugar with its GI and glycaemic load from Dr Unwin's bread chart."
+phrase: "barley bread"
 compare: ["cauliflower", "apricots"]
 ---
 

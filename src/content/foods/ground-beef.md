@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a beef burger patty? Teaspoon equivalent, 100g"
-description: "A 100g patty of 85% lean ground beef as teaspoons of table sugar, calculated from USDA FoodData Central's carbohydrate content of zero."
+phrase: "a beef burger patty"
 compare: ["white-bread-slice", "french-fries"]
 ---
 

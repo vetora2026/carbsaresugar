@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in a slice of brown bread? Teaspoon equivalent"
-description: "One small 30g slice of brown bread as teaspoons of table sugar, with the worked example from Unwin 2016 Box 2 and the charts that print other figures."
+phrase: "a slice of brown bread"
 compare: ["cabbage", "greek-yogurt", "banana"]
 ---
 

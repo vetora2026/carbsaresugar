@@ -1,6 +1,5 @@
 ---
-title: "Black-eyed peas: teaspoons of sugar in a 150g boiled serving"
-description: "A 150g serving of boiled black-eyed peas as teaspoons of table sugar, from the African and Caribbean foods chart by Dr Unwin and Dr Livesey."
+phrase: "black-eyed peas"
 compare: ["cassava", "cabbage"]
 ---
 

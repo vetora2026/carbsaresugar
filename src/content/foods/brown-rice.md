@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in brown rice? Teaspoon equivalent per 150g bowl"
-description: "A 150g bowl of boiled brown rice as teaspoons of table sugar, with the glycaemic load printed on Dr Unwin's white, brown or green foods chart."
+phrase: "brown rice"
 compare: ["white-rice", "cabbage"]
 ---
 

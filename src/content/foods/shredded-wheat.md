@@ -1,6 +1,5 @@
 ---
-title: "Shredded wheat: teaspoons of sugar in a 30g bowl"
-description: "A 30g bowl of shredded wheat biscuits in teaspoons of table sugar, with the GI from Dr Unwin's breakfast cereals chart and how the figure is derived."
+phrase: "shredded wheat"
 compare: ["apricots", "chicken-breast"]
 ---
 

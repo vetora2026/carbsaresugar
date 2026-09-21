@@ -1,6 +1,5 @@
 ---
-title: "How much sugar is in chicken breast? Teaspoon equivalent per 100g"
-description: "A 100g portion of roasted chicken breast as teaspoons of table sugar, calculated from USDA FoodData Central's carbohydrate value of zero."
+phrase: "chicken breast"
 compare: ["basmati-rice", "roti-wheat"]
 ---
 
