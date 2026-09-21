@@ -1,0 +1,13 @@
+# Response headers for Cloudflare Pages.
+#
+# Every rule whose path matches an incoming request is applied, and they are
+# combined; this is not first match wins. So a catch-all /* rule added here
+# would also set Cache-Control on the hashed assets below. If one is ever
+# added, it must detach the header for them again with "! Cache-Control"
+# under a /_astro/* rule, or leave Cache-Control out of the catch-all.
+#
+# Everything under /_astro/ carries a content hash in its filename, so a new
+# build produces a new URL and the old one can be kept for a year.
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

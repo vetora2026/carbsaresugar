@@ -5,7 +5,7 @@ import PageIntro from "../components/PageIntro.astro";
 
 <Layout
   title="Privacy policy: what carbsaresugar.com does and does not collect"
-  description="The privacy policy for carbsaresugar.com, from a check of its own code: no cookies or storage set by the site, cookieless page-view counting by Cloudflare, and Google AdSense as the only third-party script."
+  description="The privacy policy for carbsaresugar.com: the site sets no cookies or storage; the two third-party scripts are Google AdSense and Cloudflare Web Analytics."
 >
   <PageIntro slot="intro" title="Privacy policy" lede="Last updated 21 September 2026." />
 
@@ -15,7 +15,7 @@ import PageIntro from "../components/PageIntro.astro";
       <p>
         This site has no accounts, no forms and no database. Page views are counted by Cloudflare Web Analytics, which
         the host runs without cookies, described under Analytics below. The site's own code does not set cookies, does not
-        write to your browser's storage and does not send anything you do on the page to a server. The one third party is
+        write to your browser's storage and does not send anything you do on the page to a server. The other third party is
         Google AdSense, which serves the advertising, does use cookies and browser storage, and has its own data
         practices, described below.
       </p>
@@ -132,7 +132,7 @@ import PageIntro from "../components/PageIntro.astro";
       </p>
 
       <h2>Contact</h2>
-      <p>Questions about this policy: <a href="mailto:vetorainfo@gmail.com">vetorainfo@gmail.com</a>.</p>
+      <p>Questions about this policy: <!--email_off--><a href="mailto:vetorainfo@gmail.com">vetorainfo@gmail.com</a><!--/email_off-->.</p>
     </div>
   </section>
 </Layout>

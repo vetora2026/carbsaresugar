@@ -6,6 +6,10 @@ import "@fontsource/source-sans-3/400.css";
 import "@fontsource/source-sans-3/500.css";
 import "@fontsource/source-sans-3/600.css";
 import "../styles/global.css";
+// The two faces that carry the first screen of every page: the serif headings
+// and the body text. Preloading shortens the spell in the fallback font.
+import loraHeading from "@fontsource/lora/files/lora-latin-500-normal.woff2?url";
+import sansBody from "@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2?url";
 import Divider from "../components/Divider.astro";
 
 interface Props {
@@ -51,6 +55,8 @@ const isActive = (href: string) => {
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="preload" as="font" type="font/woff2" href={loraHeading} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={sansBody} crossorigin="anonymous" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
@@ -119,19 +125,19 @@ const isActive = (href: string) => {
             <p class="mt-3 text-sm leading-relaxed">
               Food values are Dr David Unwin's teaspoon-of-sugar equivalents, from the sugar infographics published by
               the Public Health Collaboration at
-              <a class="text-coral underline underline-offset-2" href="https://phcuk.org/sugar">phcuk.org/sugar</a> and
+              <a class="text-coral-soft underline underline-offset-2" href="https://phcuk.org/sugar">phcuk.org/sugar</a> and
               used with PHC's permission, and from Unwin, Haslam and Livesey, Journal of Insulin Resistance, 2016.
               Attribution and licence details are on the
-              <a class="text-coral underline underline-offset-2" href="/sources/">sources page</a>.
+              <a class="text-coral-soft underline underline-offset-2" href="/sources/">sources page</a>.
             </p>
             <p class="mt-3 text-sm leading-relaxed">Educational estimates only. Not medical or dietary advice.</p>
           </div>
           <nav aria-label="Footer">
             <ul class="flex flex-col text-sm">
-              <li><a class="inline-flex min-h-[44px] min-w-[44px] items-center text-coral underline underline-offset-2" href="/privacy/">Privacy</a></li>
-              <li><a class="inline-flex min-h-[44px] min-w-[44px] items-center text-coral underline underline-offset-2" href="/terms/">Terms</a></li>
-              <li><a class="inline-flex min-h-[44px] min-w-[44px] items-center text-coral underline underline-offset-2" href="/contact/">Contact</a></li>
-              <li><a class="inline-flex min-h-[44px] min-w-[44px] items-center text-coral underline underline-offset-2" href="mailto:vetorainfo@gmail.com">vetorainfo@gmail.com</a></li>
+              <li><a class="inline-flex min-h-[44px] min-w-[44px] items-center text-coral-soft underline underline-offset-2" href="/privacy/">Privacy</a></li>
+              <li><a class="inline-flex min-h-[44px] min-w-[44px] items-center text-coral-soft underline underline-offset-2" href="/terms/">Terms</a></li>
+              <li><a class="inline-flex min-h-[44px] min-w-[44px] items-center text-coral-soft underline underline-offset-2" href="/contact/">Contact</a></li>
+              <li><!--email_off--><a class="inline-flex min-h-[44px] min-w-[44px] items-center text-coral-soft underline underline-offset-2" href="mailto:vetorainfo@gmail.com">vetorainfo@gmail.com</a><!--/email_off--></li>
             </ul>
           </nav>
         </div>

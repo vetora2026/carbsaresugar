@@ -50,6 +50,7 @@ const { categories, foods } = data;
                       <span
                         class="absolute right-2 top-2 min-w-[1.75rem] rounded-full bg-green px-1.5 text-center text-sm font-semibold leading-6 text-paper"
                         data-badge
+                        aria-hidden="true"
                         hidden
                       />
                     </button>
@@ -381,9 +382,12 @@ const { categories, foods } = data;
       const badge = card.querySelector<HTMLElement>("[data-badge]")!;
       badge.hidden = qty === 0;
       badge.textContent = qty > 0 ? `×${qty}` : "";
+      // The label repeats the card's visible text in the order it is printed,
+      // so the spoken name and the seen name are the same thing.
+      const food = foods.get(card.dataset.food!)!;
       card.setAttribute(
         "aria-label",
-        `${card.querySelector("span")!.textContent}, ${qty > 0 ? `${qty} added, ` : ""}add one portion`,
+        `${food.name}, ${food.portion}, ${food.cubes.toFixed(1)} teaspoons, ${qty > 0 ? `${qty} added, ` : ""}add one portion`,
       );
     }
 
