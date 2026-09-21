@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
+import EditorialLine from "../components/EditorialLine.astro";
 import CubeRow from "../components/CubeRow.astro";
 import data from "../data/foods.json";
 
@@ -24,7 +25,9 @@ const levels = [
     eyebrow="Article"
     title="How much sugar is in your blood?"
     lede="About 4 grams of glucose circulates in the blood of a 70kg adult. That is roughly one teaspoon."
-  />
+  >
+    <EditorialLine class="mt-4" />
+  </PageIntro>
 
   <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
     <div class="grid max-w-3xl gap-4 sm:grid-cols-2">

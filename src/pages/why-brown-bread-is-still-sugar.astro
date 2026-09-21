@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
+import EditorialLine from "../components/EditorialLine.astro";
 import CubeRow from "../components/CubeRow.astro";
 import data from "../data/foods.json";
 import { TEASPOON_GL, num, fmt1 } from "../lib/foods";
@@ -32,7 +33,9 @@ const breadRows = [
     eyebrow="Article"
     title="Why brown bread is still sugar"
     lede="One small slice of white bread and one small slice of brown bread, measured the same way."
-  />
+  >
+    <EditorialLine class="mt-4" />
+  </PageIntro>
 
   <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
     <div class="grid max-w-3xl gap-4 sm:grid-cols-2">

@@ -35,6 +35,8 @@ Unwin 2016 Box 2: a 4g teaspoon of sucrose = 4.2g carbohydrate (monosaccharide e
 - Elements toggled with the `hidden` attribute must not carry a Tailwind display utility (`flex`, `block`), or the utility wins and they stay visible.
 - `/privacy/` describes behaviour verified in a browser. If you add any script, storage, font service or request, re-verify and update that page in the same change.
 - No `_headers` / `_redirects`. Cloudflare Pages handles caching.
+- Cloudflare Web Analytics is on for this site. Cloudflare injects it at the edge, so it is not in the repo and grep will not find it. Privacy and about copy must never say the site has no analytics.
+- No personal name or persona anywhere. The site is maintained by "an independent editor".
 - `.github/workflows/validate-data.yml` checks source URLs and a hash of the PHC page's visible text (`phc_page_text_sha256`). If PHC changes the page cosmetically, update the stored hash after review.
 
 ## Copy rules

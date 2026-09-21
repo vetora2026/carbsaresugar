@@ -19,6 +19,15 @@ export const categoryLabel = new Map(categories.map((c) => [c.id, c.label]));
 
 export const foodPath = (f: Food) => `/foods/${f.id}/`;
 
+/** The date every food value was last re-checked. It lives in sources.json and is never typed into a page. */
+export const lastVerified: string = sourcesData.last_verified;
+
+/** An ISO date as a readable one, for example 13 September 2026. */
+export const longDate = (iso: string) =>
+  new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
+    new Date(`${iso}T00:00:00Z`),
+  );
+
 /** One decimal place, as every teaspoon figure is shown. */
 export const fmt1 = (n: number) => (Math.round(n * 10) / 10).toFixed(1);
 

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
+import EditorialLine from "../components/EditorialLine.astro";
 import data from "../data/foods.json";
 import { TEASPOON_GL, fmt1, num } from "../lib/foods";
 
@@ -34,7 +35,9 @@ const giRows = [
     eyebrow="Article"
     title="What is glycaemic load?"
     lede="Glycaemic index ranks carbohydrates. Glycaemic load describes a real portion. This page shows the arithmetic behind every number in the calculator."
-  />
+  >
+    <EditorialLine class="mt-4" />
+  </PageIntro>
 
   <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
     <div class="prose-body">

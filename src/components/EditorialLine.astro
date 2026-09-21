@@ -1,0 +1,13 @@
+---
+import { lastVerified, longDate } from "../lib/foods";
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<p class:list={["max-w-prose text-sm text-muted", className]}>
+  Maintained by an independent editor · Data verified {longDate(lastVerified)} ·
+  <a class="underline underline-offset-2 hover:text-ink" href="/about/#who-runs-it">How the numbers are made</a>
+</p>

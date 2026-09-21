@@ -2,6 +2,7 @@
 import { getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import CubeRow from "../../components/CubeRow.astro";
+import EditorialLine from "../../components/EditorialLine.astro";
 import {
   foods,
   foodById,
@@ -81,6 +82,8 @@ const cards = [food, ...compare];
       <p class="mt-2 max-w-3xl font-serif text-xl leading-snug text-body sm:text-2xl">
         {food.name}, {food.portion}
       </p>
+
+      <EditorialLine class="mt-4" />
       <div class="mt-6 max-w-xl rounded-md border border-line bg-paper p-5">
         <p class="flex flex-wrap items-baseline gap-x-2">
           <span class="font-serif text-5xl leading-tight text-coral">{fmt1(food.cubes)}</span>

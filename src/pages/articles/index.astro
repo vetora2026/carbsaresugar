@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageIntro from "../../components/PageIntro.astro";
+import EditorialLine from "../../components/EditorialLine.astro";
 import { TEASPOON_GL } from "../../lib/foods";
 
 const articles = [
@@ -32,7 +33,9 @@ const articles = [
     slot="intro"
     title="Articles"
     lede="Three explainers that sit behind the numbers in the calculator. Each shows its arithmetic and names its sources."
-  />
+  >
+    <EditorialLine class="mt-4" />
+  </PageIntro>
 
   <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
     <ul class="grid gap-4 md:grid-cols-3">

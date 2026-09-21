@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageIntro from "../../components/PageIntro.astro";
+import EditorialLine from "../../components/EditorialLine.astro";
 import CubeRow from "../../components/CubeRow.astro";
 import { foods, categories, foodPath, fmt1, TEASPOON_GL } from "../../lib/foods";
 
@@ -17,7 +18,9 @@ const perHundred = foods.filter((f) => /^100(g|ml)\b/.test(f.portion)).length;
     slot="intro"
     title="Teaspoons of sugar, food by food"
     lede={`All ${foods.length} foods in the calculator, grouped by category. Each figure is the number of 4g teaspoons of table sugar with about the same effect on blood glucose as the portion shown.`}
-  />
+  >
+    <EditorialLine class="mt-4" />
+  </PageIntro>
 
   <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
     <nav aria-label="Categories">

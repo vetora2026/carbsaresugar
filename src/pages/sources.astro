@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
+import EditorialLine from "../components/EditorialLine.astro";
 import foodsData from "../data/foods.json";
 import sourcesData from "../data/sources.json";
 import { TEASPOON_GL, num } from "../lib/foods";
@@ -43,7 +44,9 @@ const potato = { ...potatoFood, calculated: (potatoFood.gi * potatoFood.carbs_g)
     slot="intro"
     title="Sources"
     lede="Every value in the calculator, where it was read or how it was calculated, and the people whose work it rests on."
-  />
+  >
+    <EditorialLine class="mt-4" />
+  </PageIntro>
 
   <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
     <div class="prose-body">

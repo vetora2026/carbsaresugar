@@ -12,5 +12,6 @@ const { title, lede, eyebrow } = Astro.props;
     {eyebrow && <p class="text-sm font-medium text-muted">{eyebrow}</p>}
     <h1 class="mt-1 max-w-3xl font-serif text-3xl font-medium leading-tight text-ink sm:text-4xl">{title}</h1>
     {lede && <p class="mt-4 max-w-prose text-lg leading-relaxed text-body">{lede}</p>}
+    <slot />
   </div>
 </section>

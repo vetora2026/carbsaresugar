@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Divider from "../components/Divider.astro";
 import CubeRow from "../components/CubeRow.astro";
 import Calculator from "../components/Calculator.astro";
+import EditorialLine from "../components/EditorialLine.astro";
 import data from "../data/foods.json";
 import { TEASPOON_GL, num, fmt1 } from "../lib/foods";
 
@@ -30,6 +31,8 @@ const calcCount = count("calculated from GI and carb content");
         Resistance and shared free by the Public Health Collaboration at
         <a class="link" href="https://phcuk.org/sugar">phcuk.org/sugar</a>.
       </p>
+
+      <EditorialLine class="mt-5" />
 
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
         <div class="rounded-md border border-line bg-paper p-5">
