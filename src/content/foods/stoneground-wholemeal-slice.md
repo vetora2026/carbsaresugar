@@ -1,5 +1,5 @@
 ---
-phrase: "stoneground wholemeal bread"
+phrase: "stoneground bread"
 compare: ["cassava", "okra", "strawberries"]
 ---
 

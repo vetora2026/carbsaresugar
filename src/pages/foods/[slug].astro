@@ -39,8 +39,11 @@ const work = working(food);
 
 const tsp = fmt1(food.cubes);
 const tspWord = food.cubes === 1 ? "teaspoon" : "teaspoons";
-// "1 small slice (30g)" -> "30g"; if the portion has no parentheses, use it whole.
-const portionShort = (food.portion.match(/\(([^)]+)\)\s*$/) ?? [null, food.portion])[1];
+// Prefer a bare weight/volume ("30g", "250ml", "100g dry") anywhere in the portion;
+// fall back to the trailing parenthetical; fall back to the whole portion.
+const weightMatch = food.portion.match(/\b(\d+(?:\.\d+)?\s?(?:g|ml|kg|l))\b/i);
+const parenMatch = food.portion.match(/\(([^)]+)\)\s*$/);
+const portionShort = weightMatch?.[1] ?? parenMatch?.[1] ?? food.portion;
 const pageTitle = `How many teaspoons of sugar in ${entry.data.phrase}? ${tsp} (${portionShort})`;
 const glPart = food.gi !== null ? `glycaemic load ${num(food.gl)}, GI ${food.gi}` : `glycaemic load ${num(food.gl)}`;
 const pageDescription = `${capitalise(entry.data.phrase)} — ${food.portion} — raises blood glucose like ${tsp} ${tspWord} of table sugar (${glPart}). Dr David Unwin's method, with the source chart.`;
