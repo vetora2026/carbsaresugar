@@ -1,30 +1,8 @@
+@import "./font-fallbacks.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/*
- * Metric-matched stand-ins for the two web fonts. Without them the fallback
- * text is a different width and height, so every block of text re-wraps and
- * moves when Lora and Source Sans 3 arrive: that swap was the whole of the
- * home page's layout shift. The numbers come from measuring each real font
- * against its stand-in at 100px; see scripts/measure-cls.mjs.
- */
-@font-face {
-  font-family: "Lora Fallback";
-  src: local("Georgia");
-  size-adjust: 105.76%;
-  ascent-override: 95.5%;
-  descent-override: 25.53%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: "Source Sans 3 Fallback";
-  src: local("Arial");
-  size-adjust: 92.89%;
-  ascent-override: 109.8%;
-  descent-override: 43.06%;
-  line-gap-override: 0%;
-}
 
 @layer base {
   html {

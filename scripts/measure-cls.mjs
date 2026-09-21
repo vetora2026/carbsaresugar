@@ -7,20 +7,42 @@
 //
 //   node scripts/measure-cls.mjs                      # home page at 375 and 1280
 //   node scripts/measure-cls.mjs /foods/ --width 375  # one page at one width
+//   node scripts/measure-cls.mjs --no-local-fallbacks # as an Android phone sees it
+//
+// --no-local-fallbacks serves a copy of dist/ with the `local()` names in the
+// metric-matched fallback faces replaced by a font no machine has. Windows and
+// macOS have Arial and Georgia; Android and Linux do not, so a measurement
+// taken here without this flag cannot see the shift most real phones get.
+//
+// It implies --font-delay, which holds the woff2 responses back so they land
+// after first paint. Over localhost the fonts finish in about 550ms while
+// first paint is nearer 1700ms, so the fallback text is never actually
+// painted and no swap is ever recorded, however hard the network is
+// throttled. On a real phone the fonts arrive second. Pass --font-delay 0 to
+// turn the hold off and see the raw localhost figure.
 //
 // Requires `npm run build` first.
 
-import { startPreview, launchBrowser } from "./lib.mjs";
+import { mkdtemp } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { assertPortFree, startPreview, startStatic, launchBrowser, copyWithoutLocalFonts } from "./lib.mjs";
 
 const args = process.argv.slice(2);
-const paths = args.filter((a) => !a.startsWith("--"));
+// Every --name here takes a value, so the word after it is not a page path.
+const VALUED = ["--width", "--height", "--font-delay"];
+const paths = args.filter((a, i) => !a.startsWith("--") && !VALUED.includes(args[i - 1]));
 const flag = (name, fallback) => {
   const i = args.indexOf(`--${name}`);
   return i === -1 ? fallback : Number(args[i + 1]);
 };
 
+const NO_LOCAL = args.includes("--no-local-fallbacks");
+const FONT_DELAY = flag("font-delay", NO_LOCAL ? 2500 : 0);
 const PORT = 4329;
-const ORIGIN = `http://localhost:${PORT}`;
+// 127.0.0.1, not localhost: on Windows Chromium tries ::1 first, and a stale
+// server there would be measured instead of ours.
+const ORIGIN = `http://127.0.0.1:${PORT}`;
 const PAGES = paths.length ? paths : ["/"];
 const WIDTHS = args.includes("--width") ? [flag("width")] : [375, 1280];
 const HEIGHT = flag("height", 812);
@@ -73,11 +95,17 @@ async function measure(browser, url, width) {
   await cdp.send("Network.emulateNetworkConditions", THROTTLE);
   await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 });
   await page.addInitScript(observer);
+  if (FONT_DELAY > 0) {
+    await page.route(/\.woff2?(\?|$)/, async (route) => {
+      await new Promise((r) => setTimeout(r, FONT_DELAY));
+      await route.continue();
+    });
+  }
 
   await page.goto(url, { waitUntil: "load", timeout: 60000 });
   const title = await page.title();
   if (!/sugar/i.test(title)) throw new Error(`unexpected page at ${url}: "${title}"`);
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(Math.max(3000, FONT_DELAY + 2000));
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(1500);
 
@@ -86,7 +114,18 @@ async function measure(browser, url, width) {
   return shifts;
 }
 
-const preview = await startPreview(PORT);
+await assertPortFree(PORT);
+
+let server;
+if (NO_LOCAL) {
+  const dist = new URL("../dist", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
+  const dest = join(await mkdtemp(join(tmpdir(), "cls-nolocal-")), "dist");
+  const patched = await copyWithoutLocalFonts(dist, dest);
+  console.log(`no-local-fallbacks: ${patched} file(s) doctored in ${dest}`);
+  server = await startStatic(PORT, dest);
+} else {
+  server = await startPreview(PORT);
+}
 const browser = await launchBrowser();
 let worst = 0;
 try {
@@ -104,7 +143,7 @@ try {
   }
 } finally {
   await browser.close();
-  preview.kill();
+  server.kill();
 }
 
 console.log(`\nworst CLS: ${worst.toFixed(4)}`);

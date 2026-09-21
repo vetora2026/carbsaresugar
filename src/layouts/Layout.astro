@@ -1,16 +1,38 @@
 ---
-import "@fontsource/lora/400.css";
-import "@fontsource/lora/500.css";
-import "@fontsource/lora/400-italic.css";
-import "@fontsource/source-sans-3/400.css";
-import "@fontsource/source-sans-3/500.css";
-import "@fontsource/source-sans-3/600.css";
 import "../styles/global.css";
-// The two faces that carry the first screen of every page: the serif headings
-// and the body text. Preloading shortens the spell in the fallback font.
-import loraHeading from "@fontsource/lora/files/lora-latin-500-normal.woff2?url";
-import sansBody from "@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2?url";
+// The site declares its own @font-face rules rather than importing
+// fontsource's stylesheets, which hard-code `font-display: swap`. With `swap`
+// a font that misses first paint replaces the fallback text later and the page
+// re-wraps under the reader. With `optional` the browser uses the web font if
+// it is ready in time and otherwise keeps the fallback for that page view and
+// never swaps, so there is nothing to shift. The two faces that carry the
+// first screen are preloaded, so on almost every visit the font is ready.
+//
+// Only the latin subset is declared: nothing on the site uses a character
+// outside it (checked over the built pages).
+import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2?url";
+import lora400italic from "@fontsource/lora/files/lora-latin-400-italic.woff2?url";
+import lora500 from "@fontsource/lora/files/lora-latin-500-normal.woff2?url";
+import sans400 from "@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2?url";
+import sans500 from "@fontsource/source-sans-3/files/source-sans-3-latin-500-normal.woff2?url";
+import sans600 from "@fontsource/source-sans-3/files/source-sans-3-latin-600-normal.woff2?url";
 import Divider from "../components/Divider.astro";
+
+const LATIN_SUBSET =
+  "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD";
+
+const face = (family: string, weight: number, style: string, url: string) =>
+  `@font-face{font-family:"${family}";font-style:${style};font-weight:${weight};font-display:optional;` +
+  `src:url(${url}) format("woff2");unicode-range:${LATIN_SUBSET}}`;
+
+const fontFaces = [
+  face("Source Sans 3", 400, "normal", sans400),
+  face("Source Sans 3", 500, "normal", sans500),
+  face("Source Sans 3", 600, "normal", sans600),
+  face("Lora", 400, "normal", lora400),
+  face("Lora", 400, "italic", lora400italic),
+  face("Lora", 500, "normal", lora500),
+].join("");
 
 interface Props {
   title: string;
@@ -55,8 +77,9 @@ const isActive = (href: string) => {
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
-    <link rel="preload" as="font" type="font/woff2" href={loraHeading} crossorigin="anonymous" />
-    <link rel="preload" as="font" type="font/woff2" href={sansBody} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={lora500} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={sans400} crossorigin="anonymous" />
+    <style is:inline set:html={fontFaces}></style>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />

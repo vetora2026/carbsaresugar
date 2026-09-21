@@ -9,10 +9,11 @@
 
 import { readFileSync } from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
-import { startPreview, launchBrowser } from "./lib.mjs";
+import { assertPortFree, startPreview, launchBrowser } from "./lib.mjs";
 
 const PORT = 4330;
-const ORIGIN = `http://localhost:${PORT}`;
+// 127.0.0.1, not localhost: see the note in lib.mjs assertPortFree.
+const ORIGIN = `http://127.0.0.1:${PORT}`;
 const WIDTH = 375;
 const HEIGHT = 812;
 const TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
@@ -27,6 +28,7 @@ const paths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
   .slice(0, limit);
 if (paths.length === 0) throw new Error("no URLs in dist/sitemap-0.xml — run npm run build first");
 
+await assertPortFree(PORT);
 const preview = await startPreview(PORT);
 const browser = await launchBrowser();
 const context = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT } });

@@ -37,6 +37,7 @@ Unwin 2016 Box 2: a 4g teaspoon of sucrose = 4.2g carbohydrate (monosaccharide e
 - No `_redirects`. `public/_headers` exists for one thing only: the cache policy on `/_astro/*` (see below).
 - Cloudflare Web Analytics is on for this site. Cloudflare injects it at the edge, so it is not in the repo and grep will not find it. Privacy and about copy must never say the site has no analytics.
 - No personal name or persona anywhere. The site is maintained by "an independent editor".
+- `scripts/measure-cls.mjs` and `check-a11y.mjs` refuse to start if their port is taken. Take that seriously: a leftover `astro preview` binds `::1` while a fresh server binds `127.0.0.1`, and because Chromium tries `::1` first on Windows the measurement silently reads the stale build and passes. Both scripts now use `127.0.0.1` explicitly and kill the whole process tree on exit.
 - `.github/workflows/validate-data.yml` checks source URLs and a hash of the PHC page's visible text (`phc_page_text_sha256`). If PHC changes the page cosmetically, update the stored hash after review.
 
 ## Performance and accessibility
@@ -45,7 +46,7 @@ Unwin 2016 Box 2: a 4g teaspoon of sucrose = 4.2g carbohydrate (monosaccharide e
 - CSS is inlined (`build.inlineStylesheets: 'always'`).
 - Run `npm run check:a11y` after any colour or layout change; zero `color-contrast` and `target-size` violations.
 - Wrap every email address in `<!--email_off-->`…`<!--/email_off-->` so Cloudflare does not inject its email-decode script.
-- Homepage CLS must stay under 0.05 at 375px; measure with `scripts/measure-cls.mjs` after layout changes.
+- Web fonts use `font-display: optional` with preloads; fallback faces cover Arial/Georgia **and** Roboto/Noto Serif (capsize). Verify CLS with `scripts/measure-cls.mjs --no-local-fallbacks`; Windows-only measurements miss the Android case. Homepage CLS must stay under 0.05 at 375px. The fallback faces are generated: run `node scripts/build-font-fallbacks.mjs` rather than editing `src/styles/font-fallbacks.css`. The site declares its own `@font-face` rules in `src/layouts/Layout.astro` because fontsource's CSS hard-codes `swap`; if you add a weight or style, add it there and keep the preloads pointing at the same URLs.
 
 ## Copy rules
 
